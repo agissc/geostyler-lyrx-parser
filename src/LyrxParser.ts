@@ -6,7 +6,7 @@ import {
   WriteStyleResult
 } from 'geostyler-style';
 
-import { CIMLayerDocument } from './lyrx/CIMLayerDocument';
+import { CIMLayerDocument } from './types/CIMLayerDocument';
 
 /**
  * This parser can be used with the GeoStyler.
