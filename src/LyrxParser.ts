@@ -6,6 +6,8 @@ import {
   WriteStyleResult
 } from 'geostyler-style';
 
+import { CIMLayerDocument } from './lyrx/CIMLayerDocument';
+
 /**
  * This parser can be used with the GeoStyler.
  * It implements the GeoStyler StyleParser interface to work with ArcGis lyrx
@@ -23,13 +25,15 @@ export class LyrxParser implements StyleParser<any> {
   unsupportedProperties: UnsupportedProperties = {
   };
 
-  readStyle(inputStyle: any): Promise<ReadStyleResult> {
+  readStyle(inputStyle: CIMLayerDocument): Promise<ReadStyleResult> {
+    
+
     return Promise.resolve({
       output: {
         name: '',
         rules: []
       },
-      warnings: [],
+      warnings: [inputStyle.version as string],
       errors: []
     });
   }
