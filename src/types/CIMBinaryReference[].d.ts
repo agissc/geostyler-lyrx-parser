@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMBinaryReference1 = CIMObject & {
+export type CIMBinaryReference = CIMBinaryReference1[];
+
+/**
+ * Represents a binary reference in a document.
+ */
+export interface CIMBinaryReference1 {
   /**
    * Gets or sets the URI of the binary reference. Typically set by the system but used as a reference path.
    */
@@ -18,9 +23,7 @@ export type CIMBinaryReference1 = CIMObject & {
    * Gets or sets the stored CIM object.
    */
   object?: null | CIMObject;
-};
-export type CIMBinaryReference = CIMBinaryReference1[];
-
+}
 /**
  * Represents the base CIM object class.
  *

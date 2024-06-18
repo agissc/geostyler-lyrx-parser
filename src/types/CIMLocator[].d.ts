@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLocator1 = CIMObject & {
+/**
+ * Type of locators.
+ *
+ */
+export type LocatorType = 0 | 1 | 2;
+export type CIMLocator = CIMLocator1[];
+
+/**
+ * Represents properties of locator for the map.
+ */
+export interface CIMLocator1 {
   /**
    * Gets or sets the type of locator for the LocatorURI specified.
    */
@@ -30,16 +40,4 @@ export type CIMLocator1 = CIMObject & {
    * Gets or sets a value indicating whether the locator supports suggestions.
    */
   suggestionsSupported?: boolean;
-};
-/**
- * Type of locators.
- *
- */
-export type LocatorType = 0 | 1 | 2;
-export type CIMLocator = CIMLocator1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

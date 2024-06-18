@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLinkChartViewport = CIMObject & {
+/**
+ * Represents the link chart viewport.
+ */
+export interface CIMLinkChartViewport {
   /**
    * Gets or sets the center X coordinate in the world coordinate system.
    */
@@ -18,10 +21,4 @@ export type CIMLinkChartViewport = CIMObject & {
    * Gets or sets the zoom level.
    */
   zoomLevel?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

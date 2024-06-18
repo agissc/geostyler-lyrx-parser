@@ -5,18 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMKnowledgeGraphInvestigation = CIMDefinition & {
-  /**
-   * Gets or sets the data connection.
-   */
-  dataConnection?: null | CIMDataConnection;
-  /**
-   * Gets or sets the array of Data Loading Configurations referenced by this Investigation.
-   * All configurations are expected to have unique names.
-   */
-  dataLoadingConfigurations?: CIMKnowledgeGraphDataLoadingConfiguration[] | null;
-};
-export type CIMDefinition = CIMObject & {
+/**
+ * Field types.
+ */
+export type EsriFieldType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
+
+/**
+ * Represents a Knowledge Graph Investigation.
+ */
+export interface CIMKnowledgeGraphInvestigation {
   /**
    * Gets or sets the name.
    */
@@ -45,20 +42,33 @@ export type CIMDefinition = CIMObject & {
    * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
    */
   sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
   /**
-   * Gets or sets the time.
+   * Gets or sets the data connection.
    */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+  dataConnection?: null | CIMDataConnection;
+  /**
+   * Gets or sets the array of Data Loading Configurations referenced by this Investigation.
+   * All configurations are expected to have unique names.
+   */
+  dataLoadingConfigurations?: CIMKnowledgeGraphDataLoadingConfiguration[] | null;
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -71,9 +81,15 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMDataConnection = CIMObject;
-export type CIMKnowledgeGraphDataLoadingConfiguration = CIMObject & {
+}
+/**
+ * Represents a data connection.
+ */
+export interface CIMDataConnection {}
+/**
+ * Represents a Knowledge Graph Data Loading Configuration.
+ */
+export interface CIMKnowledgeGraphDataLoadingConfiguration {
   /**
    * Gets or sets the name of the Data Loading Configuration.
    * Names are expected to be unique within an Investigation.
@@ -87,8 +103,11 @@ export type CIMKnowledgeGraphDataLoadingConfiguration = CIMObject & {
    * Gets or sets the relationships.
    */
   relationships?: CIMKnowledgeGraphDataLoadingRelationship[] | null;
-};
-export type CIMKnowledgeGraphDataLoadingEntity = CIMObject & {
+}
+/**
+ * Represents a Knowledge Graph Data Loading Entity.
+ */
+export interface CIMKnowledgeGraphDataLoadingEntity {
   /**
    * Gets or sets the name of the entity.
    */
@@ -110,8 +129,11 @@ export type CIMKnowledgeGraphDataLoadingEntity = CIMObject & {
    * Gets or sets a value indicating whether this entity should be merged.
    */
   merge?: boolean;
-};
-export type CIMKnowledgeGraphProperty = CIMObject & {
+}
+/**
+ * Represents a Knowledge Graph Data Loading Property used for entities and relationships.
+ */
+export interface CIMKnowledgeGraphProperty {
   /**
    * Gets or sets the name of the property.
    */
@@ -130,13 +152,15 @@ export type CIMKnowledgeGraphProperty = CIMObject & {
    * to determine a merge.
    */
   merge?: boolean;
-};
+}
 /**
- * Field types.
+ * Base (indicator) class for all CIMKnowledgeGraphXXXPropertyValue.
  */
-export type EsriFieldType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
-export type CIMKnowledgeGraphPropertyValue = CIMObject;
-export type CIMKnowledgeGraphDataLoadingRelationship = CIMObject & {
+export interface CIMKnowledgeGraphPropertyValue {}
+/**
+ * Represents a Knowledge Graph Data Loading Relationship.
+ */
+export interface CIMKnowledgeGraphDataLoadingRelationship {
   /**
    * Gets or sets the source entity name.
    */
@@ -162,10 +186,4 @@ export type CIMKnowledgeGraphDataLoadingRelationship = CIMObject & {
    * Gets or sets a value indicating whether this relationship should be merged.
    */
   merge?: boolean;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

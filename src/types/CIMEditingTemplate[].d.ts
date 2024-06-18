@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMEditingTemplate1 = CIMObject & {
+export type CIMEditingTemplate = CIMEditingTemplate1[];
+
+/**
+ * Represents an editing template.
+ *
+ */
+export interface CIMEditingTemplate1 {
   /**
    * Gets or sets the description.
    */
@@ -30,8 +36,11 @@ export type CIMEditingTemplate1 = CIMObject & {
    * Gets or sets the per-tool options.
    */
   toolOptions?: CIMEditingTemplateToolOptions[] | null;
-};
-export type CIMEditingTemplateToolOptions = CIMObject & {
+}
+/**
+ * Represents editing template tool options.
+ */
+export interface CIMEditingTemplateToolOptions {
   /**
    * Gets or sets the tool ProgID.
    */
@@ -42,11 +51,4 @@ export type CIMEditingTemplateToolOptions = CIMObject & {
   options?: null | {
     [k: string]: unknown;
   };
-};
-export type CIMEditingTemplate = CIMEditingTemplate1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

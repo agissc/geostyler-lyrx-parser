@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPrinterPreferences = CIMObject & {
+/**
+ * Represents the printer preferences associated with a layout.
+ */
+export interface CIMPrinterPreferences {
   /**
    * Gets or sets the printer name.
    */
@@ -18,10 +21,4 @@ export type CIMPrinterPreferences = CIMObject & {
    * Gets or sets the paper source.
    */
   paperSource?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

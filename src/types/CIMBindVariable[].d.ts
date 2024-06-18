@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMBindVariable1 = CIMObject & {
+/**
+ * Bind variable types.
+ */
+export type BindVariableType = 0 | 1 | 2 | 3 | 4;
+export type CIMBindVariable = CIMBindVariable1[];
+
+/**
+ * Represents a bind variable.
+ */
+export interface CIMBindVariable1 {
   /**
    * Gets or sets the name of the variable. The name must be unique among all variables.
    */
@@ -18,15 +27,4 @@ export type CIMBindVariable1 = CIMObject & {
    * Gets or sets the type of the variable.
    */
   dataType?: BindVariableType;
-};
-/**
- * Bind variable types.
- */
-export type BindVariableType = 0 | 1 | 2 | 3 | 4;
-export type CIMBindVariable = CIMBindVariable1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

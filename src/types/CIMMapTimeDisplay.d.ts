@@ -5,7 +5,20 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMMapTimeDisplay = CIMObject & {
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Time relation types.
+ */
+export type EsriTimeRelation = 0 | 1 | 2 | 3;
+
+/**
+ * Represents map time display.
+ *
+ */
+export interface CIMMapTimeDisplay {
   /**
    * Gets or sets the current time extent.
    */
@@ -46,8 +59,15 @@ export type CIMMapTimeDisplay = CIMObject & {
    * Gets or sets a cached set of unique OLE date values.  Expected to be in the CIMMapTimeDisplay's TimeReference.
    */
   uniqueTimes?: number[] | null;
-};
-export type TimeExtent = TimeValue & {
+}
+/**
+ * Represents an extent of time defined by a start and end date.
+ */
+export interface TimeExtent {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
   /**
    * Gets or sets the start time of the extent.
    */
@@ -68,14 +88,11 @@ export type TimeExtent = TimeValue & {
    * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
    */
   endTimeSpecified?: boolean;
-};
-export type TimeValue = CIMObject & {
-  /**
-   * Gets or sets the time zone definition of the time.
-   */
-  timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -88,18 +105,13 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
+}
 /**
- * Time units.
+ * Represents the base class for TimeExtent and TimeInstant.
  */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-/**
- * Time relation types.
- */
-export type EsriTimeRelation = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+export interface TimeValue {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
+}

@@ -5,7 +5,41 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Envelope = Geometry & {
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+
+/**
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
+ */
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
   /**
    * Gets the GeometryType of this instance.  Always returns Envelope.
    */
@@ -94,87 +128,6 @@ export type Envelope = Geometry & {
    * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type MapPoint = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Point.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of the geometry. This is always 1.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X-coordinate.
-   */
-  x?: number;
-  /**
-   * Gets the Y-coordinate.
-   */
-  y?: number;
-  /**
-   * Gets the Z-coordinate.
-   */
-  z?: number;
-  /**
-   * Gets the measure value.
-   */
-  m?: number;
-  /**
-   * Gets the ID value.
-   */
-  id?: number;
-  /**
-   * Gets a Coordinate2D structure with the X and Y values.
-   */
-  coordinate2D?: Coordinate2D;
-  /**
-   * Gets a Coordinate3D structure with the X, Y, and Z values.
-   */
-  coordinate3D?: Coordinate3D;
-  /**
-   * Gets the minimum enclosing envelope of the geometry.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-
-/**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
- */
-export interface Geometry {
-  /**
-   * Gets a value indicating if the geometry has Z.
-   */
-  hasZ?: boolean;
-  /**
-   * Gets a value indicating if the geometry has M.
-   */
-  hasM?: boolean;
-  /**
-   * Gets a value indicating if the geometry has ID.
-   */
-  hasID?: boolean;
-  /**
-   * Gets the spatial reference of this instance.
-   */
-  spatialReference?: null | SpatialReference;
-  /**
-   * Gets the dimension of the geometry.
-   */
-  dimension?: number;
 }
 /**
  * Class representing a spatial reference.
@@ -395,6 +348,76 @@ export interface Coordinate2D {
   magnitude?: number;
   /**
    * Indicates if the Coordinate2D is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Point.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of the geometry. This is always 1.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X-coordinate.
+   */
+  x?: number;
+  /**
+   * Gets the Y-coordinate.
+   */
+  y?: number;
+  /**
+   * Gets the Z-coordinate.
+   */
+  z?: number;
+  /**
+   * Gets the measure value.
+   */
+  m?: number;
+  /**
+   * Gets the ID value.
+   */
+  id?: number;
+  /**
+   * Gets a Coordinate2D structure with the X and Y values.
+   */
+  coordinate2D?: Coordinate2D;
+  /**
+   * Gets a Coordinate3D structure with the X, Y, and Z values.
+   */
+  coordinate3D?: Coordinate3D;
+  /**
+   * Gets the minimum enclosing envelope of the geometry.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
 }

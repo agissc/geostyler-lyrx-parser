@@ -5,16 +5,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMGeometricEffect1 = CIMObject & {
+export type CIMGeometricEffect = CIMGeometricEffect1[];
+
+/**
+ * Represents a geometric effect, this is base class for all geometric effects.
+ */
+export interface CIMGeometricEffect1 {
   /**
    * Gets or sets the primitive name.
    */
   primitiveName?: null | string;
-};
-export type CIMGeometricEffect = CIMGeometricEffect1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

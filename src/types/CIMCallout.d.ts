@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMCallout = CIMObject & {
+/**
+ * Represents a callout.
+ */
+export interface CIMCallout {
   /**
    * Gets or sets the leader tolerance which is the closest distance (in points) to the text the anchor point can be for the callout to draw.
    */
@@ -14,10 +17,4 @@ export type CIMCallout = CIMObject & {
    * Gets or sets the leader offset which is an offset value defining the distance (in points) between the anchor point and the beginning of the drawn leader.
    */
   leaderOffset?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

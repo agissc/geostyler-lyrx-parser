@@ -5,21 +5,36 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMReport = CIMLayout & {
-  /**
-   * Gets or sets the Height of the report.
-   */
-  height?: number;
-  /**
-   * Gets or sets the starting page for the report.
-   */
-  startPage?: number;
-  /**
-   * Gets or sets a collection of watermark for the report.
-   */
-  watermarks?: CIMReportWatermark[] | null;
-};
-export type CIMLayout = CIMDefinition & {
+/**
+ * A list of anchor positions for an element on a page layout.
+ */
+export type Anchor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+/**
+ * A list of orientation values.
+ */
+export type Orientation = 0 | 1;
+/**
+ * Specifies color model used for maps and layouts.
+ *
+ */
+export type ColorModel = 0 | 1;
+/**
+ * Color vision deficiency types.
+ */
+export type ColorVisionDeficiencyType = 0 | 1 | 2 | 3;
+
+/**
+ * Represents a report in a project.
+ */
+export interface CIMReport {
   /**
    * Gets or sets a collection of elements.
    */
@@ -64,8 +79,6 @@ export type CIMLayout = CIMDefinition & {
    * Gets or sets the color vision deficiency mode that new views of this layout are opened with.
    */
   defaultColorVisionDeficiencyMode?: ColorVisionDeficiencyType;
-};
-export type CIMDefinition = CIMObject & {
   /**
    * Gets or sets the name.
    */
@@ -94,34 +107,23 @@ export type CIMDefinition = CIMObject & {
    * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
    */
   sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
   /**
-   * Gets or sets the time.
+   * Gets or sets the Height of the report.
    */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+  height?: number;
   /**
-   * Gets or sets the time zone definition of the time.
+   * Gets or sets the starting page for the report.
    */
-  timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  startPage?: number;
   /**
-   * Gets or sets the windows id for the time zone.
+   * Gets or sets a collection of watermark for the report.
    */
-  timeZoneNameID?: null | string;
-  /**
-   * Gets or sets a value indicating if the time reference should honor daylight savings time.
-   */
-  respectsDaylightSavingTime?: boolean;
-  /**
-   * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
-   */
-  respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMElement = CIMObject & {
+  watermarks?: CIMReportWatermark[] | null;
+}
+/**
+ * A CIM representation of an element.
+ */
+export interface CIMElement {
   /**
    * Gets or sets the anchor position of the element.
    */
@@ -154,12 +156,32 @@ export type CIMElement = CIMObject & {
    * Gets or sets the custom properties of the element.
    */
   customProperties?: CIMStringMap[] | null;
-};
+}
 /**
- * A list of anchor positions for an element on a page layout.
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
  */
-export type Anchor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-export type MapPoint = Geometry & {
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
   /**
    * Gets the GeometryType of this instance.  Always returns Point.
    */
@@ -204,285 +226,6 @@ export type MapPoint = Geometry & {
    * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-export type Envelope = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Envelope.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of this instance. Always returns 5.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X minimum of this instance.
-   */
-  xMin?: number;
-  /**
-   * Gets the Y minimum of this instance.
-   */
-  yMin?: number;
-  /**
-   * Gets the X maximum of this instance.
-   */
-  xMax?: number;
-  /**
-   * Gets the Y maximum of this instance.
-   */
-  yMax?: number;
-  /**
-   * Gets the Z minimum of this instance.
-   */
-  zMin?: number;
-  /**
-   * Gets the Z maximum of this instance.
-   */
-  zMax?: number;
-  /**
-   * Gets the M minimum of this instance.
-   */
-  mMin?: number;
-  /**
-   * Gets the M maximum of this instance.
-   */
-  mMax?: number;
-  /**
-   * Gets the ID minimum of this instance.
-   */
-  idMin?: number;
-  /**
-   * Gets the ID maximum of this instance.
-   */
-  idMax?: number;
-  /**
-   * Gets the center of this instance as a Coordinate2D.
-   */
-  centerCoordinate?: Coordinate2D;
-  /**
-   * Gets the center of this instance as a MapPoint.
-   */
-  center?: null | MapPoint;
-  /**
-   * Gets the height of this instance.
-   */
-  height?: number;
-  /**
-   * Gets the width of this instance.
-   */
-  width?: number;
-  /**
-   * Gets the depth of this instance.
-   */
-  depth?: number;
-  /**
-   * Gets the perimeter length of this instance.
-   */
-  length?: number;
-  /**
-   * Gets the 3D length of the perimeter of this instance.
-   */
-  length3D?: number;
-  /**
-   * Gets the area of this instance.
-   */
-  area?: number;
-  /**
-   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type CIMStringMap = CIMObject & {
-  /**
-   * Gets or sets the key.
-   */
-  key?: null | string;
-  /**
-   * Gets or sets the value.
-   */
-  value?: null | string;
-};
-export type CIMPage = CIMObject & {
-  /**
-   * Gets or sets the height of the layout in page units.
-   */
-  height?: number;
-  /**
-   * Gets or sets a value indicating whether elements should be stretched when the page size is changed.
-   */
-  stretchElements?: boolean;
-  /**
-   * Gets or sets the width of the layout in page units.
-   */
-  width?: number;
-  /**
-   * Gets or sets the printer preferences for the page.
-   */
-  printerPreferences?: null | CIMPrinterPreferences;
-  /**
-   * Gets or sets the page units for the layout.
-   */
-  units?: null | LinearUnit;
-  /**
-   * Gets or sets the guides on a layout.
-   */
-  guides?: CIMGuide[] | null;
-  /**
-   * Gets or sets a value indicating whether rulers should be displayed on the layout.
-   */
-  showRulers?: boolean;
-  /**
-   * Gets or sets a value indicating whether guides should be displayed on the layout.
-   */
-  showGuides?: boolean;
-  /**
-   * Gets or sets the smallest ruler division.
-   */
-  smallestRulerDivision?: number;
-  /**
-   * Gets or sets the margin for the page.
-   */
-  margin?: null | CIMMargin;
-  /**
-   * Gets or sets a value indicating whether the printer margin should be displayed on the layout.
-   */
-  showMargin?: boolean;
-};
-export type CIMPrinterPreferences = CIMObject & {
-  /**
-   * Gets or sets the printer name.
-   */
-  printerName?: null | string;
-  /**
-   * Gets or sets the paper size name.
-   */
-  paperName?: null | string;
-  /**
-   * Gets or sets the paper source.
-   */
-  paperSource?: number;
-};
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
-export type CIMGuide = CIMObject & {
-  /**
-   * Gets or sets the position of the guide.
-   */
-  position?: number;
-  /**
-   * Gets or sets the horizontal or vertical orientation of the guide.
-   */
-  orientation?: Orientation;
-};
-/**
- * A list of orientation values.
- */
-export type Orientation = 0 | 1;
-export type CIMMargin = CIMObject & {
-  /**
-   * Gets or sets the left margin.
-   */
-  left?: number;
-  /**
-   * Gets or sets the right margin.
-   */
-  right?: number;
-  /**
-   * Gets or sets the top margin.
-   */
-  top?: number;
-  /**
-   * Gets or sets the bottom margin.
-   */
-  bottom?: number;
-};
-export type CIMMapSeries = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether the map series is enabled on the layout.
-   */
-  enabled?: boolean;
-  /**
-   * Gets or sets the URI of the MapFrame to which MapSeries is linked.
-   */
-  mapFrameName?: null | string;
-  /**
-   * Gets or sets the starting page number.
-   */
-  startingPageNumber?: number;
-  /**
-   * Gets or sets the current page Id.
-   */
-  currentPageID?: number;
-};
-/**
- * Specifies color model used for maps and layouts.
- *
- */
-export type ColorModel = 0 | 1;
-/**
- * Color vision deficiency types.
- */
-export type ColorVisionDeficiencyType = 0 | 1 | 2 | 3;
-export type CIMReportWatermark = CIMObject & {
-  /**
-   * Gets or sets the element for the watermark.
-   */
-  element?: null | CIMElement;
-  /**
-   * Gets or sets the comma delimited list of excluded page numbers.
-   */
-  excludePageNumbers?: null | string;
-  /**
-   * Gets or sets a value indicating whether the overlay draws in the background of the report, else it draws on the foreground.
-   */
-  isBackground?: boolean;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
- */
-export interface Geometry {
-  /**
-   * Gets a value indicating if the geometry has Z.
-   */
-  hasZ?: boolean;
-  /**
-   * Gets a value indicating if the geometry has M.
-   */
-  hasM?: boolean;
-  /**
-   * Gets a value indicating if the geometry has ID.
-   */
-  hasID?: boolean;
-  /**
-   * Gets the spatial reference of this instance.
-   */
-  spatialReference?: null | SpatialReference;
-  /**
-   * Gets the dimension of the geometry.
-   */
-  dimension?: number;
 }
 /**
  * Class representing a spatial reference.
@@ -653,6 +396,121 @@ export interface Unit {
   unitType?: UnitType;
 }
 /**
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
+ */
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Envelope.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of this instance. Always returns 5.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X minimum of this instance.
+   */
+  xMin?: number;
+  /**
+   * Gets the Y minimum of this instance.
+   */
+  yMin?: number;
+  /**
+   * Gets the X maximum of this instance.
+   */
+  xMax?: number;
+  /**
+   * Gets the Y maximum of this instance.
+   */
+  yMax?: number;
+  /**
+   * Gets the Z minimum of this instance.
+   */
+  zMin?: number;
+  /**
+   * Gets the Z maximum of this instance.
+   */
+  zMax?: number;
+  /**
+   * Gets the M minimum of this instance.
+   */
+  mMin?: number;
+  /**
+   * Gets the M maximum of this instance.
+   */
+  mMax?: number;
+  /**
+   * Gets the ID minimum of this instance.
+   */
+  idMin?: number;
+  /**
+   * Gets the ID maximum of this instance.
+   */
+  idMax?: number;
+  /**
+   * Gets the center of this instance as a Coordinate2D.
+   */
+  centerCoordinate?: Coordinate2D;
+  /**
+   * Gets the center of this instance as a MapPoint.
+   */
+  center?: null | MapPoint;
+  /**
+   * Gets the height of this instance.
+   */
+  height?: number;
+  /**
+   * Gets the width of this instance.
+   */
+  width?: number;
+  /**
+   * Gets the depth of this instance.
+   */
+  depth?: number;
+  /**
+   * Gets the perimeter length of this instance.
+   */
+  length?: number;
+  /**
+   * Gets the 3D length of the perimeter of this instance.
+   */
+  length3D?: number;
+  /**
+   * Gets the area of this instance.
+   */
+  area?: number;
+  /**
+   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
  * A lightweight structure that holds X and Y values.
  */
 export interface Coordinate2D {
@@ -738,4 +596,217 @@ export interface Coordinate3D {
    * Indicates if the Coordinate3D is empty.
    */
   isEmpty?: boolean;
+}
+/**
+ * Represents a string map of key value pairs.
+ *
+ */
+export interface CIMStringMap {
+  /**
+   * Gets or sets the key.
+   */
+  key?: null | string;
+  /**
+   * Gets or sets the value.
+   */
+  value?: null | string;
+}
+/**
+ * Represents the page information associated with a layout.
+ */
+export interface CIMPage {
+  /**
+   * Gets or sets the height of the layout in page units.
+   */
+  height?: number;
+  /**
+   * Gets or sets a value indicating whether elements should be stretched when the page size is changed.
+   */
+  stretchElements?: boolean;
+  /**
+   * Gets or sets the width of the layout in page units.
+   */
+  width?: number;
+  /**
+   * Gets or sets the printer preferences for the page.
+   */
+  printerPreferences?: null | CIMPrinterPreferences;
+  /**
+   * Gets or sets the page units for the layout.
+   */
+  units?: null | LinearUnit;
+  /**
+   * Gets or sets the guides on a layout.
+   */
+  guides?: CIMGuide[] | null;
+  /**
+   * Gets or sets a value indicating whether rulers should be displayed on the layout.
+   */
+  showRulers?: boolean;
+  /**
+   * Gets or sets a value indicating whether guides should be displayed on the layout.
+   */
+  showGuides?: boolean;
+  /**
+   * Gets or sets the smallest ruler division.
+   */
+  smallestRulerDivision?: number;
+  /**
+   * Gets or sets the margin for the page.
+   */
+  margin?: null | CIMMargin;
+  /**
+   * Gets or sets a value indicating whether the printer margin should be displayed on the layout.
+   */
+  showMargin?: boolean;
+}
+/**
+ * Represents the printer preferences associated with a layout.
+ */
+export interface CIMPrinterPreferences {
+  /**
+   * Gets or sets the printer name.
+   */
+  printerName?: null | string;
+  /**
+   * Gets or sets the paper size name.
+   */
+  paperName?: null | string;
+  /**
+   * Gets or sets the paper source.
+   */
+  paperSource?: number;
+}
+/**
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
+ */
+export interface LinearUnit {
+  /**
+   * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
+   */
+  factoryCode?: number;
+  /**
+   * Gets the well-known text of the unit.
+   */
+  wkt?: null | string;
+  /**
+   * Gets the name of the unit.
+   */
+  name?: null | string;
+  /**
+   * Gets the conversion factor of the unit.
+   */
+  conversionFactor?: number;
+  /**
+   * Gets the type of unit.
+   */
+  unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
+}
+/**
+ * Represents a guide used to snap elements on a page layout.
+ */
+export interface CIMGuide {
+  /**
+   * Gets or sets the position of the guide.
+   */
+  position?: number;
+  /**
+   * Gets or sets the horizontal or vertical orientation of the guide.
+   */
+  orientation?: Orientation;
+}
+/**
+ * Represents a margin to apply around the page.
+ *
+ */
+export interface CIMMargin {
+  /**
+   * Gets or sets the left margin.
+   */
+  left?: number;
+  /**
+   * Gets or sets the right margin.
+   */
+  right?: number;
+  /**
+   * Gets or sets the top margin.
+   */
+  top?: number;
+  /**
+   * Gets or sets the bottom margin.
+   */
+  bottom?: number;
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
+  /**
+   * Gets or sets the windows id for the time zone.
+   */
+  timeZoneNameID?: null | string;
+  /**
+   * Gets or sets a value indicating if the time reference should honor daylight savings time.
+   */
+  respectsDaylightSavingTime?: boolean;
+  /**
+   * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
+   */
+  respectsDynamicAdjustmentRules?: boolean;
+}
+/**
+ * The Map series object represents a means to create multi-page PDF or
+ * based off of fields in the index layer.
+ */
+export interface CIMMapSeries {
+  /**
+   * Gets or sets a value indicating whether the map series is enabled on the layout.
+   */
+  enabled?: boolean;
+  /**
+   * Gets or sets the URI of the MapFrame to which MapSeries is linked.
+   */
+  mapFrameName?: null | string;
+  /**
+   * Gets or sets the starting page number.
+   */
+  startingPageNumber?: number;
+  /**
+   * Gets or sets the current page Id.
+   */
+  currentPageID?: number;
+}
+/**
+ * Represents a watermark in a report.
+ */
+export interface CIMReportWatermark {
+  /**
+   * Gets or sets the element for the watermark.
+   */
+  element?: null | CIMElement;
+  /**
+   * Gets or sets the comma delimited list of excluded page numbers.
+   */
+  excludePageNumbers?: null | string;
+  /**
+   * Gets or sets a value indicating whether the overlay draws in the background of the report, else it draws on the foreground.
+   */
+  isBackground?: boolean;
 }

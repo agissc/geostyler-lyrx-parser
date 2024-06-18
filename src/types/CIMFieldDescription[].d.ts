@@ -5,7 +5,18 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFieldDescription1 = CIMObject & {
+/**
+ * Field search modes.
+ *
+ */
+export type DataSearchMode = 0 | 1;
+export type CIMFieldDescription = CIMFieldDescription1[];
+
+/**
+ * Represents a field description.
+ *
+ */
+export interface CIMFieldDescription1 {
   /**
    * Gets or sets the field alias.
    */
@@ -42,17 +53,9 @@ export type CIMFieldDescription1 = CIMObject & {
    * Gets or sets search mode to use when searching for values in this field.
    */
   searchMode?: DataSearchMode;
-};
-export type CIMNumberFormat = CIMObject;
+}
 /**
- * Field search modes.
+ * Represents a number format.
  *
  */
-export type DataSearchMode = 0 | 1;
-export type CIMFieldDescription = CIMFieldDescription1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+export interface CIMNumberFormat {}

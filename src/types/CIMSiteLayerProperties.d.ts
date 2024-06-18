@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSiteLayerProperties = CIMObject & {
+/**
+ * Defines the URI and required field properties for the Indoors Site layer required for floor filtering operations.
+ */
+export interface CIMSiteLayerProperties {
   /**
    * Gets or sets the URI for the Indoors Site layer in the map CIM.
    */
@@ -22,10 +25,4 @@ export type CIMSiteLayerProperties = CIMObject & {
    * Gets or sets the name of the field containing the site name.
    */
   nameField?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLayerAction1 = CIMObject & {
+export type CIMLayerAction = CIMLayerAction1[];
+
+/**
+ * Represents a layer action.
+ *
+ */
+export interface CIMLayerAction1 {
   /**
    * Gets or sets the name.
    */
@@ -18,13 +24,13 @@ export type CIMLayerAction1 = CIMObject & {
    * Gets or sets conditions.
    */
   conditions?: CIMCondition[] | null;
-};
-export type CIMActivity = CIMObject;
-export type CIMCondition = CIMObject;
-export type CIMLayerAction = CIMLayerAction1[];
-
+}
 /**
- * Represents the base CIM object class.
+ * Represents activity.
  *
  */
-export interface CIMObject {}
+export interface CIMActivity {}
+/**
+ * Represents a condition.
+ */
+export interface CIMCondition {}

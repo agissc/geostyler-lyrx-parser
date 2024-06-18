@@ -5,7 +5,37 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRestrictionStatusRenderer1 = CIMNetworkDatasetRenderer & {
+/**
+ * Renderer target.
+ */
+export type NDSRendererTarget = 0 | 1 | 2 | 3 | 4 | 5;
+/**
+ * Restriction status.
+ */
+export type RestrictionStatus = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Traversable directions.
+ */
+export type TraversableDirections = 0 | 1 | 2;
+export type CIMRestrictionStatusRenderer = CIMRestrictionStatusRenderer1[];
+
+/**
+ * Represents a renderer that shows the restriction status of network elements.
+ */
+export interface CIMRestrictionStatusRenderer1 {
+  /**
+   * Gets or sets the renderer label.
+   */
+  label?: null | string;
+  /**
+   * Gets or sets a value indicating whether or not the renderer is visible.
+   */
+  visible?: boolean;
   /**
    * Gets or sets the renderer target.
    */
@@ -23,22 +53,11 @@ export type CIMRestrictionStatusRenderer1 = CIMNetworkDatasetRenderer & {
    * Independent of classify by preference level setting.
    */
   traversableDirectionsAdornerPointSymbolClasses?: CIMTraversableDirectionsAdornerPointSymbolClass[] | null;
-};
-export type CIMNetworkDatasetRenderer = CIMObject & {
-  /**
-   * Gets or sets the renderer label.
-   */
-  label?: null | string;
-  /**
-   * Gets or sets a value indicating whether or not the renderer is visible.
-   */
-  visible?: boolean;
-};
+}
 /**
- * Renderer target.
+ * Restriction status, label, and symbol.
  */
-export type NDSRendererTarget = 0 | 1 | 2 | 3 | 4 | 5;
-export type CIMRestrictionStatusSymbolClass = CIMObject & {
+export interface CIMRestrictionStatusSymbolClass {
   /**
    * Gets or sets the restriction status represented by the symbol.
    */
@@ -51,12 +70,12 @@ export type CIMRestrictionStatusSymbolClass = CIMObject & {
    * Gets or sets the symbol.
    */
   symbol?: null | CIMSymbolReference;
-};
+}
 /**
- * Restriction status.
+ * Represents a symbol reference.
+ *
  */
-export type RestrictionStatus = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-export type CIMSymbolReference = CIMObject & {
+export interface CIMSymbolReference {
   /**
    * Gets or sets the primitive overrides. Typically set by renderers at draw time.
    */
@@ -93,8 +112,12 @@ export type CIMSymbolReference = CIMObject & {
    * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
    */
   maxDistance?: number;
-};
-export type CIMPrimitiveOverride = CIMObject & {
+}
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride {
   /**
    * Gets or sets the primitive name this override applies to.
    */
@@ -111,8 +134,11 @@ export type CIMPrimitiveOverride = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
    */
   valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -129,14 +155,17 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
  *
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMSymbol = CIMObject;
-export type CIMScaleDependentSizeVariation = CIMObject & {
+export interface CIMSymbol {}
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation {
   /**
    * Gets or sets the scale the size is associated with.
    */
@@ -145,8 +174,12 @@ export type CIMScaleDependentSizeVariation = CIMObject & {
    * Gets or sets the size for the associated scale.
    */
   size?: number;
-};
-export type CIMTraversableDirectionsAdornerPointSymbolClass = CIMObject & {
+}
+/**
+ * Traversable directions, label, and adorner point symbol.
+ * The applicable adorner point symbol is oriented and added to the restriction status symbol when drawn to indicate the directional traversability of network elements.
+ */
+export interface CIMTraversableDirectionsAdornerPointSymbolClass {
   /**
    * Gets or sets the supported traversable directions represented by the adorner point symbol.
    */
@@ -159,15 +192,4 @@ export type CIMTraversableDirectionsAdornerPointSymbolClass = CIMObject & {
    * Gets or sets the adorner point symbol to be composed with the restriction status symbol when drawn.
    */
   adornerPointSymbol?: null | CIMSymbolReference;
-};
-/**
- * Traversable directions.
- */
-export type TraversableDirections = 0 | 1 | 2;
-export type CIMRestrictionStatusRenderer = CIMRestrictionStatusRenderer1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

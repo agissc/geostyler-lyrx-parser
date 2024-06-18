@@ -5,10 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSymbol = CIMObject;
-
 /**
- * Represents the base CIM object class.
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
  *
  */
-export interface CIMObject {}
+export interface CIMSymbol {}

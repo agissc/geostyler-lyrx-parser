@@ -5,7 +5,21 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPointCloudRenderer = CIMObject & {
+/**
+ * Point cloud shape types.
+ *
+ */
+export type PointCloudShapeType = 0 | 1;
+/**
+ * Point cloud field transform types.
+ *
+ */
+export type PointCloudFieldTransformType = 0 | 1 | 2 | 3 | 4;
+
+/**
+ * Represents a point cloud renderer.
+ */
+export interface CIMPointCloudRenderer {
   /**
    * Gets or sets the symbol type.
    */
@@ -26,14 +40,15 @@ export type CIMPointCloudRenderer = CIMObject & {
    * Gets or sets the field used to render the points.
    */
   field?: null | string;
-};
+}
 /**
- * Point cloud shape types.
- *
+ * Represents a point cloud algorithm.
  */
-export type PointCloudShapeType = 0 | 1;
-export type CIMPointCloudAlgorithm = CIMObject;
-export type CIMColorModulationInfo = CIMObject & {
+export interface CIMPointCloudAlgorithm {}
+/**
+ * Indicates whether modulation should be used to render the point. Low modulation values will darken the point color.
+ */
+export interface CIMColorModulationInfo {
   /**
    * Gets or sets the attribute to use as a source for the color modulation.
    */
@@ -46,15 +61,4 @@ export type CIMColorModulationInfo = CIMObject & {
    * Gets or sets the maximum value to compute modulation on linear scale based on field value.
    */
   maxValue?: number;
-};
-/**
- * Point cloud field transform types.
- *
- */
-export type PointCloudFieldTransformType = 0 | 1 | 2 | 3 | 4;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

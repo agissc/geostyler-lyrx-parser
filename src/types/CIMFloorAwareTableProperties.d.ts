@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFloorAwareTableProperties = CIMObject & {
+/**
+ * Represents the rank or "level" at which the layer participates in filtering for Indoors or floor-aware layers.
+ */
+export type FloorFilterRank = 0 | 1 | 2 | 3;
+
+/**
+ * Represents floor-aware properties for the layer/table used in floor filtering.
+ *
+ */
+export interface CIMFloorAwareTableProperties {
   /**
    * Gets or sets rank or "level" at which the layer/table participates in filtering for Indoors or floor-aware layers/tables.
    */
@@ -14,14 +23,4 @@ export type CIMFloorAwareTableProperties = CIMObject & {
    * Gets or sets the name of the field that carries the floor value used for floor filtering.
    */
   floorField?: null | string;
-};
-/**
- * Represents the rank or "level" at which the layer participates in filtering for Indoors or floor-aware layers.
- */
-export type FloorFilterRank = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

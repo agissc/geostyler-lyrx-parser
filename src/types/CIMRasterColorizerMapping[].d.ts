@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRasterColorizerMapping1 = CIMObject & {
+export type CIMRasterColorizerMapping = CIMRasterColorizerMapping1[];
+
+/**
+ * Represents a raster colorizer mapping.
+ *
+ */
+export interface CIMRasterColorizerMapping1 {
   /**
    * Gets or sets the Object ID of the raster in the raster catalog.
    */
@@ -14,11 +20,4 @@ export type CIMRasterColorizerMapping1 = CIMObject & {
    * Gets or sets the index of the colorizer.
    */
   colorizerIndex?: number;
-};
-export type CIMRasterColorizerMapping = CIMRasterColorizerMapping1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

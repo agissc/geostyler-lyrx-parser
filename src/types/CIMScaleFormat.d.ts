@@ -5,7 +5,19 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMScaleFormat = CIMObject & {
+/**
+ * Scale format types.
+ */
+export type ScaleFormatType = 0 | 1;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+
+/**
+ * Represents the scale formatting options.
+ */
+export interface CIMScaleFormat {
   /**
    * Gets or sets the format used to display scale, i.e., 1:20000 or 1 inch equals 5 miles.
    */
@@ -54,31 +66,11 @@ export type CIMScaleFormat = CIMObject & {
    * Gets or sets a value indicating whether to abbreviate the units in the scale string.
    */
   abbreviateUnits?: boolean;
-};
+}
 /**
- * Scale format types.
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
  */
-export type ScaleFormatType = 0 | 1;
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * A common base class between all units, linear, area and angular units.
- */
-export interface Unit {
+export interface LinearUnit {
   /**
    * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
    */
@@ -99,4 +91,8 @@ export interface Unit {
    * Gets the type of unit.
    */
   unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
 }

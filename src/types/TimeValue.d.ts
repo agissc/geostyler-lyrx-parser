@@ -5,13 +5,19 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type TimeValue = CIMObject & {
+/**
+ * Represents the base class for TimeExtent and TimeInstant.
+ */
+export interface TimeValue {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -24,10 +30,4 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

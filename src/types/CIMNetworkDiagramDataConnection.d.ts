@@ -5,45 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNetworkDiagramDataConnection = CIMDataConnection & {
-  /**
-   * Gets or sets the workspace connection string.
-   */
-  workspaceConnectionString?: null | string;
-  /**
-   * Gets or sets the workspace factory.
-   */
-  workspaceFactory?: WorkspaceFactory;
-  /**
-   * Gets or sets the classID of the custom workspace factory.
-   */
-  customWorkspaceFactoryCLSID?: null | string;
-  /**
-   * Gets or sets the dataset name.
-   */
-  dataset?: null | string;
-  /**
-   * Gets or sets the dataset type.
-   */
-  datasetType?: EsriDatasetType;
-  /**
-   * Gets or sets feature dataset.
-   */
-  featureDataset?: null | string;
-  /**
-   * Gets or sets the diagram.
-   */
-  diagram?: null | string;
-  /**
-   * Gets or sets a value indicating whether or not the diagram is stored.
-   */
-  isStored?: boolean;
-  /**
-   * Gets or sets the diagram table name.
-   */
-  table?: null | string;
-};
-export type CIMDataConnection = CIMObject;
 /**
  * Workspace factory types.
  *
@@ -123,7 +84,43 @@ export type EsriDatasetType =
   | 41;
 
 /**
- * Represents the base CIM object class.
- *
+ * Represents a network diagram data connection.
  */
-export interface CIMObject {}
+export interface CIMNetworkDiagramDataConnection {
+  /**
+   * Gets or sets the workspace connection string.
+   */
+  workspaceConnectionString?: null | string;
+  /**
+   * Gets or sets the workspace factory.
+   */
+  workspaceFactory?: WorkspaceFactory;
+  /**
+   * Gets or sets the classID of the custom workspace factory.
+   */
+  customWorkspaceFactoryCLSID?: null | string;
+  /**
+   * Gets or sets the dataset name.
+   */
+  dataset?: null | string;
+  /**
+   * Gets or sets the dataset type.
+   */
+  datasetType?: EsriDatasetType;
+  /**
+   * Gets or sets feature dataset.
+   */
+  featureDataset?: null | string;
+  /**
+   * Gets or sets the diagram.
+   */
+  diagram?: null | string;
+  /**
+   * Gets or sets a value indicating whether or not the diagram is stored.
+   */
+  isStored?: boolean;
+  /**
+   * Gets or sets the diagram table name.
+   */
+  table?: null | string;
+}

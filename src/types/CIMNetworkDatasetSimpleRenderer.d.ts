@@ -5,17 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNetworkDatasetSimpleRenderer = CIMNetworkDatasetRenderer & {
-  /**
-   * Gets or sets the renderer description.
-   */
-  description?: null | string;
-  /**
-   * Gets or sets the symbol.
-   */
-  symbol?: null | CIMSymbolReference;
-};
-export type CIMNetworkDatasetRenderer = CIMObject & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+
+/**
+ * Represents a network dataset simple renderer.
+ *
+ */
+export interface CIMNetworkDatasetSimpleRenderer {
   /**
    * Gets or sets the renderer label.
    */
@@ -24,8 +24,20 @@ export type CIMNetworkDatasetRenderer = CIMObject & {
    * Gets or sets a value indicating whether or not the renderer is visible.
    */
   visible?: boolean;
-};
-export type CIMSymbolReference = CIMObject & {
+  /**
+   * Gets or sets the renderer description.
+   */
+  description?: null | string;
+  /**
+   * Gets or sets the symbol.
+   */
+  symbol?: null | CIMSymbolReference;
+}
+/**
+ * Represents a symbol reference.
+ *
+ */
+export interface CIMSymbolReference {
   /**
    * Gets or sets the primitive overrides. Typically set by renderers at draw time.
    */
@@ -62,8 +74,12 @@ export type CIMSymbolReference = CIMObject & {
    * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
    */
   maxDistance?: number;
-};
-export type CIMPrimitiveOverride = CIMObject & {
+}
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride {
   /**
    * Gets or sets the primitive name this override applies to.
    */
@@ -80,8 +96,11 @@ export type CIMPrimitiveOverride = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
    */
   valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -98,14 +117,17 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
  *
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMSymbol = CIMObject;
-export type CIMScaleDependentSizeVariation = CIMObject & {
+export interface CIMSymbol {}
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation {
   /**
    * Gets or sets the scale the size is associated with.
    */
@@ -114,10 +136,4 @@ export type CIMScaleDependentSizeVariation = CIMObject & {
    * Gets or sets the size for the associated scale.
    */
   size?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTimelineSwimlane1 = CIMObject & {
+export type CIMTimelineSwimlane = CIMTimelineSwimlane1[];
+
+/**
+ * Represents a swimlane in a timeline.
+ */
+export interface CIMTimelineSwimlane1 {
   /**
    * Gets or sets the Id of for the timeline swimlane.
    */
@@ -30,8 +35,11 @@ export type CIMTimelineSwimlane1 = CIMObject & {
    * Gets or sets the timeline layers.
    */
   layers?: CIMTimelineLayer[] | null;
-};
-export type CIMTimelineLayer = CIMObject & {
+}
+/**
+ * Represents a layer in a timeline.
+ */
+export interface CIMTimelineLayer {
   /**
    * Gets or sets the Id of for the timeline layer.
    */
@@ -56,11 +64,4 @@ export type CIMTimelineLayer = CIMObject & {
    * Gets or sets a value indicating whether the timeline layer is visible.
    */
   visibility?: boolean;
-};
-export type CIMTimelineSwimlane = CIMTimelineSwimlane1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNetworkSourceDisplayFilter1 = CIMObject & {
+export type CIMNetworkSourceDisplayFilter = CIMNetworkSourceDisplayFilter1[];
+
+/**
+ * Represents a network source display filter.
+ *
+ */
+export interface CIMNetworkSourceDisplayFilter1 {
   /**
    * Gets or sets the network source.
    */
@@ -18,11 +24,4 @@ export type CIMNetworkSourceDisplayFilter1 = CIMObject & {
    * Gets or sets the definition expression.
    */
   definitionExpression?: null | string;
-};
-export type CIMNetworkSourceDisplayFilter = CIMNetworkSourceDisplayFilter1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNetworkAttributeParameterDefinitionValue1 = CIMObject & {
+/**
+ * The data type of a value.
+ */
+export type ValueType = 2 | 3 | 4 | 5 | 7 | 8 | 11;
+export type CIMNetworkAttributeParameterDefinitionValue = CIMNetworkAttributeParameterDefinitionValue1[];
+
+/**
+ * Provides access to read or update the value assigned to a network parameter of a network attribute.
+ */
+export interface CIMNetworkAttributeParameterDefinitionValue1 {
   /**
    * Gets or sets the network attribute name.
    */
@@ -23,15 +32,4 @@ export type CIMNetworkAttributeParameterDefinitionValue1 = CIMObject & {
    */
   valueType?: ValueType;
   value?: unknown;
-};
-/**
- * The data type of a value.
- */
-export type ValueType = 2 | 3 | 4 | 5 | 7 | 8 | 11;
-export type CIMNetworkAttributeParameterDefinitionValue = CIMNetworkAttributeParameterDefinitionValue1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

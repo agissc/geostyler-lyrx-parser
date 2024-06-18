@@ -5,7 +5,19 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type NASolverDefinition = CIMObject & {
+/**
+ * Policy on when to return the from-edge in the network forward star adjacencies object.
+ */
+export type EsriNetworkForwardStarBacktrack = 0 | 1 | 2 | 3;
+/**
+ * Measurement units.
+ */
+export type EsriUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
+
+/**
+ * Represents a solver definition. This class is reserved for esri internal use only.
+ */
+export interface NASolverDefinition {
   /**
    * Gets and sets the applied travel mode.
    */
@@ -75,36 +87,7 @@ export type NASolverDefinition = CIMObject & {
    * Gets and sets the associated network build hash.
    */
   networkBuildHash?: number;
-};
-/**
- * Policy on when to return the from-edge in the network forward star adjacencies object.
- */
-export type EsriNetworkForwardStarBacktrack = 0 | 1 | 2 | 3;
-export type NAAttributeParameterValue = CIMObject & {
-  /**
-   * Gets and sets the attribute name.
-   */
-  attributeName?: null | string;
-  /**
-   * Gets and sets the parameter names.
-   */
-  parameterName?: null | string;
-  /**
-   * Gets and sets the variant type.
-   */
-  varType?: number;
-  value?: unknown;
-};
-/**
- * Measurement units.
- */
-export type EsriUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}
 /**
  * Represents a network travel mode. This class is reserved for esri internal use only.
  */
@@ -170,5 +153,23 @@ export interface NetworkTravelModeParameterValue {
    * Gets and sets the parameter name.
    */
   parameterName?: null | string;
+  value?: unknown;
+}
+/**
+ * Represents a network attribute parameter value. This class is reserved for esri internal use only.
+ */
+export interface NAAttributeParameterValue {
+  /**
+   * Gets and sets the attribute name.
+   */
+  attributeName?: null | string;
+  /**
+   * Gets and sets the parameter names.
+   */
+  parameterName?: null | string;
+  /**
+   * Gets and sets the variant type.
+   */
+  varType?: number;
   value?: unknown;
 }

@@ -5,7 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMGroundToGridCorrection = CIMObject & {
+/**
+ * Defines modes for specifying Scale for ground to grid corrections.
+ */
+export type GroundToGridScaleType = 0 | 1;
+
+/**
+ * Defines the properties needed to perform a COGO ground to grid correction when adding new features.
+ */
+export interface CIMGroundToGridCorrection {
   /**
    * Gets or sets a value indicating whether ground to grid corrections are currently in operation for the map.
    */
@@ -31,14 +39,4 @@ export type CIMGroundToGridCorrection = CIMObject & {
    * only when ScaleType equals ConstantFactor.
    */
   constantScaleFactor?: number;
-};
-/**
- * Defines modes for specifying Scale for ground to grid corrections.
- */
-export type GroundToGridScaleType = 0 | 1;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

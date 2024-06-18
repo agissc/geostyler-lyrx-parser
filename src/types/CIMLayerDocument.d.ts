@@ -5,7 +5,18 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLayerDocument = CIMVersion & {
+/**
+ * Represents a layer document which is the document type used for saving .lyrx files.
+ */
+export interface CIMLayerDocument {
+  /**
+   * Gets or sets document version. Set by the system.
+   */
+  version?: null | string;
+  /**
+   * Gets or sets the build an item was created with. Set by the system.
+   */
+  build?: number;
   /**
    * Gets or sets an array of layer URIs stored in this layer document.
    */
@@ -38,18 +49,11 @@ export type CIMLayerDocument = CIMVersion & {
    * Gets or sets the elevation surface layer definitions.
    */
   elevationSurfaceLayerDefinitions?: CIMDefinition[] | null;
-};
-export type CIMVersion = CIMObject & {
-  /**
-   * Gets or sets document version. Set by the system.
-   */
-  version?: null | string;
-  /**
-   * Gets or sets the build an item was created with. Set by the system.
-   */
-  build?: number;
-};
-export type CIMDefinition = CIMObject & {
+}
+/**
+ * Represents the base class for definitions.
+ */
+export interface CIMDefinition {
   /**
    * Gets or sets the name.
    */
@@ -78,20 +82,24 @@ export type CIMDefinition = CIMObject & {
    * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
    */
   sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
-  /**
-   * Gets or sets the time.
-   */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -104,8 +112,11 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMBinaryReference = CIMObject & {
+}
+/**
+ * Represents a binary reference in a document.
+ */
+export interface CIMBinaryReference {
   /**
    * Gets or sets the URI of the binary reference. Typically set by the system but used as a reference path.
    */
@@ -118,8 +129,7 @@ export type CIMBinaryReference = CIMObject & {
    * Gets or sets the stored CIM object.
    */
   object?: null | CIMObject;
-};
-
+}
 /**
  * Represents the base CIM object class.
  *

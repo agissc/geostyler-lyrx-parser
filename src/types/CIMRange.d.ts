@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRange = CIMObject & {
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -14,10 +18,4 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

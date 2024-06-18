@@ -5,16 +5,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPointCloudFilter1 = CIMObject & {
+export type CIMPointCloudFilter = CIMPointCloudFilter1[];
+
+/**
+ * Represents a point cloud filter.
+ */
+export interface CIMPointCloudFilter1 {
   /**
    * Gets or sets the field used for the filter.
    */
   field?: null | string;
-};
-export type CIMPointCloudFilter = CIMPointCloudFilter1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

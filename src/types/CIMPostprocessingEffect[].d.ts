@@ -5,16 +5,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPostprocessingEffect1 = CIMObject & {
+export type CIMPostprocessingEffect = CIMPostprocessingEffect1[];
+
+/**
+ * Represents a post-processing effect definition to be applied to a 3D view.
+ */
+export interface CIMPostprocessingEffect1 {
   /**
    * Gets or sets a value indicating whether the effect should be applied to the scene.
    */
   isActive?: boolean;
-};
-export type CIMPostprocessingEffect = CIMPostprocessingEffect1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

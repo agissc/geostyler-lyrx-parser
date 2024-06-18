@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMEyeDomeLighting = CIMObject & {
+/**
+ * Represents eye-dome lighting properties.
+ */
+export interface CIMEyeDomeLighting {
   /**
    * Gets or sets a value indicating whether eye-dome lighting is enabled.
    */
@@ -18,10 +21,4 @@ export type CIMEyeDomeLighting = CIMObject & {
    * Gets or sets the radius of the eye-dome lighting.
    */
   radius?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

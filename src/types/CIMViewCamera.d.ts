@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMViewCamera = CIMObject & {
+/**
+ * Represents a view camera.
+ *
+ */
+export interface CIMViewCamera {
   /**
    * Gets or sets the heading.
    */
@@ -42,10 +46,4 @@ export type CIMViewCamera = CIMObject & {
    * Gets or sets the width of the viewport in meters. Viewport height and width are used for consistent camera positioning in isometric 3D views, eye separation in 3D stereo views and defines the focal distance in perspective views.
    */
   viewportWidth?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

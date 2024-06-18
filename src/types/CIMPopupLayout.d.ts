@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPopupLayout = CIMObject & {
+/**
+ * Represents a grid layout for pop-up media infos.
+ *
+ */
+export interface CIMPopupLayout {
   /**
    * Gets or sets the array of column width values in percentage of the table width (0-100).
    */
@@ -18,8 +22,11 @@ export type CIMPopupLayout = CIMObject & {
    * Gets or sets the border color.
    */
   borderColor?: null | CIMColor;
-};
-export type CIMColor = CIMObject & {
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -32,11 +39,8 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-
+}
 /**
- * Represents the base CIM object class.
- *
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export interface CIMObject {}
+export interface CIMColorSpace {}

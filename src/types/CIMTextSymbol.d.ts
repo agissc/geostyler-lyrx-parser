@@ -5,7 +5,72 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTextSymbol = CIMSymbol & {
+/**
+ * Block progressions.
+ */
+export type BlockProgression = 0 | 1 | 2;
+/**
+ * Font effects.
+ */
+export type FontEffects = 0 | 1 | 2;
+/**
+ * Font encodings.
+ */
+export type FontEncoding = 0 | 1;
+/**
+ * Font types.
+ */
+export type FontType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Glyph hinting options.
+ */
+export type GlyphHinting = 0 | 1 | 2;
+/**
+ * Horizontal alignment types.
+ */
+export type HorizontalAlignment = 0 | 1 | 2 | 3;
+/**
+ * Specifies the type of line gap (line spacing) that is applied.
+ */
+export type LineGapType = 0 | 1 | 2;
+/**
+ * Specifies the dominant size axis types.
+ */
+export type DominantSizeAxis = 0 | 1 | 2;
+/**
+ * Rotation order modes.
+ */
+export type RotationOrder = 0 | 1 | 2;
+/**
+ * The letter case used to draw text.
+ *
+ */
+export type TextCase = 0 | 1 | 2;
+/**
+ * Text reading directions.
+ *
+ */
+export type TextReadingDirection = 0 | 1;
+/**
+ * Vertical alignment types.
+ *
+ */
+export type VerticalAlignment = 0 | 1 | 2 | 3;
+/**
+ * Vertical glyph orientation.
+ *
+ */
+export type VerticalGlyphOrientation = 0 | 1;
+/**
+ * A list of different billboard modes.
+ */
+export type BillboardMode = 0 | 1 | 2;
+
+/**
+ * Represents a text symbol which is used to draw text graphics, bleeds, and annotation. Text symbols do not contain any symbol layers but can have callouts.
+ *
+ */
+export interface CIMTextSymbol {
   /**
    * Gets or sets the amount of rotation applied to the text symbol, measured in degrees, around the geometry.
    */
@@ -214,13 +279,11 @@ export type CIMTextSymbol = CIMSymbol & {
    * Gets or sets a value indicating whether or not the symbol should overprint in press printing.
    */
   overprint?: boolean;
-};
-export type CIMSymbol = CIMObject;
+}
 /**
- * Block progressions.
+ * Represents a callout.
  */
-export type BlockProgression = 0 | 1 | 2;
-export type CIMCallout = CIMObject & {
+export interface CIMCallout {
   /**
    * Gets or sets the leader tolerance which is the closest distance (in points) to the text the anchor point can be for the callout to draw.
    */
@@ -229,20 +292,11 @@ export type CIMCallout = CIMObject & {
    * Gets or sets the leader offset which is an offset value defining the distance (in points) between the anchor point and the beginning of the drawn leader.
    */
   leaderOffset?: number;
-};
+}
 /**
- * Font effects.
+ * Represents a font variation tag name and value. This is sometimes referred to as a variation-axis tag and variation-axis value.
  */
-export type FontEffects = 0 | 1 | 2;
-/**
- * Font encodings.
- */
-export type FontEncoding = 0 | 1;
-/**
- * Font types.
- */
-export type FontType = 0 | 1 | 2 | 3 | 4;
-export type CIMFontVariation = CIMObject & {
+export interface CIMFontVariation {
   /**
    * Gets or sets the font variation tag name. This is a four letter identifier for a particular axis of variation, specified in the font.
    */
@@ -251,9 +305,12 @@ export type CIMFontVariation = CIMObject & {
    * Gets or sets the numeric value representing a particular font variation value.
    */
   value?: number;
-};
-export type CIMPolygonSymbol = CIMMultiLayerSymbol & {};
-export type CIMMultiLayerSymbol = CIMSymbol & {
+}
+/**
+ * Represents a polygon symbol which is used to draw polygon features or polygon graphics.
+ *
+ */
+export interface CIMPolygonSymbol {
   /**
    * Gets or sets the geometric effects that are applied to the symbol.
    */
@@ -270,14 +327,21 @@ export type CIMMultiLayerSymbol = CIMSymbol & {
    * Gets or sets a value indicating whether the symbol size properties are rendered using real world units or page units. When set to true the symbol will draw using real world units (e.g. meters).
    */
   useRealWorldSymbolSizes?: boolean;
-};
-export type CIMGeometricEffect = CIMObject & {
+}
+/**
+ * Represents a geometric effect, this is base class for all geometric effects.
+ */
+export interface CIMGeometricEffect {
   /**
    * Gets or sets the primitive name.
    */
   primitiveName?: null | string;
-};
-export type CIMSymbolLayer = CIMObject & {
+}
+/**
+ * Represents a symbol layer. Symbol layers are the components that make up a symbol. A symbol layer is represented by a stroke, fill, marker, or procedural symbol layer.
+ *
+ */
+export interface CIMSymbolLayer {
   /**
    * Gets or sets whether the geometric effects that are applied to the symbol layer. Effects dynamically alter the feature geometry when the symbology is applied. Multiple effects applied to a symbol layer are rendered sequentially.
    */
@@ -302,20 +366,11 @@ export type CIMSymbolLayer = CIMObject & {
    * Gets or sets a value indicating whether or not the symbol layer should overprint in press printing.
    */
   overprint?: boolean;
-};
+}
 /**
- * Glyph hinting options.
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
  */
-export type GlyphHinting = 0 | 1 | 2;
-/**
- * Horizontal alignment types.
- */
-export type HorizontalAlignment = 0 | 1 | 2 | 3;
-/**
- * Specifies the type of line gap (line spacing) that is applied.
- */
-export type LineGapType = 0 | 1 | 2;
-export type CIMColor = CIMObject & {
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -328,9 +383,15 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-export type CIM3DSymbolProperties = CIMObject & {
+}
+/**
+ * Supports colors spaces by providing a common base type for all color spaces.
+ */
+export interface CIMColorSpace {}
+/**
+ * Represents 3D symbol properties, a collection of symbol properties that apply when the symbol is used in a 3D context.
+ */
+export interface CIM3DSymbolProperties {
   /**
    * Gets or sets the dominant size axis.
    */
@@ -347,42 +408,4 @@ export type CIM3DSymbolProperties = CIMObject & {
    * Gets or sets the scale Y.
    */
   scaleY?: number;
-};
-/**
- * Specifies the dominant size axis types.
- */
-export type DominantSizeAxis = 0 | 1 | 2;
-/**
- * Rotation order modes.
- */
-export type RotationOrder = 0 | 1 | 2;
-/**
- * The letter case used to draw text.
- *
- */
-export type TextCase = 0 | 1 | 2;
-/**
- * Text reading directions.
- *
- */
-export type TextReadingDirection = 0 | 1;
-/**
- * Vertical alignment types.
- *
- */
-export type VerticalAlignment = 0 | 1 | 2 | 3;
-/**
- * Vertical glyph orientation.
- *
- */
-export type VerticalGlyphOrientation = 0 | 1;
-/**
- * A list of different billboard modes.
- */
-export type BillboardMode = 0 | 1 | 2;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

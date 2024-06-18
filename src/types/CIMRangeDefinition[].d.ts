@@ -5,7 +5,18 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRangeDefinition1 = CIMObject & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+export type CIMRangeDefinition = CIMRangeDefinition1[];
+
+/**
+ * Represents a range definition.
+ *
+ */
+export interface CIMRangeDefinition1 {
   /**
    * Gets or sets the name.
    */
@@ -30,8 +41,12 @@ export type CIMRangeDefinition1 = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns a string representing range alias value.
    */
   aliasExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMRange = CIMObject & {
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -40,8 +55,11 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -58,16 +76,4 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMRangeDefinition = CIMRangeDefinition1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

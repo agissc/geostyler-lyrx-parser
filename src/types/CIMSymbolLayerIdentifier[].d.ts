@@ -5,16 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSymbolLayerIdentifier1 = CIMObject & {
+export type CIMSymbolLayerIdentifier = CIMSymbolLayerIdentifier1[];
+
+/**
+ * Represents symbol layer identifier.
+ *
+ */
+export interface CIMSymbolLayerIdentifier1 {
   /**
    * Gets or sets the symbol layer name.
    */
   symbolLayerName?: null | string;
-};
-export type CIMSymbolLayerIdentifier = CIMSymbolLayerIdentifier1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

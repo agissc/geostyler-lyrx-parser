@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMDefinitionFilter1 = CIMObject & {
+export type CIMDefinitionFilter = CIMDefinitionFilter1[];
+
+/**
+ * Contains filters so that only features satisfying these definitions will be displayed.
+ *
+ */
+export interface CIMDefinitionFilter1 {
   /**
    * Gets or sets the name of the Definition Filter item.
    */
@@ -14,11 +20,4 @@ export type CIMDefinitionFilter1 = CIMObject & {
    * Gets or sets the definition expression to filter features in the dataset.
    */
   definitionExpression?: null | string;
-};
-export type CIMDefinitionFilter = CIMDefinitionFilter1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

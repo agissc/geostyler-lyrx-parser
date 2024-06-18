@@ -5,33 +5,54 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFeatureTable = CIMDisplayTable & {
-  /**
-   * Gets or sets the data connection.
-   */
-  dataConnection?: null | CIMDataConnection;
-  /**
-   * Gets or sets an area that can be used to subset the rows in the virtual table.
-   */
-  studyArea?: null | Envelope;
-  /**
-   * Gets or sets the study area spatial relationship.
-   */
-  studyAreaSpatialRel?: EsriSpatialRelEnum;
-  /**
-   * Gets or sets the search order option.
-   */
-  searchOrder?: EsriSearchOrder;
-  /**
-   * Gets or sets a value indicating whether the data source is licensed.
-   */
-  isLicensedDataSource?: boolean;
-  /**
-   * Gets or sets the DefinitionSet for the table.
-   */
-  definitionSetURI?: null | string;
-};
-export type CIMDisplayTable = CIMObject & {
+/**
+ * Relationship Cardinality.
+ */
+export type EsriRelCardinality = 0 | 1 | 2;
+/**
+ * Field search modes.
+ *
+ */
+export type DataSearchMode = 0 | 1;
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Bind variable types.
+ */
+export type BindVariableType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Represents the rank or "level" at which the layer participates in filtering for Indoors or floor-aware layers.
+ */
+export type FloorFilterRank = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+/**
+ * Queryable spatial relationships.
+ */
+export type EsriSpatialRelEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+/**
+ * Spatial Filter Search Order.
+ */
+export type EsriSearchOrder = 0 | 1;
+
+/**
+ * Represents a feature table.
+ *
+ */
+export interface CIMFeatureTable {
   /**
    * Gets or sets the definition expression that can subset the rows in the virtual table.
    */
@@ -118,8 +139,36 @@ export type CIMDisplayTable = CIMObject & {
    * This property will only be set for route feature classes, namely line and polyline feature classes that are m-aware.
    */
   routeIDFieldName?: null | string;
-};
-export type CIMDefinitionFilter = CIMObject & {
+  /**
+   * Gets or sets the data connection.
+   */
+  dataConnection?: null | CIMDataConnection;
+  /**
+   * Gets or sets an area that can be used to subset the rows in the virtual table.
+   */
+  studyArea?: null | Envelope;
+  /**
+   * Gets or sets the study area spatial relationship.
+   */
+  studyAreaSpatialRel?: EsriSpatialRelEnum;
+  /**
+   * Gets or sets the search order option.
+   */
+  searchOrder?: EsriSearchOrder;
+  /**
+   * Gets or sets a value indicating whether the data source is licensed.
+   */
+  isLicensedDataSource?: boolean;
+  /**
+   * Gets or sets the DefinitionSet for the table.
+   */
+  definitionSetURI?: null | string;
+}
+/**
+ * Contains filters so that only features satisfying these definitions will be displayed.
+ *
+ */
+export interface CIMDefinitionFilter {
   /**
    * Gets or sets the name of the Definition Filter item.
    */
@@ -128,8 +177,12 @@ export type CIMDefinitionFilter = CIMObject & {
    * Gets or sets the definition expression to filter features in the dataset.
    */
   definitionExpression?: null | string;
-};
-export type CIMRelateInfoBase = CIMObject & {
+}
+/**
+ * Represents relate base.
+ *
+ */
+export interface CIMRelateInfoBase {
   /**
    * Gets or sets the relate data connection.
    */
@@ -150,13 +203,16 @@ export type CIMRelateInfoBase = CIMObject & {
    * Gets or sets the name.
    */
   name?: null | string;
-};
-export type CIMDataConnection = CIMObject;
+}
 /**
- * Relationship Cardinality.
+ * Represents a data connection.
  */
-export type EsriRelCardinality = 0 | 1 | 2;
-export type CIMFieldDescription = CIMObject & {
+export interface CIMDataConnection {}
+/**
+ * Represents a field description.
+ *
+ */
+export interface CIMFieldDescription {
   /**
    * Gets or sets the field alias.
    */
@@ -193,14 +249,17 @@ export type CIMFieldDescription = CIMObject & {
    * Gets or sets search mode to use when searching for values in this field.
    */
   searchMode?: DataSearchMode;
-};
-export type CIMNumberFormat = CIMObject;
+}
 /**
- * Field search modes.
+ * Represents a number format.
  *
  */
-export type DataSearchMode = 0 | 1;
-export type CIMTimeTableDefinition = CIMObject & {
+export interface CIMNumberFormat {}
+/**
+ * Represents a time table definition.
+ *
+ */
+export interface CIMTimeTableDefinition {
   /**
    * Gets or sets the start time field.
    */
@@ -217,8 +276,12 @@ export type CIMTimeTableDefinition = CIMObject & {
    * Gets or sets the track ID field.
    */
   trackIDField?: null | string;
-};
-export type CIMTimeDataDefinition = CIMObject & {
+}
+/**
+ * Represents a time data definition.
+ *
+ */
+export interface CIMTimeDataDefinition {
   /**
    * Gets or sets a value indicating whether or not to use time for animation purposes.
    */
@@ -240,8 +303,11 @@ export type CIMTimeDataDefinition = CIMObject & {
    *
    */
   timeExtentCanChange?: boolean;
-};
-export type TimeReference = CIMObject & {
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -254,8 +320,15 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type TimeExtent = TimeValue & {
+}
+/**
+ * Represents an extent of time defined by a start and end date.
+ */
+export interface TimeExtent {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
   /**
    * Gets or sets the start time of the extent.
    */
@@ -276,14 +349,12 @@ export type TimeExtent = TimeValue & {
    * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
    */
   endTimeSpecified?: boolean;
-};
-export type TimeValue = CIMObject & {
-  /**
-   * Gets or sets the time zone definition of the time.
-   */
-  timeReference?: null | TimeReference;
-};
-export type CIMTimeDisplayDefinition = CIMObject & {
+}
+/**
+ * Represents a time display definition.
+ *
+ */
+export interface CIMTimeDisplayDefinition {
   /**
    * Gets or sets a value indicating whether time is cumulative.
    */
@@ -308,12 +379,12 @@ export type CIMTimeDisplayDefinition = CIMObject & {
    * Gets or sets a cached set of unique OLE date values.
    */
   uniqueTimes?: number[] | null;
-};
+}
 /**
- * Time units.
+ * Represents a time dimension definition.
+ *
  */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMTimeDimensionDefinition = CIMObject & {
+export interface CIMTimeDimensionDefinition {
   /**
    * Gets or sets the time dimension name.
    */
@@ -322,8 +393,12 @@ export type CIMTimeDimensionDefinition = CIMObject & {
    * Gets or sets the time dimension format.
    */
   timeDimensionFormat?: null | string;
-};
-export type CIMRangeDefinition = CIMObject & {
+}
+/**
+ * Represents a range definition.
+ *
+ */
+export interface CIMRangeDefinition {
   /**
    * Gets or sets the name.
    */
@@ -348,8 +423,12 @@ export type CIMRangeDefinition = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns a string representing range alias value.
    */
   aliasExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMRange = CIMObject & {
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -358,8 +437,11 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -376,13 +458,11 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
- *
+ * Represents a bind variable.
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMBindVariable = CIMObject & {
+export interface CIMBindVariable {
   /**
    * Gets or sets the name of the variable. The name must be unique among all variables.
    */
@@ -395,12 +475,12 @@ export type CIMBindVariable = CIMObject & {
    * Gets or sets the type of the variable.
    */
   dataType?: BindVariableType;
-};
+}
 /**
- * Bind variable types.
+ * Represents floor-aware properties for the layer/table used in floor filtering.
+ *
  */
-export type BindVariableType = 0 | 1 | 2 | 3 | 4;
-export type CIMFloorAwareTableProperties = CIMObject & {
+export interface CIMFloorAwareTableProperties {
   /**
    * Gets or sets rank or "level" at which the layer/table participates in filtering for Indoors or floor-aware layers/tables.
    */
@@ -409,12 +489,33 @@ export type CIMFloorAwareTableProperties = CIMObject & {
    * Gets or sets the name of the field that carries the floor value used for floor filtering.
    */
   floorField?: null | string;
-};
+}
 /**
- * Represents the rank or "level" at which the layer participates in filtering for Indoors or floor-aware layers.
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
  */
-export type FloorFilterRank = 0 | 1 | 2 | 3;
-export type Envelope = Geometry & {
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
   /**
    * Gets the GeometryType of this instance.  Always returns Envelope.
    */
@@ -503,100 +604,6 @@ export type Envelope = Geometry & {
    * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type MapPoint = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Point.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of the geometry. This is always 1.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X-coordinate.
-   */
-  x?: number;
-  /**
-   * Gets the Y-coordinate.
-   */
-  y?: number;
-  /**
-   * Gets the Z-coordinate.
-   */
-  z?: number;
-  /**
-   * Gets the measure value.
-   */
-  m?: number;
-  /**
-   * Gets the ID value.
-   */
-  id?: number;
-  /**
-   * Gets a Coordinate2D structure with the X and Y values.
-   */
-  coordinate2D?: Coordinate2D;
-  /**
-   * Gets a Coordinate3D structure with the X, Y, and Z values.
-   */
-  coordinate3D?: Coordinate3D;
-  /**
-   * Gets the minimum enclosing envelope of the geometry.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-/**
- * Queryable spatial relationships.
- */
-export type EsriSpatialRelEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-/**
- * Spatial Filter Search Order.
- */
-export type EsriSearchOrder = 0 | 1;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
- */
-export interface Geometry {
-  /**
-   * Gets a value indicating if the geometry has Z.
-   */
-  hasZ?: boolean;
-  /**
-   * Gets a value indicating if the geometry has M.
-   */
-  hasM?: boolean;
-  /**
-   * Gets a value indicating if the geometry has ID.
-   */
-  hasID?: boolean;
-  /**
-   * Gets the spatial reference of this instance.
-   */
-  spatialReference?: null | SpatialReference;
-  /**
-   * Gets the dimension of the geometry.
-   */
-  dimension?: number;
 }
 /**
  * Class representing a spatial reference.
@@ -817,6 +824,76 @@ export interface Coordinate2D {
   magnitude?: number;
   /**
    * Indicates if the Coordinate2D is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Point.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of the geometry. This is always 1.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X-coordinate.
+   */
+  x?: number;
+  /**
+   * Gets the Y-coordinate.
+   */
+  y?: number;
+  /**
+   * Gets the Z-coordinate.
+   */
+  z?: number;
+  /**
+   * Gets the measure value.
+   */
+  m?: number;
+  /**
+   * Gets the ID value.
+   */
+  id?: number;
+  /**
+   * Gets a Coordinate2D structure with the X and Y values.
+   */
+  coordinate2D?: Coordinate2D;
+  /**
+   * Gets a Coordinate3D structure with the X, Y, and Z values.
+   */
+  coordinate3D?: Coordinate3D;
+  /**
+   * Gets the minimum enclosing envelope of the geometry.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
 }

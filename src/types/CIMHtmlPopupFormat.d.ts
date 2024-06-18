@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMHtmlPopupFormat = CIMObject & {
+/**
+ * HTML pop-up styles.
+ *
+ */
+export type HtmlPopupStyle = 0 | 1 | 2;
+
+/**
+ * Represents an HTML pop-up format.
+ *
+ */
+export interface CIMHtmlPopupFormat {
   /**
    * Gets or sets the redirect field.
    */
@@ -34,15 +44,4 @@ export type CIMHtmlPopupFormat = CIMObject & {
    * Gets or sets the presentation style.
    */
   htmlPresentationStyle?: HtmlPopupStyle;
-};
-/**
- * HTML pop-up styles.
- *
- */
-export type HtmlPopupStyle = 0 | 1 | 2;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

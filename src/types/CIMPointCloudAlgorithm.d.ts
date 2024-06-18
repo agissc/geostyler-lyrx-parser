@@ -5,10 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPointCloudAlgorithm = CIMObject;
-
 /**
- * Represents the base CIM object class.
- *
+ * Represents a point cloud algorithm.
  */
-export interface CIMObject {}
+export interface CIMPointCloudAlgorithm {}

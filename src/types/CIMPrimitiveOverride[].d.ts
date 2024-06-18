@@ -5,7 +5,18 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPrimitiveOverride1 = CIMObject & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+export type CIMPrimitiveOverride = CIMPrimitiveOverride1[];
+
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride1 {
   /**
    * Gets or sets the primitive name this override applies to.
    */
@@ -22,8 +33,11 @@ export type CIMPrimitiveOverride1 = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
    */
   valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -40,16 +54,4 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMPrimitiveOverride = CIMPrimitiveOverride1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

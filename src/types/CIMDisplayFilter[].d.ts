@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMDisplayFilter1 = CIMObject & {
+export type CIMDisplayFilter = CIMDisplayFilter1[];
+
+/**
+ * Represents a display filter used to restrict the display of features across scale ranges.
+ */
+export interface CIMDisplayFilter1 {
   /**
    * Gets or sets the name of the display filter.
    */
@@ -22,11 +27,4 @@ export type CIMDisplayFilter1 = CIMObject & {
    * Gets or sets the maximum scale for this display filter.
    */
   maxScale?: number;
-};
-export type CIMDisplayFilter = CIMDisplayFilter1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

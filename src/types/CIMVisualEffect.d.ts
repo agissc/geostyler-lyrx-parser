@@ -5,15 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMVisualEffect = CIMObject & {
+/**
+ * Represents a visual effect definition for stylized rendering of all the content in a map or scene.
+ */
+export interface CIMVisualEffect {
   /**
    * Gets or sets a value indicating whether the effect should be applied to the scene.
    */
   isActive?: boolean;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

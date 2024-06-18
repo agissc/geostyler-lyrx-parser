@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMIlluminationProperties = CIMObject & {
+/**
+ * Illumination source types.
+ *
+ */
+export type IlluminationSource = 0 | 1 | 2 | 3;
+
+/**
+ * Represents illumination properties.
+ *
+ */
+export interface CIMIlluminationProperties {
   /**
    * Gets or sets the ambient light value.
    */
@@ -58,20 +68,24 @@ export type CIMIlluminationProperties = CIMObject & {
    * Gets or sets a value indicating whether to enable eye-dome lighting for a scene or map.
    */
   enableEyeDomeLighting?: boolean;
-};
-export type TimeInstant = TimeValue & {
-  /**
-   * Gets or sets the time.
-   */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -84,15 +98,4 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-/**
- * Illumination source types.
- *
- */
-export type IlluminationSource = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

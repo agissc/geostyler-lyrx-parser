@@ -5,7 +5,19 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMEditingElevation = CIMObject & {
+/**
+ * Defines the capture mode used to specify new Z values when creating or modifying features.
+ */
+export type EditingElevationCaptureMode = 0 | 1 | 2;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+
+/**
+ * Defines the properties needed to specify new Z values when creating or modifying features.
+ */
+export interface CIMEditingElevation {
   /**
    * Gets or sets the elevation capture mode.
    */
@@ -22,31 +34,11 @@ export type CIMEditingElevation = CIMObject & {
    * Gets or sets the URI of the elevation surface layer to be used when CaptureMode is Surface.
    */
   elevationSurfaceLayerURI?: null | string;
-};
+}
 /**
- * Defines the capture mode used to specify new Z values when creating or modifying features.
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
  */
-export type EditingElevationCaptureMode = 0 | 1 | 2;
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * A common base class between all units, linear, area and angular units.
- */
-export interface Unit {
+export interface LinearUnit {
   /**
    * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
    */
@@ -67,4 +59,8 @@ export interface Unit {
    * Gets the type of unit.
    */
   unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
 }

@@ -5,10 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSurfaceEffect = CIMObject;
-
 /**
- * Represents the base CIM object class.
- *
+ * Represents a stylized rendering effect that is applied to a surface in a 3D view.
  */
-export interface CIMObject {}
+export interface CIMSurfaceEffect {}

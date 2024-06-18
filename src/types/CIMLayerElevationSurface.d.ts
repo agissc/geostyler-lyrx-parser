@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLayerElevationSurface = CIMObject & {
+/**
+ * Represents a layer elevation surface.
+ *
+ */
+export interface CIMLayerElevationSurface {
   /**
    * Gets or sets Z offset.
    */
@@ -14,10 +18,4 @@ export type CIMLayerElevationSurface = CIMObject & {
    * Gets or sets the elevation surface layer URI.
    */
   elevationSurfaceLayerURI?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

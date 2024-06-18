@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMStringMap1 = CIMObject & {
+export type CIMStringMap = CIMStringMap1[];
+
+/**
+ * Represents a string map of key value pairs.
+ *
+ */
+export interface CIMStringMap1 {
   /**
    * Gets or sets the key.
    */
@@ -14,11 +20,4 @@ export type CIMStringMap1 = CIMObject & {
    * Gets or sets the value.
    */
   value?: null | string;
-};
-export type CIMStringMap = CIMStringMap1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

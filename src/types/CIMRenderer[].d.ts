@@ -5,11 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRenderer1 = CIMObject;
 export type CIMRenderer = CIMRenderer1[];
 
 /**
- * Represents the base CIM object class.
+ * Represents a renderer.
  *
  */
-export interface CIMObject {}
+export interface CIMRenderer1 {}

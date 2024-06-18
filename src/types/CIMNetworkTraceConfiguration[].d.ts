@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNetworkTraceConfiguration1 = CIMObject & {
+export type CIMNetworkTraceConfiguration = CIMNetworkTraceConfiguration1[];
+
+/**
+ * Represents a Trace Configuration.
+ *
+ */
+export interface CIMNetworkTraceConfiguration1 {
   /**
    * Gets or sets the name of trace configuration.
    */
@@ -14,11 +20,4 @@ export type CIMNetworkTraceConfiguration1 = CIMObject & {
    * Gets or sets global id of trace configuration.
    */
   id?: null | string;
-};
-export type CIMNetworkTraceConfiguration = CIMNetworkTraceConfiguration1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

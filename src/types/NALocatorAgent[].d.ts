@@ -5,13 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type NALocatorAgent1 = NAAgent & {};
-export type NAAgent = NAAgentDefinition & {};
-export type NAAgentDefinition = CIMObject;
 export type NALocatorAgent = NALocatorAgent1[];
 
 /**
- * Represents the base CIM object class.
- *
+ * Represents a network analyst locator agent. This class is reserved for esri internal use only.
  */
-export interface CIMObject {}
+export interface NALocatorAgent1 {}

@@ -5,22 +5,18 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMVideoTimelineEventIndicator1 = CIMVideoTimelineIndicator & {
-  /**
-   * Gets or sets the elapsed time from the beginning of the video in ticks for the event.
-   */
-  time?: number;
-};
-export type CIMVideoTimelineIndicator = CIMObject & {
+export type CIMVideoTimelineEventIndicator = CIMVideoTimelineEventIndicator1[];
+
+/**
+ * Represents an event indicator on a video timeline.
+ */
+export interface CIMVideoTimelineEventIndicator1 {
   /**
    * Gets or sets the indicator label.
    */
   label?: null | string;
-};
-export type CIMVideoTimelineEventIndicator = CIMVideoTimelineEventIndicator1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+  /**
+   * Gets or sets the elapsed time from the beginning of the video in ticks for the event.
+   */
+  time?: number;
+}

@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTimeDimensionDefinition = CIMObject & {
+/**
+ * Represents a time dimension definition.
+ *
+ */
+export interface CIMTimeDimensionDefinition {
   /**
    * Gets or sets the time dimension name.
    */
@@ -14,10 +18,4 @@ export type CIMTimeDimensionDefinition = CIMObject & {
    * Gets or sets the time dimension format.
    */
   timeDimensionFormat?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

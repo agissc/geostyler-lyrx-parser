@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMKMLDataConnection = CIMDataConnection & {
+/**
+ * Represents a KML data connection.
+ *
+ */
+export interface CIMKMLDataConnection {
   /**
    * Gets or sets vendor specific parameters.
    */
@@ -14,9 +18,12 @@ export type CIMKMLDataConnection = CIMDataConnection & {
    * Gets or sets the URI of the KML file or resource.
    */
   kmluri?: null | string;
-};
-export type CIMDataConnection = CIMObject;
-export type CIMStringMap = CIMObject & {
+}
+/**
+ * Represents a string map of key value pairs.
+ *
+ */
+export interface CIMStringMap {
   /**
    * Gets or sets the key.
    */
@@ -25,10 +32,4 @@ export type CIMStringMap = CIMObject & {
    * Gets or sets the value.
    */
   value?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

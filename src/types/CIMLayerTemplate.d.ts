@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLayerTemplate = CIMObject & {
+/**
+ * Represents a layer template.
+ *
+ */
+export interface CIMLayerTemplate {
   /**
    * Gets or sets the layer template ID.
    */
@@ -16,10 +20,4 @@ export type CIMLayerTemplate = CIMObject & {
   parameters?: null | {
     [k: string]: unknown;
   };
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

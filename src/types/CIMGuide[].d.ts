@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMGuide1 = CIMObject & {
+/**
+ * A list of orientation values.
+ */
+export type Orientation = 0 | 1;
+export type CIMGuide = CIMGuide1[];
+
+/**
+ * Represents a guide used to snap elements on a page layout.
+ */
+export interface CIMGuide1 {
   /**
    * Gets or sets the position of the guide.
    */
@@ -14,15 +23,4 @@ export type CIMGuide1 = CIMObject & {
    * Gets or sets the horizontal or vertical orientation of the guide.
    */
   orientation?: Orientation;
-};
-/**
- * A list of orientation values.
- */
-export type Orientation = 0 | 1;
-export type CIMGuide = CIMGuide1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

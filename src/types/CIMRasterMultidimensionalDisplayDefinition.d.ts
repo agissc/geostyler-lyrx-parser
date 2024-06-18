@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRasterMultidimensionalDisplayDefinition = CIMObject & {
+/**
+ * Represents a multidimensional display definition for the current display slice.
+ */
+export interface CIMRasterMultidimensionalDisplayDefinition {
   /**
    * Gets or sets the name of the variable.
    */
@@ -26,8 +29,15 @@ export type CIMRasterMultidimensionalDisplayDefinition = CIMObject & {
    * Gets or sets the range dimension value for the current display slice.
    */
   rangeDimensionValue?: null | CIMRange;
-};
-export type TimeExtent = TimeValue & {
+}
+/**
+ * Represents an extent of time defined by a start and end date.
+ */
+export interface TimeExtent {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
   /**
    * Gets or sets the start time of the extent.
    */
@@ -48,14 +58,11 @@ export type TimeExtent = TimeValue & {
    * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
    */
   endTimeSpecified?: boolean;
-};
-export type TimeValue = CIMObject & {
-  /**
-   * Gets or sets the time zone definition of the time.
-   */
-  timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -68,8 +75,12 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMRange = CIMObject & {
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -78,10 +89,4 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

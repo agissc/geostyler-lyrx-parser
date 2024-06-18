@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTimeTableDefinition = CIMObject & {
+/**
+ * Represents a time table definition.
+ *
+ */
+export interface CIMTimeTableDefinition {
   /**
    * Gets or sets the start time field.
    */
@@ -22,10 +26,4 @@ export type CIMTimeTableDefinition = CIMObject & {
    * Gets or sets the track ID field.
    */
   trackIDField?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

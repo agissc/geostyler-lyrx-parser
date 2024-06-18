@@ -5,7 +5,25 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMBookmark1 = CIMObject & {
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+/**
+ * Time relation types.
+ */
+export type EsriTimeRelation = 0 | 1 | 2 | 3;
+export type CIMBookmark = CIMBookmark1[];
+
+/**
+ * Represents a spatial bookmark.
+ *
+ */
+export interface CIMBookmark1 {
   /**
    * Gets or sets the bookmark name.
    */
@@ -55,8 +73,12 @@ export type CIMBookmark1 = CIMObject & {
    * Gets or sets the video elapsed time in seconds.
    */
   videoElapsedTime?: number;
-};
-export type CIMViewCamera = CIMObject & {
+}
+/**
+ * Represents a view camera.
+ *
+ */
+export interface CIMViewCamera {
   /**
    * Gets or sets the heading.
    */
@@ -93,8 +115,33 @@ export type CIMViewCamera = CIMObject & {
    * Gets or sets the width of the viewport in meters. Viewport height and width are used for consistent camera positioning in isometric 3D views, eye separation in 3D stereo views and defines the focal distance in perspective views.
    */
   viewportWidth?: number;
-};
-export type Envelope = Geometry & {
+}
+/**
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
+ */
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
   /**
    * Gets the GeometryType of this instance.  Always returns Envelope.
    */
@@ -183,167 +230,6 @@ export type Envelope = Geometry & {
    * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type MapPoint = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Point.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of the geometry. This is always 1.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X-coordinate.
-   */
-  x?: number;
-  /**
-   * Gets the Y-coordinate.
-   */
-  y?: number;
-  /**
-   * Gets the Z-coordinate.
-   */
-  z?: number;
-  /**
-   * Gets the measure value.
-   */
-  m?: number;
-  /**
-   * Gets the ID value.
-   */
-  id?: number;
-  /**
-   * Gets a Coordinate2D structure with the X and Y values.
-   */
-  coordinate2D?: Coordinate2D;
-  /**
-   * Gets a Coordinate3D structure with the X, Y, and Z values.
-   */
-  coordinate3D?: Coordinate3D;
-  /**
-   * Gets the minimum enclosing envelope of the geometry.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-export type TimeExtent = TimeValue & {
-  /**
-   * Gets or sets the start time of the extent.
-   */
-  startTime?: string;
-  /**
-   * Gets or sets the end time of the extent.
-   */
-  endTime?: string;
-  /**
-   * Gets or sets a value indicating if the time extent is empty.
-   */
-  empty?: boolean;
-  /**
-   * Gets or sets a value indicating if the extent contains a start time. If false the time extent has no lower bound.
-   */
-  startTimeSpecified?: boolean;
-  /**
-   * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
-   */
-  endTimeSpecified?: boolean;
-};
-export type TimeValue = CIMObject & {
-  /**
-   * Gets or sets the time zone definition of the time.
-   */
-  timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
-  /**
-   * Gets or sets the windows id for the time zone.
-   */
-  timeZoneNameID?: null | string;
-  /**
-   * Gets or sets a value indicating if the time reference should honor daylight savings time.
-   */
-  respectsDaylightSavingTime?: boolean;
-  /**
-   * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
-   */
-  respectsDynamicAdjustmentRules?: boolean;
-};
-/**
- * Time relation types.
- */
-export type EsriTimeRelation = 0 | 1 | 2 | 3;
-export type CIMLayerRange = CIMObject & {
-  /**
-   * Gets or sets the URI of the layer this range is defined for.
-   */
-  layerURI?: null | string;
-  /**
-   * Gets or sets the range name.
-   */
-  rangeName?: null | string;
-  /**
-   * Gets or sets the current range.
-   */
-  currentRange?: null | CIMRange;
-  /**
-   * Gets or sets a value indicating whether or not this is an exclusion range.
-   */
-  isExclusion?: boolean;
-};
-export type CIMRange = CIMObject & {
-  /**
-   * Gets or sets the minimum.
-   */
-  min?: number;
-  /**
-   * Gets or sets the maximum.
-   */
-  max?: number;
-};
-export type CIMBookmark = CIMBookmark1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
- */
-export interface Geometry {
-  /**
-   * Gets a value indicating if the geometry has Z.
-   */
-  hasZ?: boolean;
-  /**
-   * Gets a value indicating if the geometry has M.
-   */
-  hasM?: boolean;
-  /**
-   * Gets a value indicating if the geometry has ID.
-   */
-  hasID?: boolean;
-  /**
-   * Gets the spatial reference of this instance.
-   */
-  spatialReference?: null | SpatialReference;
-  /**
-   * Gets the dimension of the geometry.
-   */
-  dimension?: number;
 }
 /**
  * Class representing a spatial reference.
@@ -568,6 +454,76 @@ export interface Coordinate2D {
   isEmpty?: boolean;
 }
 /**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Point.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of the geometry. This is always 1.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X-coordinate.
+   */
+  x?: number;
+  /**
+   * Gets the Y-coordinate.
+   */
+  y?: number;
+  /**
+   * Gets the Z-coordinate.
+   */
+  z?: number;
+  /**
+   * Gets the measure value.
+   */
+  m?: number;
+  /**
+   * Gets the ID value.
+   */
+  id?: number;
+  /**
+   * Gets a Coordinate2D structure with the X and Y values.
+   */
+  coordinate2D?: Coordinate2D;
+  /**
+   * Gets a Coordinate3D structure with the X, Y, and Z values.
+   */
+  coordinate3D?: Coordinate3D;
+  /**
+   * Gets the minimum enclosing envelope of the geometry.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
  * A structure containing methods to manipulate 3D vertices and 3D vectors.
  */
 export interface Coordinate3D {
@@ -599,4 +555,86 @@ export interface Coordinate3D {
    * Indicates if the Coordinate3D is empty.
    */
   isEmpty?: boolean;
+}
+/**
+ * Represents an extent of time defined by a start and end date.
+ */
+export interface TimeExtent {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
+  /**
+   * Gets or sets the start time of the extent.
+   */
+  startTime?: string;
+  /**
+   * Gets or sets the end time of the extent.
+   */
+  endTime?: string;
+  /**
+   * Gets or sets a value indicating if the time extent is empty.
+   */
+  empty?: boolean;
+  /**
+   * Gets or sets a value indicating if the extent contains a start time. If false the time extent has no lower bound.
+   */
+  startTimeSpecified?: boolean;
+  /**
+   * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
+   */
+  endTimeSpecified?: boolean;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
+  /**
+   * Gets or sets the windows id for the time zone.
+   */
+  timeZoneNameID?: null | string;
+  /**
+   * Gets or sets a value indicating if the time reference should honor daylight savings time.
+   */
+  respectsDaylightSavingTime?: boolean;
+  /**
+   * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
+   */
+  respectsDynamicAdjustmentRules?: boolean;
+}
+/**
+ * Represents a layer range.
+ *
+ */
+export interface CIMLayerRange {
+  /**
+   * Gets or sets the URI of the layer this range is defined for.
+   */
+  layerURI?: null | string;
+  /**
+   * Gets or sets the range name.
+   */
+  rangeName?: null | string;
+  /**
+   * Gets or sets the current range.
+   */
+  currentRange?: null | CIMRange;
+  /**
+   * Gets or sets a value indicating whether or not this is an exclusion range.
+   */
+  isExclusion?: boolean;
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
+  /**
+   * Gets or sets the minimum.
+   */
+  min?: number;
+  /**
+   * Gets or sets the maximum.
+   */
+  max?: number;
 }

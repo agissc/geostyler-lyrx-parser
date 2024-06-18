@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPopupFieldDescription1 = CIMObject & {
+export type CIMPopupFieldDescription = CIMPopupFieldDescription1[];
+
+/**
+ * Represents a pop-up field description.
+ *
+ */
+export interface CIMPopupFieldDescription1 {
   /**
    * Gets or sets the field alias.
    */
@@ -18,12 +24,9 @@ export type CIMPopupFieldDescription1 = CIMObject & {
    * Gets or sets the number format.
    */
   numberFormat?: null | CIMNumberFormat;
-};
-export type CIMNumberFormat = CIMObject;
-export type CIMPopupFieldDescription = CIMPopupFieldDescription1[];
-
+}
 /**
- * Represents the base CIM object class.
+ * Represents a number format.
  *
  */
-export interface CIMObject {}
+export interface CIMNumberFormat {}

@@ -5,21 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMWorkspaceConnection = CIMDataConnection & {
-  /**
-   * Gets or sets the workspace connection string.
-   */
-  workspaceConnectionString?: null | string;
-  /**
-   * Gets or sets the workspace factory.
-   */
-  workspaceFactory?: WorkspaceFactory;
-  /**
-   * Gets or sets the classID of the custom workspace factory.
-   */
-  customWorkspaceFactoryCLSID?: null | string;
-};
-export type CIMDataConnection = CIMObject;
 /**
  * Workspace factory types.
  *
@@ -53,7 +38,20 @@ export type WorkspaceFactory =
   | 25;
 
 /**
- * Represents the base CIM object class.
+ * Represents a workspace connection.
  *
  */
-export interface CIMObject {}
+export interface CIMWorkspaceConnection {
+  /**
+   * Gets or sets the workspace connection string.
+   */
+  workspaceConnectionString?: null | string;
+  /**
+   * Gets or sets the workspace factory.
+   */
+  workspaceFactory?: WorkspaceFactory;
+  /**
+   * Gets or sets the classID of the custom workspace factory.
+   */
+  customWorkspaceFactoryCLSID?: null | string;
+}

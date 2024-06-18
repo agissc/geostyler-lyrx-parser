@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTimeDisplayDefinition = CIMObject & {
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+
+/**
+ * Represents a time display definition.
+ *
+ */
+export interface CIMTimeDisplayDefinition {
   /**
    * Gets or sets a value indicating whether time is cumulative.
    */
@@ -30,14 +39,4 @@ export type CIMTimeDisplayDefinition = CIMObject & {
    * Gets or sets a cached set of unique OLE date values.
    */
   uniqueTimes?: number[] | null;
-};
-/**
- * Time units.
- */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

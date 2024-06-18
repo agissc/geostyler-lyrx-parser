@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSymbolLayer1 = CIMObject & {
+export type CIMSymbolLayer = CIMSymbolLayer1[];
+
+/**
+ * Represents a symbol layer. Symbol layers are the components that make up a symbol. A symbol layer is represented by a stroke, fill, marker, or procedural symbol layer.
+ *
+ */
+export interface CIMSymbolLayer1 {
   /**
    * Gets or sets whether the geometric effects that are applied to the symbol layer. Effects dynamically alter the feature geometry when the symbology is applied. Multiple effects applied to a symbol layer are rendered sequentially.
    */
@@ -30,17 +36,13 @@ export type CIMSymbolLayer1 = CIMObject & {
    * Gets or sets a value indicating whether or not the symbol layer should overprint in press printing.
    */
   overprint?: boolean;
-};
-export type CIMGeometricEffect = CIMObject & {
+}
+/**
+ * Represents a geometric effect, this is base class for all geometric effects.
+ */
+export interface CIMGeometricEffect {
   /**
    * Gets or sets the primitive name.
    */
   primitiveName?: null | string;
-};
-export type CIMSymbolLayer = CIMSymbolLayer1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

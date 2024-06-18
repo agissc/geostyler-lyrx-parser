@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMObject3DRenderingFilter1 = CIMObject & {
+/**
+ * Specified how features are drawn.
+ */
+export type Object3DRenderingMode = 0 | 1;
+export type CIMObject3DRenderingFilter = CIMObject3DRenderingFilter1[];
+
+/**
+ * Represents a 3D object rendering filter.
+ */
+export interface CIMObject3DRenderingFilter1 {
   /**
    * Gets or sets the ID.
    */
@@ -26,8 +35,11 @@ export type CIMObject3DRenderingFilter1 = CIMObject & {
    * Gets or sets the authoring info.
    */
   authoringInfo?: null | CIMObject3DRenderingFilterAuthoringInfo;
-};
-export type CIMObject3DRenderingFilterBlock = CIMObject & {
+}
+/**
+ * Represents a 3D object rendering filter block.
+ */
+export interface CIMObject3DRenderingFilterBlock {
   /**
    * Gets or sets the title.
    */
@@ -40,12 +52,11 @@ export type CIMObject3DRenderingFilterBlock = CIMObject & {
    * Gets or sets the expression.
    */
   expression?: null | string;
-};
+}
 /**
- * Specified how features are drawn.
+ * Represents a filter authoring info.
  */
-export type Object3DRenderingMode = 0 | 1;
-export type CIMObject3DRenderingFilterAuthoringInfo = CIMObject & {
+export interface CIMObject3DRenderingFilterAuthoringInfo {
   /**
    * Gets or sets a value indicating whether the filter is displayed in the UI or not.
    */
@@ -54,14 +65,20 @@ export type CIMObject3DRenderingFilterAuthoringInfo = CIMObject & {
    * Gets or sets the filter blocks.
    */
   filterBlocks?: CIMObject3DRenderingFilterBlockAuthoringInfo[] | null;
-};
-export type CIMObject3DRenderingFilterBlockAuthoringInfo = CIMObject & {
+}
+/**
+ * Represents a filter block authoring info.
+ */
+export interface CIMObject3DRenderingFilterBlockAuthoringInfo {
   /**
    * Gets or sets the filter state.
    */
   filterStates?: CIMObject3DRenderingFilterState[] | null;
-};
-export type CIMObject3DRenderingFilterState = CIMObject & {
+}
+/**
+ * Represents a 3D object rendering filter value.
+ */
+export interface CIMObject3DRenderingFilterState {
   /**
    * Gets or sets the filter type.
    */
@@ -70,11 +87,4 @@ export type CIMObject3DRenderingFilterState = CIMObject & {
    * Gets or sets the selected values.
    */
   selectedValues?: string[] | null;
-};
-export type CIMObject3DRenderingFilter = CIMObject3DRenderingFilter1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSymbolIdentifier1 = CIMObject & {
+export type CIMSymbolIdentifier = CIMSymbolIdentifier1[];
+
+/**
+ * Represents a symbol identifier.
+ *
+ */
+export interface CIMSymbolIdentifier1 {
   /**
    * Gets or sets the ID which identifies the symbol in the collection.
    */
@@ -18,12 +24,9 @@ export type CIMSymbolIdentifier1 = CIMObject & {
    * Gets or sets the symbol.
    */
   symbol?: null | CIMSymbol;
-};
-export type CIMSymbol = CIMObject;
-export type CIMSymbolIdentifier = CIMSymbolIdentifier1[];
-
+}
 /**
- * Represents the base CIM object class.
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
  *
  */
-export interface CIMObject {}
+export interface CIMSymbol {}

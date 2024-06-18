@@ -5,7 +5,28 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLinkChartRelationship1 = CIMObject & {
+/**
+ * Link chart link dash style.
+ */
+export type LinkChartLinkDashStyle = 0 | 1 | 2 | 3 | 4;
+/**
+ * Font types.
+ */
+export type FontType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Link chart link label placement.
+ */
+export type LinkChartLinkLabelPlacement = 0 | 1;
+/**
+ * Link chart relationship key type.
+ */
+export type LinkChartRelationshipKeyType = 0 | 1 | 2;
+export type CIMLinkChartRelationship = CIMLinkChartRelationship1[];
+
+/**
+ * Represents a link chart relationship.
+ */
+export interface CIMLinkChartRelationship1 {
   /**
    * Gets or sets the Id of for the relationship.
    */
@@ -58,8 +79,11 @@ export type CIMLinkChartRelationship1 = CIMObject & {
    * Gets or sets the target entity key field for the relationship.
    */
   targetEntityKeyField?: null | string;
-};
-export type CIMLinkChartLinkDrawingInfo = CIMObject & {
+}
+/**
+ * Represents the link chart link drawing information.
+ */
+export interface CIMLinkChartLinkDrawingInfo {
   /**
    * Gets or sets link color.
    */
@@ -76,8 +100,11 @@ export type CIMLinkChartLinkDrawingInfo = CIMObject & {
    * Gets or sets a value indicating whether to show the directional arrowhead of a link.
    */
   showDirection?: boolean;
-};
-export type CIMColor = CIMObject & {
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -90,23 +117,15 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
+}
 /**
- * Link chart link dash style.
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export type LinkChartLinkDashStyle = 0 | 1 | 2 | 3 | 4;
-export type CIMLinkChartLinkLabelingInfo = CIMLinkChartLabelingInfo & {
-  /**
-   * Gets or sets the link label placement.
-   */
-  labelPlacement?: LinkChartLinkLabelPlacement;
-  /**
-   * Gets or sets the default label.
-   */
-  defaultLabel?: null | string;
-};
-export type CIMLinkChartLabelingInfo = CIMObject & {
+export interface CIMColorSpace {}
+/**
+ * Represents the link chart link labeling information.
+ */
+export interface CIMLinkChartLinkLabelingInfo {
   /**
    * Gets or sets a value indicating whether the labels are shown.
    */
@@ -135,23 +154,12 @@ export type CIMLinkChartLabelingInfo = CIMObject & {
    * Gets or sets Link label background color.
    */
   labelBackgroundColor?: null | CIMColor;
-};
-/**
- * Font types.
- */
-export type FontType = 0 | 1 | 2 | 3 | 4;
-/**
- * Link chart link label placement.
- */
-export type LinkChartLinkLabelPlacement = 0 | 1;
-/**
- * Link chart relationship key type.
- */
-export type LinkChartRelationshipKeyType = 0 | 1 | 2;
-export type CIMLinkChartRelationship = CIMLinkChartRelationship1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+  /**
+   * Gets or sets the link label placement.
+   */
+  labelPlacement?: LinkChartLinkLabelPlacement;
+  /**
+   * Gets or sets the default label.
+   */
+  defaultLabel?: null | string;
+}

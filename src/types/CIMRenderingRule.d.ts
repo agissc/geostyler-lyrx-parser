@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRenderingRule = CIMObject & {
+/**
+ * Represents a raster rendering rule.
+ *
+ */
+export interface CIMRenderingRule {
   /**
    * Gets or sets the rendering rule description.
    */
@@ -28,10 +32,4 @@ export type CIMRenderingRule = CIMObject & {
    * Gets or sets the rendering rule definition.
    */
   definition?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

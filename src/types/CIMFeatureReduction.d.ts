@@ -5,15 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFeatureReduction = CIMObject & {
+/**
+ * Represents a technique for visually reducing large numbers of features in a map.
+ */
+export interface CIMFeatureReduction {
   /**
    * Gets or sets a value indicating whether feature reduction is enabled in the feature layer.
    */
   enabled?: boolean;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,153 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLabelClass1 = CIMObject & {
+/**
+ * Label expression engine types.
+ *
+ */
+export type LabelExpressionEngine = 0 | 1 | 2 | 3;
+/**
+ * A list of types of features to label.
+ *
+ */
+export type FeaturesToLabel = 0 | 1;
+/**
+ * The label feature types.
+ *
+ */
+export type LabelFeatureType = 0 | 1 | 2;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Maplex connection types.
+ *
+ */
+export type MaplexConnectionType = 0 | 1;
+/**
+ * Maplex offset constraint types.
+ *
+ */
+export type MaplexConstrainOffset = 0 | 1 | 2 | 3 | 4;
+/**
+ * Maplex contour alignment types.
+ *
+ */
+export type MaplexContourAlignmentType = 0 | 1 | 2;
+/**
+ * Maplex contour ladder types.
+ *
+ */
+export type MaplexContourLadderType = 0 | 1 | 2;
+/**
+ * Maplex graticule alignment types.
+ *
+ */
+export type MaplexGraticuleAlignmentType = 0 | 1 | 2 | 3;
+/**
+ * Maplex stacking alignment.
+ *
+ */
+export type MaplexStackingAlignment = 0 | 1 | 2 | 3 | 4;
+/**
+ * Maplex line feature types.
+ *
+ */
+export type MaplexLineFeatureType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Maplex line placement methods.
+ *
+ */
+export type MaplexLinePlacementMethod = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+/**
+ * Maplex units.
+ *
+ */
+export type MaplexUnit = 0 | 1 | 2 | 3 | 4;
+/**
+ * Maplex multipart options.
+ *
+ */
+export type MaplexMultiPartOption = 0 | 1 | 2;
+/**
+ * Maplex offset along the line methods.
+ *
+ */
+export type MaplexOffsetAlongLineMethod = 0 | 1 | 2 | 3 | 4;
+/**
+ * Maplex label anchor point.
+ *
+ */
+export type MaplexLabelAnchorPoint = 0 | 1 | 2;
+/**
+ * Maplex point placement methods.
+ *
+ */
+export type MaplexPointPlacementMethod = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+/**
+ * Maplex anchor point types.
+ *
+ */
+export type MaplexAnchorPointType = 0 | 1 | 2 | 3;
+/**
+ * Maplex polygon feature types.
+ *
+ */
+export type MaplexPolygonFeatureType = 0 | 1 | 2 | 3;
+/**
+ * Maplex polygon placement methods.
+ *
+ */
+export type MaplexPolygonPlacementMethod = 0 | 1 | 2 | 3 | 4 | 5;
+/**
+ * Maplex rotation types.
+ *
+ */
+export type MaplexLabelRotationType = 0 | 1 | 2 | 3;
+/**
+ * Maplex rotation alignment types.
+ *
+ */
+export type MaplexRotationAlignmentType = 0 | 1 | 2;
+/**
+ * Standard label engine feature weights.
+ *
+ */
+export type StandardFeatureWeight = 0 | 1 | 2 | 3;
+/**
+ * Standard label engine label weight.
+ *
+ */
+export type StandardLabelWeight = 0 | 1 | 2;
+/**
+ * Standard label engine number of labels options.
+ *
+ */
+export type StandardNumLabelsOption = 0 | 1 | 2 | 3;
+/**
+ * Standard label engine point placement methods.
+ *
+ */
+export type StandardPointPlacementMethod = 0 | 1 | 2 | 3;
+/**
+ * Standard label engine label rotation types.
+ *
+ */
+export type StandardLabelRotationType = 0 | 1 | 2 | 3;
+/**
+ * Standard label engine polygon placement methods.
+ *
+ */
+export type StandardPolygonPlacementMethod = 0 | 1 | 2;
+export type CIMLabelClass = CIMLabelClass1[];
+
+/**
+ * Represents a label class which describes how to generate a set of text labels from a group of features in a feature layer.
+ *
+ */
+export interface CIMLabelClass1 {
   /**
    * Gets or sets the human readable text title that describes the label expression.
    */
@@ -66,18 +212,16 @@ export type CIMLabelClass1 = CIMObject & {
    * Gets or sets the ID of the label class. This property is only used in the context of annotation.
    */
   id?: number;
-};
+}
 /**
- * Label expression engine types.
+ * Represents Maplex label placement properties.
  *
  */
-export type LabelExpressionEngine = 0 | 1 | 2 | 3;
-/**
- * A list of types of features to label.
- *
- */
-export type FeaturesToLabel = 0 | 1;
-export type CIMMaplexLabelPlacementProperties = CIMLabelPlacementProperties & {
+export interface CIMMaplexLabelPlacementProperties {
+  /**
+   * Gets or sets the feature type being labeled.
+   */
+  featureType?: LabelFeatureType;
   /**
    * Gets or sets a value indicating whether to align the label with the label direction so the label may appear upside down.
    */
@@ -478,19 +622,11 @@ export type CIMMaplexLabelPlacementProperties = CIMLabelPlacementProperties & {
    * Gets or sets the unit of the inset value for perimeter polygon anchor points.
    */
   polygonAnchorPointPerimeterInsetUnit?: MaplexUnit;
-};
-export type CIMLabelPlacementProperties = CIMObject & {
-  /**
-   * Gets or sets the feature type being labeled.
-   */
-  featureType?: LabelFeatureType;
-};
+}
 /**
- * The label feature types.
- *
+ * Represents the properties required for authoring an Arcade expression.
  */
-export type LabelFeatureType = 0 | 1 | 2;
-export type CIMExpressionInfo = CIMObject & {
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -507,38 +643,12 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
+ * Represents Maplex label stacking properties.
  *
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-/**
- * Maplex connection types.
- *
- */
-export type MaplexConnectionType = 0 | 1;
-/**
- * Maplex offset constraint types.
- *
- */
-export type MaplexConstrainOffset = 0 | 1 | 2 | 3 | 4;
-/**
- * Maplex contour alignment types.
- *
- */
-export type MaplexContourAlignmentType = 0 | 1 | 2;
-/**
- * Maplex contour ladder types.
- *
- */
-export type MaplexContourLadderType = 0 | 1 | 2;
-/**
- * Maplex graticule alignment types.
- *
- */
-export type MaplexGraticuleAlignmentType = 0 | 1 | 2 | 3;
-export type CIMMaplexLabelStackingProperties = CIMObject & {
+export interface CIMMaplexLabelStackingProperties {
   /**
    * Gets or sets the stacking alignment.
    */
@@ -563,13 +673,12 @@ export type CIMMaplexLabelStackingProperties = CIMObject & {
    * Gets or sets a value indicating whether leading and trailing stacking separators are trimmed from the label string.
    */
   trimStackingSeparators?: boolean;
-};
+}
 /**
- * Maplex stacking alignment.
+ * Represents a Maplex stacking separator.
  *
  */
-export type MaplexStackingAlignment = 0 | 1 | 2 | 3 | 4;
-export type CIMMaplexStackingSeparator = CIMObject & {
+export interface CIMMaplexStackingSeparator {
   /**
    * Gets or sets the separator as a string of one character.
    */
@@ -586,28 +695,12 @@ export type CIMMaplexStackingSeparator = CIMObject & {
    * Gets or sets a value indicating whether or not to split after the separator.
    */
   splitAfter?: boolean;
-};
+}
 /**
- * Maplex line feature types.
+ * Represents Maplex offset along the line properties.
  *
  */
-export type MaplexLineFeatureType = 0 | 1 | 2 | 3 | 4;
-/**
- * Maplex line placement methods.
- *
- */
-export type MaplexLinePlacementMethod = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
-/**
- * Maplex units.
- *
- */
-export type MaplexUnit = 0 | 1 | 2 | 3 | 4;
-/**
- * Maplex multipart options.
- *
- */
-export type MaplexMultiPartOption = 0 | 1 | 2;
-export type CIMMaplexOffsetAlongLineProperties = CIMObject & {
+export interface CIMMaplexOffsetAlongLineProperties {
   /**
    * Gets or sets the placement method.
    */
@@ -632,18 +725,12 @@ export type CIMMaplexOffsetAlongLineProperties = CIMObject & {
    * Gets or sets a value indicating whether or not to use the line direction.
    */
   useLineDirection?: boolean;
-};
+}
 /**
- * Maplex offset along the line methods.
+ * Represents Maplex external zone priorities.
  *
  */
-export type MaplexOffsetAlongLineMethod = 0 | 1 | 2 | 3 | 4;
-/**
- * Maplex label anchor point.
- *
- */
-export type MaplexLabelAnchorPoint = 0 | 1 | 2;
-export type CIMMaplexExternalZonePriorities = CIMObject & {
+export interface CIMMaplexExternalZonePriorities {
   /**
    * Gets or sets priority for this position.
    */
@@ -680,23 +767,12 @@ export type CIMMaplexExternalZonePriorities = CIMObject & {
    * Gets or sets priority for this position.
    */
   center?: number;
-};
+}
 /**
- * Maplex point placement methods.
+ * Represents Maplex internal zone priorities.
  *
  */
-export type MaplexPointPlacementMethod = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-/**
- * Maplex anchor point types.
- *
- */
-export type MaplexAnchorPointType = 0 | 1 | 2 | 3;
-/**
- * Maplex polygon feature types.
- *
- */
-export type MaplexPolygonFeatureType = 0 | 1 | 2 | 3;
-export type CIMMaplexInternalZonePriorities = CIMObject & {
+export interface CIMMaplexInternalZonePriorities {
   /**
    * Gets or sets priority for this position.
    */
@@ -733,13 +809,12 @@ export type CIMMaplexInternalZonePriorities = CIMObject & {
    * Gets or sets priority for this position.
    */
   center?: number;
-};
+}
 /**
- * Maplex polygon placement methods.
+ * Represents Maplex rotation properties.
  *
  */
-export type MaplexPolygonPlacementMethod = 0 | 1 | 2 | 3 | 4 | 5;
-export type CIMMaplexRotationProperties = CIMObject & {
+export interface CIMMaplexRotationProperties {
   /**
    * Gets or sets a value indicating whether to enable rotation.
    */
@@ -773,18 +848,12 @@ export type CIMMaplexRotationProperties = CIMObject & {
    *  When both RotationField and RotationExpressionInfo are present RotationExpressionInfo is used.
    */
   rotationExpressionInfo?: null | CIMExpressionInfo;
-};
+}
 /**
- * Maplex rotation types.
+ * Represents Maplex strategy priorities.
  *
  */
-export type MaplexLabelRotationType = 0 | 1 | 2 | 3;
-/**
- * Maplex rotation alignment types.
- *
- */
-export type MaplexRotationAlignmentType = 0 | 1 | 2;
-export type CIMMaplexStrategyPriorities = CIMObject & {
+export interface CIMMaplexStrategyPriorities {
   /**
    * Gets or sets the priority for stacking.
    */
@@ -805,8 +874,16 @@ export type CIMMaplexStrategyPriorities = CIMObject & {
    * Gets or sets the priority for abbreviation.
    */
   abbreviation?: number;
-};
-export type CIMStandardLabelPlacementProperties = CIMLabelPlacementProperties & {
+}
+/**
+ * Represents standard label engine label placement properties.
+ *
+ */
+export interface CIMStandardLabelPlacementProperties {
+  /**
+   * Gets or sets the feature type being labeled.
+   */
+  featureType?: LabelFeatureType;
   /**
    * Gets or sets the feature weight.
    */
@@ -875,23 +952,12 @@ export type CIMStandardLabelPlacementProperties = CIMLabelPlacementProperties & 
    * Gets or sets a value indicating whether or not to allow overlapping labels.
    */
   allowOverlappingLabels?: boolean;
-};
+}
 /**
- * Standard label engine feature weights.
+ * Represents standard label engine line label position.
  *
  */
-export type StandardFeatureWeight = 0 | 1 | 2 | 3;
-/**
- * Standard label engine label weight.
- *
- */
-export type StandardLabelWeight = 0 | 1 | 2;
-/**
- * Standard label engine number of labels options.
- *
- */
-export type StandardNumLabelsOption = 0 | 1 | 2 | 3;
-export type CIMStandardLineLabelPosition = CIMObject & {
+export interface CIMStandardLineLabelPosition {
   /**
    * Gets or sets a value indicating whether or not to produce curved labels.
    */
@@ -944,8 +1010,12 @@ export type CIMStandardLineLabelPosition = CIMObject & {
    * Gets or sets a the offset from the line.
    */
   offset?: number;
-};
-export type CIMStandardLineLabelPriorities = CIMObject & {
+}
+/**
+ * Represents standard label engine line label priorities.
+ *
+ */
+export interface CIMStandardLineLabelPriorities {
   /**
    * Gets or sets a the label position priority for above and before the line.
    */
@@ -1006,13 +1076,12 @@ export type CIMStandardLineLabelPriorities = CIMObject & {
    * Gets or sets a the label position priority for below and after the line.
    */
   belowAfter?: number;
-};
+}
 /**
- * Standard label engine point placement methods.
+ * Represents standard label engine point placement priorities.
  *
  */
-export type StandardPointPlacementMethod = 0 | 1 | 2 | 3;
-export type CIMStandardPointPlacementPriorities = CIMObject & {
+export interface CIMStandardPointPlacementPriorities {
   /**
    * Gets or sets a the label position priority for the above left position.
    */
@@ -1045,18 +1114,12 @@ export type CIMStandardPointPlacementPriorities = CIMObject & {
    * Gets or sets a the label position priority for the below right position.
    */
   belowRight?: number;
-};
+}
 /**
- * Standard label engine label rotation types.
+ * Represents a symbol reference.
  *
  */
-export type StandardLabelRotationType = 0 | 1 | 2 | 3;
-/**
- * Standard label engine polygon placement methods.
- *
- */
-export type StandardPolygonPlacementMethod = 0 | 1 | 2;
-export type CIMSymbolReference = CIMObject & {
+export interface CIMSymbolReference {
   /**
    * Gets or sets the primitive overrides. Typically set by renderers at draw time.
    */
@@ -1093,8 +1156,12 @@ export type CIMSymbolReference = CIMObject & {
    * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
    */
   maxDistance?: number;
-};
-export type CIMPrimitiveOverride = CIMObject & {
+}
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride {
   /**
    * Gets or sets the primitive name this override applies to.
    */
@@ -1111,9 +1178,17 @@ export type CIMPrimitiveOverride = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
    */
   valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMSymbol = CIMObject;
-export type CIMScaleDependentSizeVariation = CIMObject & {
+}
+/**
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
+ *
+ */
+export interface CIMSymbol {}
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation {
   /**
    * Gets or sets the scale the size is associated with.
    */
@@ -1122,11 +1197,4 @@ export type CIMScaleDependentSizeVariation = CIMObject & {
    * Gets or sets the size for the associated scale.
    */
   size?: number;
-};
-export type CIMLabelClass = CIMLabelClass1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

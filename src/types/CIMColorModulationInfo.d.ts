@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMColorModulationInfo = CIMObject & {
+/**
+ * Indicates whether modulation should be used to render the point. Low modulation values will darken the point color.
+ */
+export interface CIMColorModulationInfo {
   /**
    * Gets or sets the attribute to use as a source for the color modulation.
    */
@@ -18,10 +21,4 @@ export type CIMColorModulationInfo = CIMObject & {
    * Gets or sets the maximum value to compute modulation on linear scale based on field value.
    */
   maxValue?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

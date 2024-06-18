@@ -5,16 +5,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMEditingTemplateCollectionItem1 = CIMObject & {
+export type CIMEditingTemplateCollectionItem = CIMEditingTemplateCollectionItem1[];
+
+/**
+ * Represents an item that can be stored within an editing template collection.
+ */
+export interface CIMEditingTemplateCollectionItem1 {
   /**
    * Gets or sets the name of this item.
    */
   name?: null | string;
-};
-export type CIMEditingTemplateCollectionItem = CIMEditingTemplateCollectionItem1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

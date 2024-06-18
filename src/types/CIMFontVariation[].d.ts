@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFontVariation1 = CIMObject & {
+export type CIMFontVariation = CIMFontVariation1[];
+
+/**
+ * Represents a font variation tag name and value. This is sometimes referred to as a variation-axis tag and variation-axis value.
+ */
+export interface CIMFontVariation1 {
   /**
    * Gets or sets the font variation tag name. This is a four letter identifier for a particular axis of variation, specified in the font.
    */
@@ -14,11 +19,4 @@ export type CIMFontVariation1 = CIMObject & {
    * Gets or sets the numeric value representing a particular font variation value.
    */
   value?: number;
-};
-export type CIMFontVariation = CIMFontVariation1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

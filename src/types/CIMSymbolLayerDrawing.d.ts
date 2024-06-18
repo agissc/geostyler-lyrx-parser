@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSymbolLayerDrawing = CIMObject & {
+/**
+ * Represents symbol layer drawing properties.
+ *
+ */
+export interface CIMSymbolLayerDrawing {
   /**
    * Gets or sets the symbol layer identifiers.
    */
@@ -14,16 +18,14 @@ export type CIMSymbolLayerDrawing = CIMObject & {
    * Gets or sets a value indicating whether symbol layer drawing is enabled.
    */
   useSymbolLayerDrawing?: boolean;
-};
-export type CIMSymbolLayerIdentifier = CIMObject & {
+}
+/**
+ * Represents symbol layer identifier.
+ *
+ */
+export interface CIMSymbolLayerIdentifier {
   /**
    * Gets or sets the symbol layer name.
    */
   symbolLayerName?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

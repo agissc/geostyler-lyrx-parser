@@ -5,21 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
 /**
  * Describes the different types of units.
  */
 export type UnitType = 0 | 1 | 2 | 3;
 
 /**
- * A common base class between all units, linear, area and angular units.
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
  */
-export interface Unit {
+export interface LinearUnit {
   /**
    * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
    */
@@ -40,4 +34,8 @@ export interface Unit {
    * Gets the type of unit.
    */
   unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
 }

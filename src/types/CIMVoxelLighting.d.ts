@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMVoxelLighting = CIMObject & {
+/**
+ * Represents voxel lighting.
+ *
+ */
+export interface CIMVoxelLighting {
   /**
    * Gets or sets a value indicating whether diffuse lighting is enabled.
    */
@@ -22,10 +26,4 @@ export type CIMVoxelLighting = CIMObject & {
    * Gets or sets the specular value.
    */
   specular?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

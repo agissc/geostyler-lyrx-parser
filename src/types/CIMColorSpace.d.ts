@@ -5,10 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMColorSpace = CIMObject;
-
 /**
- * Represents the base CIM object class.
- *
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export interface CIMObject {}
+export interface CIMColorSpace {}

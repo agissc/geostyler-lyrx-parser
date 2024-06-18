@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMGAMethod = CIMObject & {
+/**
+ * Represents the GA method.
+ */
+export interface CIMGAMethod {
   /**
    * Gets or sets the model.
    */
@@ -14,11 +17,8 @@ export type CIMGAMethod = CIMObject & {
    * Gets or sets the data connection.
    */
   dataConnection?: null | CIMDataConnection;
-};
-export type CIMDataConnection = CIMObject;
-
+}
 /**
- * Represents the base CIM object class.
- *
+ * Represents a data connection.
  */
-export interface CIMObject {}
+export interface CIMDataConnection {}

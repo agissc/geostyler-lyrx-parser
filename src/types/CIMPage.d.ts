@@ -5,7 +5,19 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPage = CIMObject & {
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * A list of orientation values.
+ */
+export type Orientation = 0 | 1;
+
+/**
+ * Represents the page information associated with a layout.
+ */
+export interface CIMPage {
   /**
    * Gets or sets the height of the layout in page units.
    */
@@ -50,8 +62,11 @@ export type CIMPage = CIMObject & {
    * Gets or sets a value indicating whether the printer margin should be displayed on the layout.
    */
   showMargin?: boolean;
-};
-export type CIMPrinterPreferences = CIMObject & {
+}
+/**
+ * Represents the printer preferences associated with a layout.
+ */
+export interface CIMPrinterPreferences {
   /**
    * Gets or sets the printer name.
    */
@@ -64,59 +79,11 @@ export type CIMPrinterPreferences = CIMObject & {
    * Gets or sets the paper source.
    */
   paperSource?: number;
-};
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
+}
 /**
- * Describes the different types of units.
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
  */
-export type UnitType = 0 | 1 | 2 | 3;
-export type CIMGuide = CIMObject & {
-  /**
-   * Gets or sets the position of the guide.
-   */
-  position?: number;
-  /**
-   * Gets or sets the horizontal or vertical orientation of the guide.
-   */
-  orientation?: Orientation;
-};
-/**
- * A list of orientation values.
- */
-export type Orientation = 0 | 1;
-export type CIMMargin = CIMObject & {
-  /**
-   * Gets or sets the left margin.
-   */
-  left?: number;
-  /**
-   * Gets or sets the right margin.
-   */
-  right?: number;
-  /**
-   * Gets or sets the top margin.
-   */
-  top?: number;
-  /**
-   * Gets or sets the bottom margin.
-   */
-  bottom?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * A common base class between all units, linear, area and angular units.
- */
-export interface Unit {
+export interface LinearUnit {
   /**
    * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
    */
@@ -137,4 +104,43 @@ export interface Unit {
    * Gets the type of unit.
    */
   unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
+}
+/**
+ * Represents a guide used to snap elements on a page layout.
+ */
+export interface CIMGuide {
+  /**
+   * Gets or sets the position of the guide.
+   */
+  position?: number;
+  /**
+   * Gets or sets the horizontal or vertical orientation of the guide.
+   */
+  orientation?: Orientation;
+}
+/**
+ * Represents a margin to apply around the page.
+ *
+ */
+export interface CIMMargin {
+  /**
+   * Gets or sets the left margin.
+   */
+  left?: number;
+  /**
+   * Gets or sets the right margin.
+   */
+  right?: number;
+  /**
+   * Gets or sets the top margin.
+   */
+  top?: number;
+  /**
+   * Gets or sets the bottom margin.
+   */
+  bottom?: number;
 }

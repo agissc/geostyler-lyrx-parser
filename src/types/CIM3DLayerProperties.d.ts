@@ -5,7 +5,30 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIM3DLayerProperties = CIMObject & {
+/**
+ * The types of face culling.
+ */
+export type FaceCulling3D = 0 | 1 | 2 | 3;
+/**
+ * Represents the exaggeration modes.
+ *
+ */
+export type ExaggerationMode = 0 | 1;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * The types of lighting.
+ *
+ */
+export type Lighting3D = 0 | 1 | 2 | 3 | 4 | 5;
+
+/**
+ * Represents 3D layer properties which contain properties used for 3D draw.
+ *
+ */
+export interface CIM3DLayerProperties {
   /**
    * Gets or sets a value indicating whether shadows are enabled. If true, this layer's features contribute to shadows.
    */
@@ -86,31 +109,7 @@ export type CIM3DLayerProperties = CIMObject & {
    * Gets or sets a value indicating whether to use depth writing for transparency. This should be set to true if anomalies are seen in drawing order of transparent features in the same feature class.
    */
   useDepthWritingForTransparency?: boolean;
-};
-/**
- * The types of face culling.
- */
-export type FaceCulling3D = 0 | 1 | 2 | 3;
-/**
- * Represents the exaggeration modes.
- *
- */
-export type ExaggerationMode = 0 | 1;
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-/**
- * The types of lighting.
- *
- */
-export type Lighting3D = 0 | 1 | 2 | 3 | 4 | 5;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}
 /**
  * A common base class between all units, linear, area and angular units.
  */

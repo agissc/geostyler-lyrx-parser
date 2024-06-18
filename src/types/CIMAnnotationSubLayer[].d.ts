@@ -5,8 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMAnnotationSubLayer1 = CIMSubLayerBase & {};
-export type CIMSubLayerBase = CIMObject & {
+export type CIMAnnotationSubLayer = CIMAnnotationSubLayer1[];
+
+/**
+ * Represents an annotation sublayer used to draw annotation feature classes subclasses.
+ *
+ */
+export interface CIMAnnotationSubLayer1 {
   /**
    * Gets or sets the description.
    */
@@ -43,11 +48,4 @@ export type CIMSubLayerBase = CIMObject & {
    * Gets or sets identifier that will be used to identify the layer in server.
    */
   serviceLayerID?: number;
-};
-export type CIMAnnotationSubLayer = CIMAnnotationSubLayer1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

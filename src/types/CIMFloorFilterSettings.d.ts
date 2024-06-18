@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFloorFilterSettings = CIMObject & {
+/**
+ * Represents floor filter settings.
+ *
+ */
+export interface CIMFloorFilterSettings {
   /**
    * Gets or sets the site ID for the selected site, which is used when filtering layers by SITE_ID (optional).
    */
@@ -42,10 +46,4 @@ export type CIMFloorFilterSettings = CIMObject & {
    * Gets or sets the array of level ids belonging to the selected site (only if just site has been selected).
    */
   siteLevelIDs?: string[] | null;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

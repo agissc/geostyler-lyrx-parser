@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFieldMapping1 = CIMObject & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+export type CIMFieldMapping = CIMFieldMapping1[];
+
+/**
+ * Represents a field mapping that maps fields from source layer or table to target layer or table.
+ */
+export interface CIMFieldMapping1 {
   /**
    * Gets or sets the URI of the source layer or table.
    */
@@ -18,8 +28,11 @@ export type CIMFieldMapping1 = CIMObject & {
    * Gets or sets the expression for mapping from source layer or table to target layer or table.
    */
   mappingExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -36,16 +49,4 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMFieldMapping = CIMFieldMapping1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

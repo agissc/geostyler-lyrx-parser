@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRasterDimensionalDefinition1 = CIMObject & {
+export type CIMRasterDimensionalDefinition = CIMRasterDimensionalDefinition1[];
+
+/**
+ * Represents a set of criteria used to define the multidimensional extent of a raster layer.
+ */
+export interface CIMRasterDimensionalDefinition1 {
   /**
    * Gets or sets the name of the variable.
    */
@@ -22,11 +27,4 @@ export type CIMRasterDimensionalDefinition1 = CIMObject & {
    * Gets or sets the maximum dimension values.
    */
   maximumValues?: number[] | null;
-};
-export type CIMRasterDimensionalDefinition = CIMRasterDimensionalDefinition1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

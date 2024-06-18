@@ -5,7 +5,209 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMMap = CIMDefinition & {
+/**
+ * Illumination source types.
+ *
+ */
+export type IlluminationSource = 0 | 1 | 2 | 3;
+/**
+ * Stereo source types.
+ */
+export type StereoSourceType = 0 | 1;
+/**
+ * Raster resampling types.
+ */
+export type RasterResamplingType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Stereo model display modes.
+ */
+export type StereoModelDisplayMode = 0 | 1 | 2 | 3;
+/**
+ * Stereo model orientation.
+ */
+export type StereoOrientation = 0 | 1 | 2 | 3;
+/**
+ * The map viewing modes.
+ */
+export type MapViewingMode = 0 | 1 | 2 | 3;
+/**
+ * Types of maps.
+ *
+ */
+export type MapType = 0 | 1 | 2 | 3 | 4 | 5;
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Slider step types.
+ *
+ */
+export type SliderStepType = 0 | 1 | 2;
+/**
+ * Slider extent types.
+ *
+ */
+export type SliderExtentType = 0 | 1 | 2 | 3;
+/**
+ * Slider interaction modes.
+ *
+ */
+export type SliderInteractionMode = 0 | 1;
+/**
+ * Mode used for snapping the map's current time settings.
+ */
+export type TimeSnapMode = 0 | 1 | 2;
+/**
+ * Time offset direction.
+ *
+ */
+export type TimeOffsetDirection = 0 | 1 | 2;
+/**
+ * Specifies the method of transition for a value in a keyframe.
+ */
+export type AnimationTransition = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+/**
+ * Define the type of algorithm used to calculate transitions between animation camera keyframes.
+ */
+export type EsriAnimationTransitionMode = 0 | 1 | 2;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+/**
+ * Represents the direction from an edge of the view used to clip a layer.
+ */
+export type SwipeDirection = 0 | 1 | 2 | 3 | 4;
+/**
+ * Time relation types.
+ */
+export type EsriTimeRelation = 0 | 1 | 2 | 3;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Blending modes.
+ */
+export type BlendingMode =
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20
+  | 21
+  | 22
+  | 23;
+/**
+ * A list of anchor positions for an element on a page layout.
+ */
+export type Anchor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+/**
+ * Type of locators.
+ *
+ */
+export type LocatorType = 0 | 1 | 2;
+/**
+ * Color vision deficiency types.
+ */
+export type ColorVisionDeficiencyType = 0 | 1 | 2 | 3;
+/**
+ * Snap XY tolerance units.
+ *
+ */
+export type SnapXYToleranceUnit = 0 | 1;
+/**
+ * Snap request types.
+ *
+ */
+export type SnapRequestType = 0 | 1 | 2 | 3;
+/**
+ * Specifies color model used for maps and layouts.
+ *
+ */
+export type ColorModel = 0 | 1;
+/**
+ * Scale format types.
+ */
+export type ScaleFormatType = 0 | 1;
+/**
+ * Scale display formats.
+ */
+export type ScaleDisplayFormat = 0 | 1 | 2 | 3;
+/**
+ * Defines modes for specifying Scale for ground to grid corrections.
+ */
+export type GroundToGridScaleType = 0 | 1;
+/**
+ * Specifies the clipping mode used for the map.
+ *
+ */
+export type ClippingMode = 0 | 1 | 2 | 3;
+/**
+ * Specifies the clipping mode used for the map.
+ *
+ */
+export type ClipDistanceMode = 0 | 1;
+/**
+ * Defines the capture mode used to specify new Z values when creating or modifying features.
+ */
+export type EditingElevationCaptureMode = 0 | 1 | 2;
+
+/**
+ * Represents a map or scene.
+ *
+ */
+export interface CIMMap {
+  /**
+   * Gets or sets the name.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
+   */
+  uri?: null | string;
+  /**
+   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourceURI?: null | string;
+  /**
+   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
+   */
+  sourceModifiedTime?: null | TimeInstant;
+  /**
+   * Gets or sets the metadata URI.
+   */
+  metadataURI?: null | string;
+  /**
+   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
+   */
+  useSourceMetadata?: boolean;
+  /**
+   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourcePortalUrl?: null | string;
   /**
    * Gets or sets the default camera.
    */
@@ -267,50 +469,24 @@ export type CIMMap = CIMDefinition & {
    * Gets or sets a value indicating whether auto fill mode is enabled or disabled for a map.
    */
   autoFillFeatureCache?: boolean;
-};
-export type CIMDefinition = CIMObject & {
-  /**
-   * Gets or sets the name.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
-   */
-  uri?: null | string;
-  /**
-   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourceURI?: null | string;
-  /**
-   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
-   */
-  sourceModifiedTime?: null | TimeInstant;
-  /**
-   * Gets or sets the metadata URI.
-   */
-  metadataURI?: null | string;
-  /**
-   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
-   */
-  useSourceMetadata?: boolean;
-  /**
-   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
-  /**
-   * Gets or sets the time.
-   */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -323,8 +499,12 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMViewCamera = CIMObject & {
+}
+/**
+ * Represents a view camera.
+ *
+ */
+export interface CIMViewCamera {
   /**
    * Gets or sets the heading.
    */
@@ -361,8 +541,12 @@ export type CIMViewCamera = CIMObject & {
    * Gets or sets the width of the viewport in meters. Viewport height and width are used for consistent camera positioning in isometric 3D views, eye separation in 3D stereo views and defines the focal distance in perspective views.
    */
   viewportWidth?: number;
-};
-export type CIMIlluminationProperties = CIMObject & {
+}
+/**
+ * Represents illumination properties.
+ *
+ */
+export interface CIMIlluminationProperties {
   /**
    * Gets or sets the ambient light value.
    */
@@ -415,13 +599,12 @@ export type CIMIlluminationProperties = CIMObject & {
    * Gets or sets a value indicating whether to enable eye-dome lighting for a scene or map.
    */
   enableEyeDomeLighting?: boolean;
-};
+}
 /**
- * Illumination source types.
+ * Represents map stereo properties.
  *
  */
-export type IlluminationSource = 0 | 1 | 2 | 3;
-export type CIMMapStereoProperties = CIMObject & {
+export interface CIMMapStereoProperties {
   /**
    * Gets or sets the left image of the stereo pair.
    */
@@ -470,13 +653,16 @@ export type CIMMapStereoProperties = CIMObject & {
    * Gets or sets the stereo model display orientation.
    */
   orientation?: StereoOrientation;
-};
-export type CIMDataConnection = CIMObject;
+}
 /**
- * Stereo source types.
+ * Represents a data connection.
  */
-export type StereoSourceType = 0 | 1;
-export type CIMRasterColorizer = CIMObject & {
+export interface CIMDataConnection {}
+/**
+ * Represents a raster colorizer.
+ *
+ */
+export interface CIMRasterColorizer {
   /**
    * Gets or sets the raster resampling type.
    */
@@ -493,12 +679,11 @@ export type CIMRasterColorizer = CIMObject & {
    * Gets or sets the no data color.
    */
   noDataColor?: null | CIMColor;
-};
+}
 /**
- * Raster resampling types.
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
  */
-export type RasterResamplingType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMColor = CIMObject & {
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -511,26 +696,16 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
+}
 /**
- * Stereo model display modes.
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export type StereoModelDisplayMode = 0 | 1 | 2 | 3;
+export interface CIMColorSpace {}
 /**
- * Stereo model orientation.
- */
-export type StereoOrientation = 0 | 1 | 2 | 3;
-/**
- * The map viewing modes.
- */
-export type MapViewingMode = 0 | 1 | 2 | 3;
-/**
- * Types of maps.
+ * Represents slider settings.
  *
  */
-export type MapType = 0 | 1 | 2 | 3 | 4 | 5;
-export type CIMSliderSettings = CIMObject & {
+export interface CIMSliderSettings {
   /**
    * Gets or sets the extent shown on the slider.
    */
@@ -651,8 +826,12 @@ export type CIMSliderSettings = CIMObject & {
    * Gets or sets the direction to offset the time span relative to the current time.
    */
   liveModeOffsetDirection?: TimeOffsetDirection;
-};
-export type CIMRange = CIMObject & {
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -661,36 +840,11 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
+}
 /**
- * Time units.
+ * Represents a animation view track.
  */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-/**
- * Slider step types.
- *
- */
-export type SliderStepType = 0 | 1 | 2;
-/**
- * Slider extent types.
- *
- */
-export type SliderExtentType = 0 | 1 | 2 | 3;
-/**
- * Slider interaction modes.
- *
- */
-export type SliderInteractionMode = 0 | 1;
-/**
- * Mode used for snapping the map's current time settings.
- */
-export type TimeSnapMode = 0 | 1 | 2;
-/**
- * Time offset direction.
- *
- */
-export type TimeOffsetDirection = 0 | 1 | 2;
-export type CIMViewTrack = CIMObject & {
+export interface CIMViewTrack {
   /**
    * Gets or sets the name of the track.
    */
@@ -731,8 +885,11 @@ export type CIMViewTrack = CIMObject & {
    * Gets or sets what time in the animation to end at for exporting.
    */
   endFrameTime?: number;
-};
-export type CIMViewKeyframe = CIMObject & {
+}
+/**
+ * Represents a view keyframe.
+ */
+export interface CIMViewKeyframe {
   /**
    * Gets or sets the value of time in seconds that the keyframe exists in the track.
    */
@@ -761,8 +918,11 @@ export type CIMViewKeyframe = CIMObject & {
    * Gets or sets the collection of exploratory analysis.
    */
   exploratoryAnalysis?: CIMKeyframeAnalysis[] | null;
-};
-export type CIMKeyframeCamera = CIMObject & {
+}
+/**
+ * Represents a camera keyframe.
+ */
+export interface CIMKeyframeCamera {
   /**
    * Gets or sets the camera for the keyframe.
    */
@@ -819,1205 +979,7 @@ export type CIMKeyframeCamera = CIMObject & {
    * Gets or sets the method of transition for the field of view of the camera.
    */
   fieldOfViewTransition?: AnimationTransition;
-};
-/**
- * Specifies the method of transition for a value in a keyframe.
- */
-export type AnimationTransition = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-/**
- * Define the type of algorithm used to calculate transitions between animation camera keyframes.
- */
-export type EsriAnimationTransitionMode = 0 | 1 | 2;
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-export type Envelope = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Envelope.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of this instance. Always returns 5.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X minimum of this instance.
-   */
-  xMin?: number;
-  /**
-   * Gets the Y minimum of this instance.
-   */
-  yMin?: number;
-  /**
-   * Gets the X maximum of this instance.
-   */
-  xMax?: number;
-  /**
-   * Gets the Y maximum of this instance.
-   */
-  yMax?: number;
-  /**
-   * Gets the Z minimum of this instance.
-   */
-  zMin?: number;
-  /**
-   * Gets the Z maximum of this instance.
-   */
-  zMax?: number;
-  /**
-   * Gets the M minimum of this instance.
-   */
-  mMin?: number;
-  /**
-   * Gets the M maximum of this instance.
-   */
-  mMax?: number;
-  /**
-   * Gets the ID minimum of this instance.
-   */
-  idMin?: number;
-  /**
-   * Gets the ID maximum of this instance.
-   */
-  idMax?: number;
-  /**
-   * Gets the center of this instance as a Coordinate2D.
-   */
-  centerCoordinate?: Coordinate2D;
-  /**
-   * Gets the center of this instance as a MapPoint.
-   */
-  center?: null | MapPoint;
-  /**
-   * Gets the height of this instance.
-   */
-  height?: number;
-  /**
-   * Gets the width of this instance.
-   */
-  width?: number;
-  /**
-   * Gets the depth of this instance.
-   */
-  depth?: number;
-  /**
-   * Gets the perimeter length of this instance.
-   */
-  length?: number;
-  /**
-   * Gets the 3D length of the perimeter of this instance.
-   */
-  length3D?: number;
-  /**
-   * Gets the area of this instance.
-   */
-  area?: number;
-  /**
-   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type MapPoint = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Point.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of the geometry. This is always 1.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X-coordinate.
-   */
-  x?: number;
-  /**
-   * Gets the Y-coordinate.
-   */
-  y?: number;
-  /**
-   * Gets the Z-coordinate.
-   */
-  z?: number;
-  /**
-   * Gets the measure value.
-   */
-  m?: number;
-  /**
-   * Gets the ID value.
-   */
-  id?: number;
-  /**
-   * Gets a Coordinate2D structure with the X and Y values.
-   */
-  coordinate2D?: Coordinate2D;
-  /**
-   * Gets a Coordinate3D structure with the X, Y, and Z values.
-   */
-  coordinate3D?: Coordinate3D;
-  /**
-   * Gets the minimum enclosing envelope of the geometry.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-export type Multipoint = Geometry & {
-  /**
-   * Gets the geometry type. Always returns Multipoint.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the collection of points.
-   */
-  points?: MapPoint[] | null;
-  /**
-   * Gets the count of points in this instance.
-   */
-  pointCount?: number;
-  /**
-   * Gets the minimum enclosing envelope of this instance.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not this instance is empty.
-   */
-  isEmpty?: boolean;
-};
-export type CIMKeyframeLayer = CIMObject & {
-  /**
-   * Gets or sets the path to the layer.
-   */
-  layerURI?: null | string;
-  /**
-   * Gets or sets the method of transition for the visibility of the layer.
-   */
-  transparency?: number;
-  /**
-   * Gets or sets the method of transition for the transparency of the layer.
-   */
-  transparencyTransition?: AnimationTransition;
-  /**
-   * Gets or sets a value indicating whether the layer is visible.
-   */
-  visible?: boolean;
-  /**
-   * Gets or sets the direction to clip from an edge.
-   */
-  swipeDirection?: SwipeDirection;
-  /**
-   * Gets or sets the amount of the visible area to clip.
-   */
-  swipePercent?: number;
-  /**
-   * Gets or sets the vertical exaggeration.
-   */
-  verticalExaggeration?: number;
-  /**
-   * Gets or sets the vertical exaggeration.
-   */
-  zOffset?: number;
-};
-/**
- * Represents the direction from an edge of the view used to clip a layer.
- */
-export type SwipeDirection = 0 | 1 | 2 | 3 | 4;
-export type CIMKeyframeRange = CIMObject & {
-  /**
-   * Gets or sets the value of the active range.
-   */
-  range?: null | CIMRange;
-  /**
-   * Gets or sets the method of transition for the minimum value of the range.
-   */
-  minTransition?: AnimationTransition;
-  /**
-   * Gets or sets the method of transition for the maximum value of the range.
-   */
-  maxTransition?: AnimationTransition;
-  /**
-   * Gets or sets a value indicating whether the range should be all values less than the minimum value and greater than the maximum value.
-   */
-  isExclusion?: boolean;
-  /**
-   * Gets or sets the layer range extents.  Each layer range applies to a single map.
-   */
-  layerRangeExtents?: CIMLayerRange[] | null;
-  /**
-   * Gets or sets the method of transition for the layer range extents.
-   */
-  layerRangeTransition?: AnimationTransition;
-  /**
-   * Gets or sets the URI of the layer with the active range.  Specify a single layer or leave empty to indicate all layers that share the active range name.
-   */
-  activeRangeLayer?: null | string;
-  /**
-   * Gets or sets the active range name.  Used to update which range is active.
-   */
-  activeRangeName?: null | string;
-};
-export type CIMLayerRange = CIMObject & {
-  /**
-   * Gets or sets the URI of the layer this range is defined for.
-   */
-  layerURI?: null | string;
-  /**
-   * Gets or sets the range name.
-   */
-  rangeName?: null | string;
-  /**
-   * Gets or sets the current range.
-   */
-  currentRange?: null | CIMRange;
-  /**
-   * Gets or sets a value indicating whether or not this is an exclusion range.
-   */
-  isExclusion?: boolean;
-};
-export type CIMKeyframeTime = CIMObject & {
-  /**
-   * Gets or sets the value of the time extent.
-   */
-  time?: null | TimeExtent;
-  /**
-   * Gets or sets the time relation.
-   */
-  timeRelation?: EsriTimeRelation;
-  /**
-   * Gets or sets the method of transition for the end value of the time extent.
-   */
-  endTimeTransition?: AnimationTransition;
-  /**
-   * Gets or sets the method of transition for the start value of the time extent.
-   */
-  startTimeTransition?: AnimationTransition;
-};
-export type TimeExtent = TimeValue & {
-  /**
-   * Gets or sets the start time of the extent.
-   */
-  startTime?: string;
-  /**
-   * Gets or sets the end time of the extent.
-   */
-  endTime?: string;
-  /**
-   * Gets or sets a value indicating if the time extent is empty.
-   */
-  empty?: boolean;
-  /**
-   * Gets or sets a value indicating if the extent contains a start time. If false the time extent has no lower bound.
-   */
-  startTimeSpecified?: boolean;
-  /**
-   * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
-   */
-  endTimeSpecified?: boolean;
-};
-/**
- * Time relation types.
- */
-export type EsriTimeRelation = 0 | 1 | 2 | 3;
-export type CIMKeyframeSurface = CIMObject & {
-  /**
-   * Gets or sets the id for the surface.
-   */
-  surfaceID?: null | string;
-  /**
-   * Gets or sets the method of transition for the surface.
-   */
-  transition?: AnimationTransition;
-  /**
-   * Gets or sets the vertical exaggeration for the surface.
-   */
-  verticalExaggeration?: number;
-  /**
-   * Gets or sets a value indicating whether the surface is visible.
-   */
-  visible?: boolean;
-  /**
-   * Gets or sets the direction to clip from an edge.
-   */
-  swipeDirection?: SwipeDirection;
-  /**
-   * Gets or sets the amount of the visible area to clip.
-   */
-  swipePercent?: number;
-  /**
-   * Gets or sets the elevation sources.
-   */
-  baseSources?: CIMKeyframeElevationSource[] | null;
-};
-export type CIMKeyframeElevationSource = CIMObject & {
-  /**
-   * Gets or sets the id for the elevation source.
-   */
-  sourceID?: null | string;
-  /**
-   * Gets or sets a value indicating whether the elevation source is visible.
-   */
-  visible?: boolean;
-};
-export type CIMKeyframeAnalysis = CIMObject & {
-  /**
-   * Gets or sets the exploratory analysis definition.
-   */
-  analysis?: null | CIMExploratoryAnalysisDefinition;
-  /**
-   * Gets or sets the method of transition for the exploratory analysis item.
-   */
-  transition?: AnimationTransition;
-};
-export type CIMExploratoryAnalysisDefinition = CIMObject & {
-  /**
-   * Gets or sets the id.
-   */
-  id?: number;
-};
-export type CIMAnimationScreenGraphic = CIMObject & {
-  /**
-   * Gets or sets the graphic to be displayed.
-   */
-  graphic?: null | CIMGraphic;
-  /**
-   * Gets or sets an identifier for the user.
-   */
-  alias?: null | string;
-  /**
-   * Gets or sets the graphic properties keyframes.
-   */
-  keyframes?: CIMAnimationScreenGraphicKeyframe[] | null;
-};
-export type CIMGraphic = CIMObject & {
-  /**
-   * Gets or sets the symbol for the graphic.
-   */
-  symbol?: null | CIMSymbolReference;
-  /**
-   * Gets or sets the transparency of the graphic. Typically set by the layer or element during draw. Change the transparency of layers in the symbol for persistent changes.
-   */
-  transparency?: number;
-  /**
-   * Gets or sets the blending mode of the graphic. Typically set by the layer or element during draw.
-   */
-  blendingMode?: BlendingMode;
-  /**
-   * Gets or sets an array of masks for the graphic. Typically set by the layer or element during draw.
-   */
-  masks?: unknown[] | null;
-  /**
-   * Gets or sets the reference scale of the graphic. Typically set by the layer or element during draw.
-   */
-  referenceScale?: number;
-  /**
-   * Gets or sets a property set of attributes. Typically set by the layer or element during draw.
-   */
-  attributes?: null | {
-    [k: string]: unknown;
-  };
-  /**
-   * Gets or sets the placement anchor of the graphic.
-   */
-  placement?: Anchor;
-};
-export type CIMSymbolReference = CIMObject & {
-  /**
-   * Gets or sets the primitive overrides. Typically set by renderers at draw time.
-   */
-  primitiveOverrides?: CIMPrimitiveOverride[] | null;
-  /**
-   * Gets or sets the style path. Reserved for future use.
-   */
-  stylePath?: null | string;
-  /**
-   * Gets or sets the symbol.
-   */
-  symbol?: null | CIMSymbol;
-  /**
-   * Gets or sets the symbol name.
-   */
-  symbolName?: null | string;
-  /**
-   * Gets or sets the minimum scale range the symbol reference should be displayed at.
-   */
-  minScale?: number;
-  /**
-   * Gets or sets the maximum scale range the symbol reference should be displayed at.
-   */
-  maxScale?: number;
-  /**
-   * Gets or sets an array of scale dependent sizes.
-   */
-  scaleDependentSizeVariation?: CIMScaleDependentSizeVariation[] | null;
-  /**
-   * Gets or sets the minimum distance at which symbols are visible. Objects closer than this don't get rendered.
-   */
-  minDistance?: number;
-  /**
-   * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
-   */
-  maxDistance?: number;
-};
-export type CIMPrimitiveOverride = CIMObject & {
-  /**
-   * Gets or sets the primitive name this override applies to.
-   */
-  primitiveName?: null | string;
-  /**
-   * Gets or sets the property name in the primitive this override applies to.
-   */
-  propertyName?: null | string;
-  /**
-   * Gets or sets the expression.
-   */
-  expression?: null | string;
-  /**
-   * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
-   */
-  valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
-  /**
-   * Gets or sets the human readable text that describes the expression.
-   */
-  title?: null | string;
-  /**
-   * Gets or sets the Arcade expression used to evaluate and return the value that a property expects.
-   */
-  expression?: null | string;
-  /**
-   * Gets or sets the Name of the expression.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the ReturnType of the expression.
-   */
-  returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMSymbol = CIMObject;
-export type CIMScaleDependentSizeVariation = CIMObject & {
-  /**
-   * Gets or sets the scale the size is associated with.
-   */
-  scale?: number;
-  /**
-   * Gets or sets the size for the associated scale.
-   */
-  size?: number;
-};
-/**
- * Blending modes.
- */
-export type BlendingMode =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23;
-/**
- * A list of anchor positions for an element on a page layout.
- */
-export type Anchor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-export type CIMAnimationScreenGraphicKeyframe = CIMObject & {
-  /**
-   * Gets or sets the time in seconds relative to the beginning of the track.
-   */
-  trackTime?: number;
-  /**
-   * Gets or sets the horizontal placement percent of the graphic anchor position on the viewer (0 is left edge, 1 is right edge).
-   */
-  anchorX?: number;
-  /**
-   * Gets or sets the vertical placement percent of the graphic anchor position on the viewer (0 is top edge, 1 is bottom edge).
-   */
-  anchorY?: number;
-  /**
-   * Gets or sets the transparency of the graphic.
-   */
-  transparency?: number;
-  /**
-   * Gets or sets the size multiplier for the graphic.
-   */
-  scale?: number;
-  /**
-   * Gets or sets the pixel width for the graphic. It applies only to the animation screen graphic that contains a polygon graphic.
-   */
-  elementWidth?: number;
-  /**
-   * Gets or sets the pixel height for the graphic. It applies only to the animation screen graphic that contains a polygon graphic.
-   */
-  elementHeight?: number;
-  /**
-   * Gets or sets the angle of rotation (in degrees) for the graphic. It applies only to the animation screen graphic that contains a polygon graphic.
-   */
-  rotation?: number;
-};
-export type CIMLocator = CIMObject & {
-  /**
-   * Gets or sets the type of locator for the LocatorURI specified.
-   */
-  locatorType?: LocatorType;
-  /**
-   * Gets or sets the name of the locator.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets locator source URI. It can either be a local path, URL or a layer URI from this map. e.g. file://<folder_path>,  http://<url>, CIMPATH=<cim_layer_UR>.
-   */
-  locatorURI?: null | string;
-  /**
-   * Gets or sets a value indicating whether or not to suggestions should enabled if the locator supports suggestions.
-   */
-  suggestionsEnabled?: boolean;
-  /**
-   * Gets or sets a value indicating whether or not to this locator is enabled.
-   */
-  enabled?: boolean;
-  /**
-   * Gets or sets a value indicating whether the locator supports suggestions.
-   */
-  suggestionsSupported?: boolean;
-};
-/**
- * Type of locators.
- *
- */
-export type LocatorType = 0 | 1 | 2;
-export type CIMStringMap = CIMObject & {
-  /**
-   * Gets or sets the key.
-   */
-  key?: null | string;
-  /**
-   * Gets or sets the value.
-   */
-  value?: null | string;
-};
-export type CIMVisualEffect = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether the effect should be applied to the scene.
-   */
-  isActive?: boolean;
-};
-export type CIMCameraEffect = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether the effect should be applied to the scene.
-   */
-  isActive?: boolean;
-};
-export type CIMPostprocessingEffect = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether the effect should be applied to the scene.
-   */
-  isActive?: boolean;
-};
-/**
- * Color vision deficiency types.
- */
-export type ColorVisionDeficiencyType = 0 | 1 | 2 | 3;
-export type CIMBookmark = CIMObject & {
-  /**
-   * Gets or sets the bookmark name.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the bookmark group name.
-   */
-  groupName?: null | string;
-  /**
-   * Gets or sets the URI of the binary reference containing the thumbnail image path.
-   */
-  thumbnailImagePath?: null | string;
-  /**
-   * Gets or sets the camera.
-   */
-  camera?: null | CIMViewCamera;
-  /**
-   * Gets or sets the location.
-   */
-  location?: null | Envelope;
-  /**
-   * Gets or sets the time extent.
-   */
-  timeExtent?: null | TimeExtent;
-  /**
-   * Gets or sets the time relation.
-   */
-  timeRelation?: EsriTimeRelation;
-  /**
-   * Gets or sets the range extent.  Can be used across multiple maps that share the same range name.
-   * RangeExtent.LayerURI is not used.
-   */
-  rangeExtent?: null | CIMLayerRange;
-  /**
-   * Gets or sets the layer range extents.  Each layer range applies to a single map.
-   */
-  layerRangeExtents?: CIMLayerRange[] | null;
-  /**
-   * Gets or sets the bookmark description.
-   */
-  description?: null | string;
-  /**
-   * Gets or sets the URI to the standalone video.
-   */
-  videoURI?: null | string;
-  /**
-   * Gets or sets the video elapsed time in seconds.
-   */
-  videoElapsedTime?: number;
-};
-export type Polygon = Multipart & {
-  /**
-   * Gets the geometry type. Always returns Polygon.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the area of this instance.
-   */
-  area?: number;
-  /**
-   * Gets the number of exterior rings in this polygon.
-   */
-  exteriorRingCount?: number;
-};
-export type Multipart = Geometry & {
-  /**
-   * Gets the length of this instance.
-   */
-  length?: number;
-  /**
-   * Gets the 3D length of this instance.
-   */
-  length3D?: number;
-  /**
-   * Gets a boolean value indicating whether or not the multipart contains segments other than straight line segments.
-   */
-  hasCurves?: boolean;
-  /**
-   * Gets the parts in this instance.
-   */
-  parts?: Segment[][] | null;
-  /**
-   * Gets the number of parts in this instance.
-   */
-  partCount?: number;
-  /**
-   * Gets a collection of points representing the vertices of all the parts.
-   */
-  points?: MapPoint[] | null;
-  /**
-   * Gets the count of all points in all parts for this instance.
-   */
-  pointCount?: number;
-  /**
-   * Gets a value indicating whether or not this instance is empty.
-   */
-  isEmpty?: boolean;
-  /**
-   * Gets the minimum enclosing envelope of this instance.
-   */
-  extent?: null | Envelope;
-};
-export type CIMDatumTransform = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether or not this is a forward transformation.
-   */
-  forward?: boolean;
-  /**
-   * Gets or sets the transformation.
-   */
-  geoTransformation?: null | DatumTransformation;
-};
-export type CIMGeneralPlacementProperties = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether or not to draw unplaced labels.
-   */
-  drawUnplacedLabels?: boolean;
-  /**
-   * Gets or sets the inverted label tolerance which is the angle at which the label orientation is switched.
-   */
-  invertedLabelTolerance?: number;
-  /**
-   * Gets or sets a value indicating whether or not rotate labels when the display rotates.
-   */
-  rotateLabelWithDisplay?: boolean;
-  /**
-   * Gets or sets the unplaced label color.
-   */
-  unplacedLabelColor?: null | CIMColor;
-};
-export type CIMSnappingProperties = CIMObject & {
-  /**
-   * Gets or sets the XY tolerance.
-   */
-  xyTolerance?: number;
-  /**
-   * Gets or sets the XY tolerance unit.
-   */
-  xyToleranceUnit?: SnapXYToleranceUnit;
-  /**
-   * Gets or sets the Z tolerance.
-   */
-  zTolerance?: number;
-  /**
-   * Gets or sets a value indicating whether Z tolerance is enabled.
-   */
-  zToleranceEnabled?: boolean;
-  /**
-   * Gets or sets a value indicating whether snapping to the sketch is enabled.
-   */
-  snapToSketchEnabled?: boolean;
-  /**
-   * Gets or sets the snap request type.
-   */
-  snapRequestType?: SnapRequestType;
-  /**
-   * Gets or sets geometric feedback color.
-   */
-  geometricFeedbackColor?: null | CIMColor;
-  /**
-   * Gets or sets the visual feedback color.
-   */
-  visualFeedbackColor?: null | CIMColor;
-  /**
-   * Gets or sets a value indicating whether Z snapping is enabled.
-   */
-  isZSnappingEnabled?: boolean;
-  /**
-   * Gets or sets a value indicating whether the snap tip is fully or partially visible.
-   */
-  snapTipDisplayParts?: number;
-};
-/**
- * Snap XY tolerance units.
- *
- */
-export type SnapXYToleranceUnit = 0 | 1;
-/**
- * Snap request types.
- *
- */
-export type SnapRequestType = 0 | 1 | 2 | 3;
-export type CIMMapTimeDisplay = CIMObject & {
-  /**
-   * Gets or sets the current time extent.
-   */
-  currentTimeExtent?: null | TimeExtent;
-  /**
-   * Gets or sets the default time interval.
-   */
-  defaultTimeInterval?: number;
-  /**
-   * Gets or sets the default time interval units.
-   */
-  defaultTimeIntervalUnits?: EsriTimeUnits;
-  /**
-   * Gets or sets the default time window.
-   */
-  defaultTimeWindow?: number;
-  /**
-   * Gets or sets the full time extent.
-   */
-  fullTimeExtent?: null | TimeExtent;
-  /**
-   * Gets or sets the time reference.
-   */
-  timeReference?: null | TimeReference;
-  /**
-   * Gets or sets the time value.
-   */
-  timeValue?: null | TimeValue;
-  /**
-   * Gets or sets a value indicating whether or not this map has live data.
-   */
-  hasLiveData?: boolean;
-  /**
-   * Gets or sets the time relation.
-   */
-  timeRelation?: EsriTimeRelation;
-  /**
-   * Gets or sets a cached set of unique OLE date values.  Expected to be in the CIMMapTimeDisplay's TimeReference.
-   */
-  uniqueTimes?: number[] | null;
-};
-/**
- * Specifies color model used for maps and layouts.
- *
- */
-export type ColorModel = 0 | 1;
-export type CIMScale = CIMObject & {
-  /**
-   * Gets or sets the  numeric value representing the 2D scale or 3D distance.
-   */
-  value?: number;
-  /**
-   * Gets or sets the string value for the alias name of the Scale.
-   */
-  alias?: null | string;
-};
-export type CIMScaleFormat = CIMObject & {
-  /**
-   * Gets or sets the format used to display scale, i.e., 1:20000 or 1 inch equals 5 miles.
-   */
-  formatType?: ScaleFormatType;
-  /**
-   * Gets or sets the character(s) used to separate '1' from the scale in an absolute scale, e.g ':' in 1:20000.
-   */
-  separator?: null | string;
-  /**
-   * Gets or sets a value indicating whether to reverse the standard order. e.g. [1:1000] becomes [1000:1] and [1 in=10 mi] becomes [10 mi=1 in].
-   */
-  reverseOrder?: boolean;
-  /**
-   * Gets or sets the number the scale has to be less than or equal to display decimal places.
-   */
-  decimalPlacesThreshold?: number;
-  /**
-   * Gets or sets the number decimal places.
-   */
-  decimalPlaces?: number;
-  /**
-   * Gets or sets a value indicating whether to show the thousands separator, e.g., 1:20,000.
-   */
-  showThousandSeparator?: boolean;
-  /**
-   * Gets or sets the page units used to display a scale,e.g, the 'inch' in 1 inch=5 miles.
-   */
-  pageUnits?: null | LinearUnit;
-  /**
-   * Gets or sets the number preceding the page units in a scale, i.e., the '1' in 1 inch=5 miles.
-   */
-  pageUnitValue?: number;
-  /**
-   * Gets or sets the text used for 'equals', e.g, '=' in 1 inch=5 miles.
-   */
-  equalsSign?: null | string;
-  /**
-   * Gets or sets the map units used to display a scale, e.g, the 'miles' in 1 inch=5 miles.
-   */
-  mapUnits?: null | LinearUnit;
-  /**
-   * Gets or sets a value indicating whether to capitalize the units in the scale string.
-   */
-  capitalizeUnits?: boolean;
-  /**
-   * Gets or sets a value indicating whether to abbreviate the units in the scale string.
-   */
-  abbreviateUnits?: boolean;
-};
-/**
- * Scale format types.
- */
-export type ScaleFormatType = 0 | 1;
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
-/**
- * Scale display formats.
- */
-export type ScaleDisplayFormat = 0 | 1 | 2 | 3;
-export type CompositeHVDatumTransformation = DatumTransformation & {
-  /**
-   * Gets the number of single transformations in this composite transformation.
-   */
-  count?: number;
-  /**
-   * Gets the list of transformations in this composite transformation.
-   */
-  transformations?: HVDatumTransformation[] | null;
-};
-export type HVDatumTransformation = DatumTransformation & {
-  /**
-   * Gets the well-known ID of this horizontal/vertical transformation.
-   */
-  wkid?: number;
-  /**
-   * Gets the well-known text of this horizontal/vertical transformation.
-   */
-  wkt?: null | string;
-  /**
-   * Gets the name of this horizontal/vertical transformation.
-   */
-  name?: null | string;
-  /**
-   * Gets a value indicating if this horizontal/vertical transformation is forward or inversed.
-   */
-  isForward?: boolean;
-  /**
-   * Gets the input spatial reference of this transformation.
-   */
-  inputSpatialReference?: null | SpatialReference;
-  /**
-   * Gets the output spatial reference of this transformation.
-   */
-  outputSpatialReference?: null | SpatialReference;
-};
-export type CIMGroundToGridCorrection = CIMObject & {
-  /**
-   * Gets or sets a value indicating whether ground to grid corrections are currently in operation for the map.
-   */
-  enabled?: boolean;
-  /**
-   * Gets or sets a value indicating whether the direction angle will be used in the ground to grid correction.
-   */
-  useDirection?: boolean;
-  /**
-   * Gets or sets a value indicating whether the distance scale will be used in the ground to grid correction.
-   */
-  useScale?: boolean;
-  /**
-   * Gets or sets the direction angle (in degrees) that will be used in ground to grid calculations.
-   */
-  direction?: number;
-  /**
-   * Gets or sets the type of scale that will be used in ground to grid calculations.
-   */
-  scaleType?: GroundToGridScaleType;
-  /**
-   * Gets or sets the constant scale factor used in ground to grid calculations,
-   * only when ScaleType equals ConstantFactor.
-   */
-  constantScaleFactor?: number;
-};
-/**
- * Defines modes for specifying Scale for ground to grid corrections.
- */
-export type GroundToGridScaleType = 0 | 1;
-/**
- * Specifies the clipping mode used for the map.
- *
- */
-export type ClippingMode = 0 | 1 | 2 | 3;
-/**
- * Specifies the clipping mode used for the map.
- *
- */
-export type ClipDistanceMode = 0 | 1;
-export type CIMEditingElevation = CIMObject & {
-  /**
-   * Gets or sets the elevation capture mode.
-   */
-  captureMode?: EditingElevationCaptureMode;
-  /**
-   * Gets or sets the the value used when CaptureMode is Constant.
-   */
-  constantValue?: number;
-  /**
-   * Gets or sets the Unit used when CaptureMode is Constant.
-   */
-  constantValueUnit?: null | LinearUnit;
-  /**
-   * Gets or sets the URI of the elevation surface layer to be used when CaptureMode is Surface.
-   */
-  elevationSurfaceLayerURI?: null | string;
-};
-/**
- * Defines the capture mode used to specify new Z values when creating or modifying features.
- */
-export type EditingElevationCaptureMode = 0 | 1 | 2;
-export type CIMEditingTemplateCollection = CIMEditingTemplateCollectionItem & {
-  /**
-   * Gets or sets the array of items stored within this collection.
-   */
-  contents?: CIMEditingTemplateCollectionItem[] | null;
-  /**
-   * Gets or sets a value indicating whether this collection is expanded in the user interface.
-   */
-  expanded?: boolean;
-};
-export type CIMEditingTemplateCollectionItem = CIMObject & {
-  /**
-   * Gets or sets the name of this item.
-   */
-  name?: null | string;
-};
-export type CIMFieldMapping = CIMObject & {
-  /**
-   * Gets or sets the URI of the source layer or table.
-   */
-  sourceURI?: null | string;
-  /**
-   * Gets or sets the URI of the target layer or table.
-   */
-  targetURI?: null | string;
-  /**
-   * Gets or sets the expression for mapping from source layer or table to target layer or table.
-   */
-  mappingExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMFloorAwareMapProperties = CIMObject & {
-  /**
-   * Gets or sets the properties for the Indoors Sites layer in the map.
-   */
-  siteLayerProperties?: null | CIMSiteLayerProperties;
-  /**
-   * Gets or sets the properties for the Indoors Facilities layer in the map.
-   */
-  facilityLayerProperties?: null | CIMFacilityLayerProperties;
-  /**
-   * Gets or sets the properties for the Indoors Levels layer in the map.
-   */
-  levelLayerProperties?: null | CIMLevelLayerProperties;
-  /**
-   * Gets or sets the default properties for the map's floor filter control.  Used as default when creating new map views.
-   */
-  defaultFloorFilterSettings?: null | CIMFloorFilterSettings;
-};
-export type CIMSiteLayerProperties = CIMObject & {
-  /**
-   * Gets or sets the URI for the Indoors Site layer in the map CIM.
-   */
-  layerURI?: null | string;
-  /**
-   * Gets or sets the sublayer ID when the Site layer is a sublayer within a dynamic map service layer.
-   */
-  subLayerID?: number;
-  /**
-   * Gets or sets the name of the field containing the site id.
-   */
-  siteIDField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the site name.
-   */
-  nameField?: null | string;
-};
-export type CIMFacilityLayerProperties = CIMObject & {
-  /**
-   * Gets or sets the URI for the Indoors Facility layer in the map CIM.
-   */
-  layerURI?: null | string;
-  /**
-   * Gets or sets the sublayer ID when the Facility layer is a sublayer within a dynamic map service layer.
-   */
-  subLayerID?: number;
-  /**
-   * Gets or sets the name of the field containing the site id (a foreign key back to the Site feature class).
-   */
-  siteIDField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the facility id.
-   */
-  facilityIDField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the facility name.
-   */
-  nameField?: null | string;
-};
-export type CIMLevelLayerProperties = CIMObject & {
-  /**
-   * Gets or sets the URI for the Indoors Level layer in the map CIM.
-   */
-  layerURI?: null | string;
-  /**
-   * Gets or sets the sublayer ID when the Level layer is a sublayer within a dynamic map service layer.
-   */
-  subLayerID?: number;
-  /**
-   * Gets or sets the name of the field containing the facility id (a foreign key back to the Facility feature class).
-   */
-  facilityIDField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the level id.
-   */
-  levelIDField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the level "short" name.
-   */
-  shortNameField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the level "long" name.
-   */
-  longNameField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the level number.
-   */
-  levelNumberField?: null | string;
-  /**
-   * Gets or sets the name of the field containing the vertical order for the level.
-   */
-  verticalOrderField?: null | string;
-};
-export type CIMFloorFilterSettings = CIMObject & {
-  /**
-   * Gets or sets the site ID for the selected site, which is used when filtering layers by SITE_ID (optional).
-   */
-  selectedSiteID?: null | string;
-  /**
-   * Gets or sets the facility ID for the selected facility, which is used when filtering layers by FACILITY_ID.
-   */
-  selectedFacilityID?: null | string;
-  /**
-   * Gets or sets the level ID for the selected level, which is used when filtering layers by LEVEL_ID or the layer's configured floor-aware properties.
-   */
-  selectedLevelID?: null | string;
-  /**
-   * Gets or sets a value indicating whether or not the floor filter is enabled and filtering the displayed content according to the floor filter selections.
-   */
-  enabled?: boolean;
-  /**
-   * Gets or sets a value indicating whether the floor filter has been minimized to show only the levels list or if it is showing the full set of breadcrumbs.
-   */
-  minimized?: boolean;
-  /**
-   * Gets or sets a value indicating whether the levels lists are showing the long names from the NAME field or showing the short names from the NAME_SHORT field.
-   */
-  longNames?: boolean;
-  /**
-   * Gets or sets a value indicating whether the levels portion of the floor filter have been pinned to show the levels lists or the floor filter includes the levels as a breadcrumb dropdown.
-   */
-  pinnedLevels?: boolean;
-  /**
-   * Gets or sets the array of facility ids belonging to the selected site (only if just site has been selected).
-   */
-  siteFacilityIDs?: string[] | null;
-  /**
-   * Gets or sets the array of level ids belonging to the selected site (only if just site has been selected).
-   */
-  siteLevelIDs?: string[] | null;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}
 /**
  * An abstract base class for objects that define geometric shapes. Geometry objects can be used
  * as geometry definitions for rendering data.
@@ -2213,6 +1175,121 @@ export interface Unit {
   unitType?: UnitType;
 }
 /**
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
+ */
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Envelope.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of this instance. Always returns 5.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X minimum of this instance.
+   */
+  xMin?: number;
+  /**
+   * Gets the Y minimum of this instance.
+   */
+  yMin?: number;
+  /**
+   * Gets the X maximum of this instance.
+   */
+  xMax?: number;
+  /**
+   * Gets the Y maximum of this instance.
+   */
+  yMax?: number;
+  /**
+   * Gets the Z minimum of this instance.
+   */
+  zMin?: number;
+  /**
+   * Gets the Z maximum of this instance.
+   */
+  zMax?: number;
+  /**
+   * Gets the M minimum of this instance.
+   */
+  mMin?: number;
+  /**
+   * Gets the M maximum of this instance.
+   */
+  mMax?: number;
+  /**
+   * Gets the ID minimum of this instance.
+   */
+  idMin?: number;
+  /**
+   * Gets the ID maximum of this instance.
+   */
+  idMax?: number;
+  /**
+   * Gets the center of this instance as a Coordinate2D.
+   */
+  centerCoordinate?: Coordinate2D;
+  /**
+   * Gets the center of this instance as a MapPoint.
+   */
+  center?: null | MapPoint;
+  /**
+   * Gets the height of this instance.
+   */
+  height?: number;
+  /**
+   * Gets the width of this instance.
+   */
+  width?: number;
+  /**
+   * Gets the depth of this instance.
+   */
+  depth?: number;
+  /**
+   * Gets the perimeter length of this instance.
+   */
+  length?: number;
+  /**
+   * Gets the 3D length of the perimeter of this instance.
+   */
+  length3D?: number;
+  /**
+   * Gets the area of this instance.
+   */
+  area?: number;
+  /**
+   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
  * A lightweight structure that holds X and Y values.
  */
 export interface Coordinate2D {
@@ -2230,6 +1307,76 @@ export interface Coordinate2D {
   magnitude?: number;
   /**
    * Indicates if the Coordinate2D is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Point.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of the geometry. This is always 1.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X-coordinate.
+   */
+  x?: number;
+  /**
+   * Gets the Y-coordinate.
+   */
+  y?: number;
+  /**
+   * Gets the Z-coordinate.
+   */
+  z?: number;
+  /**
+   * Gets the measure value.
+   */
+  m?: number;
+  /**
+   * Gets the ID value.
+   */
+  id?: number;
+  /**
+   * Gets a Coordinate2D structure with the X and Y values.
+   */
+  coordinate2D?: Coordinate2D;
+  /**
+   * Gets a Coordinate3D structure with the X, Y, and Z values.
+   */
+  coordinate3D?: Coordinate3D;
+  /**
+   * Gets the minimum enclosing envelope of the geometry.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
 }
@@ -2300,6 +1447,657 @@ export interface Datum {
   spheroidName?: null | string;
 }
 /**
+ * A Multipoint is a ordered collection of map points. To create a multipoint use the
+ * MultipointBuilderEx object.
+ */
+export interface Multipoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the geometry type. Always returns Multipoint.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the collection of points.
+   */
+  points?: MapPoint[] | null;
+  /**
+   * Gets the count of points in this instance.
+   */
+  pointCount?: number;
+  /**
+   * Gets the minimum enclosing envelope of this instance.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not this instance is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
+ * Represents a layer keyframe.
+ */
+export interface CIMKeyframeLayer {
+  /**
+   * Gets or sets the path to the layer.
+   */
+  layerURI?: null | string;
+  /**
+   * Gets or sets the method of transition for the visibility of the layer.
+   */
+  transparency?: number;
+  /**
+   * Gets or sets the method of transition for the transparency of the layer.
+   */
+  transparencyTransition?: AnimationTransition;
+  /**
+   * Gets or sets a value indicating whether the layer is visible.
+   */
+  visible?: boolean;
+  /**
+   * Gets or sets the direction to clip from an edge.
+   */
+  swipeDirection?: SwipeDirection;
+  /**
+   * Gets or sets the amount of the visible area to clip.
+   */
+  swipePercent?: number;
+  /**
+   * Gets or sets the vertical exaggeration.
+   */
+  verticalExaggeration?: number;
+  /**
+   * Gets or sets the vertical exaggeration.
+   */
+  zOffset?: number;
+}
+/**
+ * Represents a range keyframe.
+ */
+export interface CIMKeyframeRange {
+  /**
+   * Gets or sets the value of the active range.
+   */
+  range?: null | CIMRange;
+  /**
+   * Gets or sets the method of transition for the minimum value of the range.
+   */
+  minTransition?: AnimationTransition;
+  /**
+   * Gets or sets the method of transition for the maximum value of the range.
+   */
+  maxTransition?: AnimationTransition;
+  /**
+   * Gets or sets a value indicating whether the range should be all values less than the minimum value and greater than the maximum value.
+   */
+  isExclusion?: boolean;
+  /**
+   * Gets or sets the layer range extents.  Each layer range applies to a single map.
+   */
+  layerRangeExtents?: CIMLayerRange[] | null;
+  /**
+   * Gets or sets the method of transition for the layer range extents.
+   */
+  layerRangeTransition?: AnimationTransition;
+  /**
+   * Gets or sets the URI of the layer with the active range.  Specify a single layer or leave empty to indicate all layers that share the active range name.
+   */
+  activeRangeLayer?: null | string;
+  /**
+   * Gets or sets the active range name.  Used to update which range is active.
+   */
+  activeRangeName?: null | string;
+}
+/**
+ * Represents a layer range.
+ *
+ */
+export interface CIMLayerRange {
+  /**
+   * Gets or sets the URI of the layer this range is defined for.
+   */
+  layerURI?: null | string;
+  /**
+   * Gets or sets the range name.
+   */
+  rangeName?: null | string;
+  /**
+   * Gets or sets the current range.
+   */
+  currentRange?: null | CIMRange;
+  /**
+   * Gets or sets a value indicating whether or not this is an exclusion range.
+   */
+  isExclusion?: boolean;
+}
+/**
+ * Represents a time keyframe.
+ */
+export interface CIMKeyframeTime {
+  /**
+   * Gets or sets the value of the time extent.
+   */
+  time?: null | TimeExtent;
+  /**
+   * Gets or sets the time relation.
+   */
+  timeRelation?: EsriTimeRelation;
+  /**
+   * Gets or sets the method of transition for the end value of the time extent.
+   */
+  endTimeTransition?: AnimationTransition;
+  /**
+   * Gets or sets the method of transition for the start value of the time extent.
+   */
+  startTimeTransition?: AnimationTransition;
+}
+/**
+ * Represents an extent of time defined by a start and end date.
+ */
+export interface TimeExtent {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
+  /**
+   * Gets or sets the start time of the extent.
+   */
+  startTime?: string;
+  /**
+   * Gets or sets the end time of the extent.
+   */
+  endTime?: string;
+  /**
+   * Gets or sets a value indicating if the time extent is empty.
+   */
+  empty?: boolean;
+  /**
+   * Gets or sets a value indicating if the extent contains a start time. If false the time extent has no lower bound.
+   */
+  startTimeSpecified?: boolean;
+  /**
+   * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
+   */
+  endTimeSpecified?: boolean;
+}
+/**
+ * Represents a surface keyframe.
+ */
+export interface CIMKeyframeSurface {
+  /**
+   * Gets or sets the id for the surface.
+   */
+  surfaceID?: null | string;
+  /**
+   * Gets or sets the method of transition for the surface.
+   */
+  transition?: AnimationTransition;
+  /**
+   * Gets or sets the vertical exaggeration for the surface.
+   */
+  verticalExaggeration?: number;
+  /**
+   * Gets or sets a value indicating whether the surface is visible.
+   */
+  visible?: boolean;
+  /**
+   * Gets or sets the direction to clip from an edge.
+   */
+  swipeDirection?: SwipeDirection;
+  /**
+   * Gets or sets the amount of the visible area to clip.
+   */
+  swipePercent?: number;
+  /**
+   * Gets or sets the elevation sources.
+   */
+  baseSources?: CIMKeyframeElevationSource[] | null;
+}
+/**
+ * Represents an elevation source keyframe.
+ */
+export interface CIMKeyframeElevationSource {
+  /**
+   * Gets or sets the id for the elevation source.
+   */
+  sourceID?: null | string;
+  /**
+   * Gets or sets a value indicating whether the elevation source is visible.
+   */
+  visible?: boolean;
+}
+/**
+ * Represents an exploratory analysis keyframe.
+ */
+export interface CIMKeyframeAnalysis {
+  /**
+   * Gets or sets the exploratory analysis definition.
+   */
+  analysis?: null | CIMExploratoryAnalysisDefinition;
+  /**
+   * Gets or sets the method of transition for the exploratory analysis item.
+   */
+  transition?: AnimationTransition;
+}
+/**
+ * Represents an exploratory analysis definition.
+ */
+export interface CIMExploratoryAnalysisDefinition {
+  /**
+   * Gets or sets the id.
+   */
+  id?: number;
+}
+/**
+ * Represents a graphic and list of keyframes indicating properties that can be changed during the animation.
+ */
+export interface CIMAnimationScreenGraphic {
+  /**
+   * Gets or sets the graphic to be displayed.
+   */
+  graphic?: null | CIMGraphic;
+  /**
+   * Gets or sets an identifier for the user.
+   */
+  alias?: null | string;
+  /**
+   * Gets or sets the graphic properties keyframes.
+   */
+  keyframes?: CIMAnimationScreenGraphicKeyframe[] | null;
+}
+/**
+ * Represents a graphic.
+ */
+export interface CIMGraphic {
+  /**
+   * Gets or sets the symbol for the graphic.
+   */
+  symbol?: null | CIMSymbolReference;
+  /**
+   * Gets or sets the transparency of the graphic. Typically set by the layer or element during draw. Change the transparency of layers in the symbol for persistent changes.
+   */
+  transparency?: number;
+  /**
+   * Gets or sets the blending mode of the graphic. Typically set by the layer or element during draw.
+   */
+  blendingMode?: BlendingMode;
+  /**
+   * Gets or sets an array of masks for the graphic. Typically set by the layer or element during draw.
+   */
+  masks?: unknown[] | null;
+  /**
+   * Gets or sets the reference scale of the graphic. Typically set by the layer or element during draw.
+   */
+  referenceScale?: number;
+  /**
+   * Gets or sets a property set of attributes. Typically set by the layer or element during draw.
+   */
+  attributes?: null | {
+    [k: string]: unknown;
+  };
+  /**
+   * Gets or sets the placement anchor of the graphic.
+   */
+  placement?: Anchor;
+}
+/**
+ * Represents a symbol reference.
+ *
+ */
+export interface CIMSymbolReference {
+  /**
+   * Gets or sets the primitive overrides. Typically set by renderers at draw time.
+   */
+  primitiveOverrides?: CIMPrimitiveOverride[] | null;
+  /**
+   * Gets or sets the style path. Reserved for future use.
+   */
+  stylePath?: null | string;
+  /**
+   * Gets or sets the symbol.
+   */
+  symbol?: null | CIMSymbol;
+  /**
+   * Gets or sets the symbol name.
+   */
+  symbolName?: null | string;
+  /**
+   * Gets or sets the minimum scale range the symbol reference should be displayed at.
+   */
+  minScale?: number;
+  /**
+   * Gets or sets the maximum scale range the symbol reference should be displayed at.
+   */
+  maxScale?: number;
+  /**
+   * Gets or sets an array of scale dependent sizes.
+   */
+  scaleDependentSizeVariation?: CIMScaleDependentSizeVariation[] | null;
+  /**
+   * Gets or sets the minimum distance at which symbols are visible. Objects closer than this don't get rendered.
+   */
+  minDistance?: number;
+  /**
+   * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
+   */
+  maxDistance?: number;
+}
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride {
+  /**
+   * Gets or sets the primitive name this override applies to.
+   */
+  primitiveName?: null | string;
+  /**
+   * Gets or sets the property name in the primitive this override applies to.
+   */
+  propertyName?: null | string;
+  /**
+   * Gets or sets the expression.
+   */
+  expression?: null | string;
+  /**
+   * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
+   */
+  valueExpressionInfo?: null | CIMExpressionInfo;
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
+  /**
+   * Gets or sets the human readable text that describes the expression.
+   */
+  title?: null | string;
+  /**
+   * Gets or sets the Arcade expression used to evaluate and return the value that a property expects.
+   */
+  expression?: null | string;
+  /**
+   * Gets or sets the Name of the expression.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the ReturnType of the expression.
+   */
+  returnType?: ExpressionReturnType;
+}
+/**
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
+ *
+ */
+export interface CIMSymbol {}
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation {
+  /**
+   * Gets or sets the scale the size is associated with.
+   */
+  scale?: number;
+  /**
+   * Gets or sets the size for the associated scale.
+   */
+  size?: number;
+}
+/**
+ * Properties defining the graphic at a single point in time for the animation.
+ */
+export interface CIMAnimationScreenGraphicKeyframe {
+  /**
+   * Gets or sets the time in seconds relative to the beginning of the track.
+   */
+  trackTime?: number;
+  /**
+   * Gets or sets the horizontal placement percent of the graphic anchor position on the viewer (0 is left edge, 1 is right edge).
+   */
+  anchorX?: number;
+  /**
+   * Gets or sets the vertical placement percent of the graphic anchor position on the viewer (0 is top edge, 1 is bottom edge).
+   */
+  anchorY?: number;
+  /**
+   * Gets or sets the transparency of the graphic.
+   */
+  transparency?: number;
+  /**
+   * Gets or sets the size multiplier for the graphic.
+   */
+  scale?: number;
+  /**
+   * Gets or sets the pixel width for the graphic. It applies only to the animation screen graphic that contains a polygon graphic.
+   */
+  elementWidth?: number;
+  /**
+   * Gets or sets the pixel height for the graphic. It applies only to the animation screen graphic that contains a polygon graphic.
+   */
+  elementHeight?: number;
+  /**
+   * Gets or sets the angle of rotation (in degrees) for the graphic. It applies only to the animation screen graphic that contains a polygon graphic.
+   */
+  rotation?: number;
+}
+/**
+ * Represents properties of locator for the map.
+ */
+export interface CIMLocator {
+  /**
+   * Gets or sets the type of locator for the LocatorURI specified.
+   */
+  locatorType?: LocatorType;
+  /**
+   * Gets or sets the name of the locator.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets locator source URI. It can either be a local path, URL or a layer URI from this map. e.g. file://<folder_path>,  http://<url>, CIMPATH=<cim_layer_UR>.
+   */
+  locatorURI?: null | string;
+  /**
+   * Gets or sets a value indicating whether or not to suggestions should enabled if the locator supports suggestions.
+   */
+  suggestionsEnabled?: boolean;
+  /**
+   * Gets or sets a value indicating whether or not to this locator is enabled.
+   */
+  enabled?: boolean;
+  /**
+   * Gets or sets a value indicating whether the locator supports suggestions.
+   */
+  suggestionsSupported?: boolean;
+}
+/**
+ * Represents a string map of key value pairs.
+ *
+ */
+export interface CIMStringMap {
+  /**
+   * Gets or sets the key.
+   */
+  key?: null | string;
+  /**
+   * Gets or sets the value.
+   */
+  value?: null | string;
+}
+/**
+ * Represents a visual effect definition for stylized rendering of all the content in a map or scene.
+ */
+export interface CIMVisualEffect {
+  /**
+   * Gets or sets a value indicating whether the effect should be applied to the scene.
+   */
+  isActive?: boolean;
+}
+/**
+ * Represents a camera effect definition to be applied to a 3D view.
+ */
+export interface CIMCameraEffect {
+  /**
+   * Gets or sets a value indicating whether the effect should be applied to the scene.
+   */
+  isActive?: boolean;
+}
+/**
+ * Represents a post-processing effect definition to be applied to a 3D view.
+ */
+export interface CIMPostprocessingEffect {
+  /**
+   * Gets or sets a value indicating whether the effect should be applied to the scene.
+   */
+  isActive?: boolean;
+}
+/**
+ * Represents a spatial bookmark.
+ *
+ */
+export interface CIMBookmark {
+  /**
+   * Gets or sets the bookmark name.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the bookmark group name.
+   */
+  groupName?: null | string;
+  /**
+   * Gets or sets the URI of the binary reference containing the thumbnail image path.
+   */
+  thumbnailImagePath?: null | string;
+  /**
+   * Gets or sets the camera.
+   */
+  camera?: null | CIMViewCamera;
+  /**
+   * Gets or sets the location.
+   */
+  location?: null | Envelope;
+  /**
+   * Gets or sets the time extent.
+   */
+  timeExtent?: null | TimeExtent;
+  /**
+   * Gets or sets the time relation.
+   */
+  timeRelation?: EsriTimeRelation;
+  /**
+   * Gets or sets the range extent.  Can be used across multiple maps that share the same range name.
+   * RangeExtent.LayerURI is not used.
+   */
+  rangeExtent?: null | CIMLayerRange;
+  /**
+   * Gets or sets the layer range extents.  Each layer range applies to a single map.
+   */
+  layerRangeExtents?: CIMLayerRange[] | null;
+  /**
+   * Gets or sets the bookmark description.
+   */
+  description?: null | string;
+  /**
+   * Gets or sets the URI to the standalone video.
+   */
+  videoURI?: null | string;
+  /**
+   * Gets or sets the video elapsed time in seconds.
+   */
+  videoElapsedTime?: number;
+}
+/**
+ * A class representing a polygon.
+ */
+export interface Polygon {
+  /**
+   * Gets the length of this instance.
+   */
+  length?: number;
+  /**
+   * Gets the 3D length of this instance.
+   */
+  length3D?: number;
+  /**
+   * Gets a boolean value indicating whether or not the multipart contains segments other than straight line segments.
+   */
+  hasCurves?: boolean;
+  /**
+   * Gets the parts in this instance.
+   */
+  parts?: Segment[][] | null;
+  /**
+   * Gets the number of parts in this instance.
+   */
+  partCount?: number;
+  /**
+   * Gets a collection of points representing the vertices of all the parts.
+   */
+  points?: MapPoint[] | null;
+  /**
+   * Gets the count of all points in all parts for this instance.
+   */
+  pointCount?: number;
+  /**
+   * Gets a value indicating whether or not this instance is empty.
+   */
+  isEmpty?: boolean;
+  /**
+   * Gets the minimum enclosing envelope of this instance.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the geometry type. Always returns Polygon.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the area of this instance.
+   */
+  area?: number;
+  /**
+   * Gets the number of exterior rings in this polygon.
+   */
+  exteriorRingCount?: number;
+}
+/**
  * Abstract class representing a start and end point and how they are connected. The most common is a straight line LineSegment.
  */
 export interface Segment {
@@ -2325,6 +2123,20 @@ export interface Segment {
   endCoordinate?: Coordinate2D;
 }
 /**
+ * Represents a datum transform.
+ *
+ */
+export interface CIMDatumTransform {
+  /**
+   * Gets or sets a value indicating whether or not this is a forward transformation.
+   */
+  forward?: boolean;
+  /**
+   * Gets or sets the transformation.
+   */
+  geoTransformation?: null | DatumTransformation;
+}
+/**
  * An abstract class for datum transformations. Currently, a datum transformation can be a GeographicTransformation,
  * a CompositeGeographicTransformation, a HVDatumTransformation or a CompositeHVDatumTransformation.
  */
@@ -2337,4 +2149,525 @@ export interface DatumTransformation {
    * Gets the output spatial reference of this transformation.
    */
   outputSpatialReference?: null | SpatialReference;
+}
+/**
+ * Represents general placement properties. This is base class for general placement properties for each label engine.
+ *
+ */
+export interface CIMGeneralPlacementProperties {
+  /**
+   * Gets or sets a value indicating whether or not to draw unplaced labels.
+   */
+  drawUnplacedLabels?: boolean;
+  /**
+   * Gets or sets the inverted label tolerance which is the angle at which the label orientation is switched.
+   */
+  invertedLabelTolerance?: number;
+  /**
+   * Gets or sets a value indicating whether or not rotate labels when the display rotates.
+   */
+  rotateLabelWithDisplay?: boolean;
+  /**
+   * Gets or sets the unplaced label color.
+   */
+  unplacedLabelColor?: null | CIMColor;
+}
+/**
+ * Represents snapping properties.
+ *
+ */
+export interface CIMSnappingProperties {
+  /**
+   * Gets or sets the XY tolerance.
+   */
+  xyTolerance?: number;
+  /**
+   * Gets or sets the XY tolerance unit.
+   */
+  xyToleranceUnit?: SnapXYToleranceUnit;
+  /**
+   * Gets or sets the Z tolerance.
+   */
+  zTolerance?: number;
+  /**
+   * Gets or sets a value indicating whether Z tolerance is enabled.
+   */
+  zToleranceEnabled?: boolean;
+  /**
+   * Gets or sets a value indicating whether snapping to the sketch is enabled.
+   */
+  snapToSketchEnabled?: boolean;
+  /**
+   * Gets or sets the snap request type.
+   */
+  snapRequestType?: SnapRequestType;
+  /**
+   * Gets or sets geometric feedback color.
+   */
+  geometricFeedbackColor?: null | CIMColor;
+  /**
+   * Gets or sets the visual feedback color.
+   */
+  visualFeedbackColor?: null | CIMColor;
+  /**
+   * Gets or sets a value indicating whether Z snapping is enabled.
+   */
+  isZSnappingEnabled?: boolean;
+  /**
+   * Gets or sets a value indicating whether the snap tip is fully or partially visible.
+   */
+  snapTipDisplayParts?: number;
+}
+/**
+ * Represents map time display.
+ *
+ */
+export interface CIMMapTimeDisplay {
+  /**
+   * Gets or sets the current time extent.
+   */
+  currentTimeExtent?: null | TimeExtent;
+  /**
+   * Gets or sets the default time interval.
+   */
+  defaultTimeInterval?: number;
+  /**
+   * Gets or sets the default time interval units.
+   */
+  defaultTimeIntervalUnits?: EsriTimeUnits;
+  /**
+   * Gets or sets the default time window.
+   */
+  defaultTimeWindow?: number;
+  /**
+   * Gets or sets the full time extent.
+   */
+  fullTimeExtent?: null | TimeExtent;
+  /**
+   * Gets or sets the time reference.
+   */
+  timeReference?: null | TimeReference;
+  /**
+   * Gets or sets the time value.
+   */
+  timeValue?: null | TimeValue;
+  /**
+   * Gets or sets a value indicating whether or not this map has live data.
+   */
+  hasLiveData?: boolean;
+  /**
+   * Gets or sets the time relation.
+   */
+  timeRelation?: EsriTimeRelation;
+  /**
+   * Gets or sets a cached set of unique OLE date values.  Expected to be in the CIMMapTimeDisplay's TimeReference.
+   */
+  uniqueTimes?: number[] | null;
+}
+/**
+ * Represents the base class for TimeExtent and TimeInstant.
+ */
+export interface TimeValue {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
+}
+/**
+ * Represents a 2D scale or 3D Distance.
+ */
+export interface CIMScale {
+  /**
+   * Gets or sets the  numeric value representing the 2D scale or 3D distance.
+   */
+  value?: number;
+  /**
+   * Gets or sets the string value for the alias name of the Scale.
+   */
+  alias?: null | string;
+}
+/**
+ * Represents the scale formatting options.
+ */
+export interface CIMScaleFormat {
+  /**
+   * Gets or sets the format used to display scale, i.e., 1:20000 or 1 inch equals 5 miles.
+   */
+  formatType?: ScaleFormatType;
+  /**
+   * Gets or sets the character(s) used to separate '1' from the scale in an absolute scale, e.g ':' in 1:20000.
+   */
+  separator?: null | string;
+  /**
+   * Gets or sets a value indicating whether to reverse the standard order. e.g. [1:1000] becomes [1000:1] and [1 in=10 mi] becomes [10 mi=1 in].
+   */
+  reverseOrder?: boolean;
+  /**
+   * Gets or sets the number the scale has to be less than or equal to display decimal places.
+   */
+  decimalPlacesThreshold?: number;
+  /**
+   * Gets or sets the number decimal places.
+   */
+  decimalPlaces?: number;
+  /**
+   * Gets or sets a value indicating whether to show the thousands separator, e.g., 1:20,000.
+   */
+  showThousandSeparator?: boolean;
+  /**
+   * Gets or sets the page units used to display a scale,e.g, the 'inch' in 1 inch=5 miles.
+   */
+  pageUnits?: null | LinearUnit;
+  /**
+   * Gets or sets the number preceding the page units in a scale, i.e., the '1' in 1 inch=5 miles.
+   */
+  pageUnitValue?: number;
+  /**
+   * Gets or sets the text used for 'equals', e.g, '=' in 1 inch=5 miles.
+   */
+  equalsSign?: null | string;
+  /**
+   * Gets or sets the map units used to display a scale, e.g, the 'miles' in 1 inch=5 miles.
+   */
+  mapUnits?: null | LinearUnit;
+  /**
+   * Gets or sets a value indicating whether to capitalize the units in the scale string.
+   */
+  capitalizeUnits?: boolean;
+  /**
+   * Gets or sets a value indicating whether to abbreviate the units in the scale string.
+   */
+  abbreviateUnits?: boolean;
+}
+/**
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
+ */
+export interface LinearUnit {
+  /**
+   * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
+   */
+  factoryCode?: number;
+  /**
+   * Gets the well-known text of the unit.
+   */
+  wkt?: null | string;
+  /**
+   * Gets the name of the unit.
+   */
+  name?: null | string;
+  /**
+   * Gets the conversion factor of the unit.
+   */
+  conversionFactor?: number;
+  /**
+   * Gets the type of unit.
+   */
+  unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
+}
+/**
+ * A composite hv (horizontal/vertical) datum transformation class is an ordered list of HVDatumTransformation classes.
+ * The hv datum transformations are applied in the order they are stored.
+ */
+export interface CompositeHVDatumTransformation {
+  /**
+   * Gets the input spatial reference of this transformation.
+   */
+  inputSpatialReference?: null | SpatialReference;
+  /**
+   * Gets the output spatial reference of this transformation.
+   */
+  outputSpatialReference?: null | SpatialReference;
+  /**
+   * Gets the number of single transformations in this composite transformation.
+   */
+  count?: number;
+  /**
+   * Gets the list of transformations in this composite transformation.
+   */
+  transformations?: HVDatumTransformation[] | null;
+}
+/**
+ * A hv (horizontal/vertical) datum transformation is used when
+ * projecting Z-Aware geometries between two different geographic coordinate systems and two
+ * different vertical coordinate systems. As with geographic transformations, a hv datum
+ * transformation converts everything that needs to be changed including the units,
+ * prime meridian, and the ellipsoid. In addition, a hv datum transformation transforms height.
+ * Every transformation is defined in a particular forward direction, but all are reversible.
+ * For example, suppose your Z-Aware geometry is in WGS84 with vertical coordinate system EGM2008_Geoid,
+ * and you want to project to NAD83_2011 with vertical coordinate system NAD83_2011.
+ * A hv datum transformation is defined to project your Z-Aware geometry from WGS84 with
+ * vertical coordinate system EGM2008_Geoid to NAD83_2011 with vertical coordinate system NAD83_2011.
+ * If you are projecting from NAD83_2011 with vertical coordinate system NAD83_2011 to
+ * WGS84 with vertical coordinate system EGM2008_Geoid to NAD83_2011, you can use the reversed
+ * form of the transformation.
+ */
+export interface HVDatumTransformation {
+  /**
+   * Gets the input spatial reference of this transformation.
+   */
+  inputSpatialReference?: null | SpatialReference;
+  /**
+   * Gets the output spatial reference of this transformation.
+   */
+  outputSpatialReference?: null | SpatialReference;
+  /**
+   * Gets the well-known ID of this horizontal/vertical transformation.
+   */
+  wkid?: number;
+  /**
+   * Gets the well-known text of this horizontal/vertical transformation.
+   */
+  wkt?: null | string;
+  /**
+   * Gets the name of this horizontal/vertical transformation.
+   */
+  name?: null | string;
+  /**
+   * Gets a value indicating if this horizontal/vertical transformation is forward or inversed.
+   */
+  isForward?: boolean;
+}
+/**
+ * Defines the properties needed to perform a COGO ground to grid correction when adding new features.
+ */
+export interface CIMGroundToGridCorrection {
+  /**
+   * Gets or sets a value indicating whether ground to grid corrections are currently in operation for the map.
+   */
+  enabled?: boolean;
+  /**
+   * Gets or sets a value indicating whether the direction angle will be used in the ground to grid correction.
+   */
+  useDirection?: boolean;
+  /**
+   * Gets or sets a value indicating whether the distance scale will be used in the ground to grid correction.
+   */
+  useScale?: boolean;
+  /**
+   * Gets or sets the direction angle (in degrees) that will be used in ground to grid calculations.
+   */
+  direction?: number;
+  /**
+   * Gets or sets the type of scale that will be used in ground to grid calculations.
+   */
+  scaleType?: GroundToGridScaleType;
+  /**
+   * Gets or sets the constant scale factor used in ground to grid calculations,
+   * only when ScaleType equals ConstantFactor.
+   */
+  constantScaleFactor?: number;
+}
+/**
+ * Defines the properties needed to specify new Z values when creating or modifying features.
+ */
+export interface CIMEditingElevation {
+  /**
+   * Gets or sets the elevation capture mode.
+   */
+  captureMode?: EditingElevationCaptureMode;
+  /**
+   * Gets or sets the the value used when CaptureMode is Constant.
+   */
+  constantValue?: number;
+  /**
+   * Gets or sets the Unit used when CaptureMode is Constant.
+   */
+  constantValueUnit?: null | LinearUnit;
+  /**
+   * Gets or sets the URI of the elevation surface layer to be used when CaptureMode is Surface.
+   */
+  elevationSurfaceLayerURI?: null | string;
+}
+/**
+ * Represents a collection of editing templates.
+ */
+export interface CIMEditingTemplateCollection {
+  /**
+   * Gets or sets the name of this item.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the array of items stored within this collection.
+   */
+  contents?: CIMEditingTemplateCollectionItem[] | null;
+  /**
+   * Gets or sets a value indicating whether this collection is expanded in the user interface.
+   */
+  expanded?: boolean;
+}
+/**
+ * Represents an item that can be stored within an editing template collection.
+ */
+export interface CIMEditingTemplateCollectionItem {
+  /**
+   * Gets or sets the name of this item.
+   */
+  name?: null | string;
+}
+/**
+ * Represents a field mapping that maps fields from source layer or table to target layer or table.
+ */
+export interface CIMFieldMapping {
+  /**
+   * Gets or sets the URI of the source layer or table.
+   */
+  sourceURI?: null | string;
+  /**
+   * Gets or sets the URI of the target layer or table.
+   */
+  targetURI?: null | string;
+  /**
+   * Gets or sets the expression for mapping from source layer or table to target layer or table.
+   */
+  mappingExpressionInfo?: null | CIMExpressionInfo;
+}
+/**
+ * Defines the properties needed to identify the Indoors layers and some required fields for each layer which are used for floor filtering operations, as well as properties for the map's floor filter.
+ */
+export interface CIMFloorAwareMapProperties {
+  /**
+   * Gets or sets the properties for the Indoors Sites layer in the map.
+   */
+  siteLayerProperties?: null | CIMSiteLayerProperties;
+  /**
+   * Gets or sets the properties for the Indoors Facilities layer in the map.
+   */
+  facilityLayerProperties?: null | CIMFacilityLayerProperties;
+  /**
+   * Gets or sets the properties for the Indoors Levels layer in the map.
+   */
+  levelLayerProperties?: null | CIMLevelLayerProperties;
+  /**
+   * Gets or sets the default properties for the map's floor filter control.  Used as default when creating new map views.
+   */
+  defaultFloorFilterSettings?: null | CIMFloorFilterSettings;
+}
+/**
+ * Defines the URI and required field properties for the Indoors Site layer required for floor filtering operations.
+ */
+export interface CIMSiteLayerProperties {
+  /**
+   * Gets or sets the URI for the Indoors Site layer in the map CIM.
+   */
+  layerURI?: null | string;
+  /**
+   * Gets or sets the sublayer ID when the Site layer is a sublayer within a dynamic map service layer.
+   */
+  subLayerID?: number;
+  /**
+   * Gets or sets the name of the field containing the site id.
+   */
+  siteIDField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the site name.
+   */
+  nameField?: null | string;
+}
+/**
+ * Defines the URI and required field properties for the Indoors Facility layer required for floor filtering operations.
+ */
+export interface CIMFacilityLayerProperties {
+  /**
+   * Gets or sets the URI for the Indoors Facility layer in the map CIM.
+   */
+  layerURI?: null | string;
+  /**
+   * Gets or sets the sublayer ID when the Facility layer is a sublayer within a dynamic map service layer.
+   */
+  subLayerID?: number;
+  /**
+   * Gets or sets the name of the field containing the site id (a foreign key back to the Site feature class).
+   */
+  siteIDField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the facility id.
+   */
+  facilityIDField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the facility name.
+   */
+  nameField?: null | string;
+}
+/**
+ * Defines the URI and required field properties for the Indoors Level layer required for floor filtering operations.
+ */
+export interface CIMLevelLayerProperties {
+  /**
+   * Gets or sets the URI for the Indoors Level layer in the map CIM.
+   */
+  layerURI?: null | string;
+  /**
+   * Gets or sets the sublayer ID when the Level layer is a sublayer within a dynamic map service layer.
+   */
+  subLayerID?: number;
+  /**
+   * Gets or sets the name of the field containing the facility id (a foreign key back to the Facility feature class).
+   */
+  facilityIDField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the level id.
+   */
+  levelIDField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the level "short" name.
+   */
+  shortNameField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the level "long" name.
+   */
+  longNameField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the level number.
+   */
+  levelNumberField?: null | string;
+  /**
+   * Gets or sets the name of the field containing the vertical order for the level.
+   */
+  verticalOrderField?: null | string;
+}
+/**
+ * Represents floor filter settings.
+ *
+ */
+export interface CIMFloorFilterSettings {
+  /**
+   * Gets or sets the site ID for the selected site, which is used when filtering layers by SITE_ID (optional).
+   */
+  selectedSiteID?: null | string;
+  /**
+   * Gets or sets the facility ID for the selected facility, which is used when filtering layers by FACILITY_ID.
+   */
+  selectedFacilityID?: null | string;
+  /**
+   * Gets or sets the level ID for the selected level, which is used when filtering layers by LEVEL_ID or the layer's configured floor-aware properties.
+   */
+  selectedLevelID?: null | string;
+  /**
+   * Gets or sets a value indicating whether or not the floor filter is enabled and filtering the displayed content according to the floor filter selections.
+   */
+  enabled?: boolean;
+  /**
+   * Gets or sets a value indicating whether the floor filter has been minimized to show only the levels list or if it is showing the full set of breadcrumbs.
+   */
+  minimized?: boolean;
+  /**
+   * Gets or sets a value indicating whether the levels lists are showing the long names from the NAME field or showing the short names from the NAME_SHORT field.
+   */
+  longNames?: boolean;
+  /**
+   * Gets or sets a value indicating whether the levels portion of the floor filter have been pinned to show the levels lists or the floor filter includes the levels as a breadcrumb dropdown.
+   */
+  pinnedLevels?: boolean;
+  /**
+   * Gets or sets the array of facility ids belonging to the selected site (only if just site has been selected).
+   */
+  siteFacilityIDs?: string[] | null;
+  /**
+   * Gets or sets the array of level ids belonging to the selected site (only if just site has been selected).
+   */
+  siteLevelIDs?: string[] | null;
 }

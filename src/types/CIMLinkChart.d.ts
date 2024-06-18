@@ -5,7 +5,68 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLinkChart = CIMLinkChartBase & {
+/**
+ * Link chart node and entity symbolization source.
+ */
+export type LinkChartSymbolizationSource = 0 | 1;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Font types.
+ */
+export type FontType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Link chart link dash style.
+ */
+export type LinkChartLinkDashStyle = 0 | 1 | 2 | 3 | 4;
+/**
+ * Link chart link label placement.
+ */
+export type LinkChartLinkLabelPlacement = 0 | 1;
+/**
+ * Link chart relationship key type.
+ */
+export type LinkChartRelationshipKeyType = 0 | 1 | 2;
+/**
+ * Link chart layout algorithm.
+ */
+export type LinkChartLayoutAlgorithm = 0 | 1 | 2 | 3 | 4 | 5;
+
+/**
+ * Represents a link chart.
+ */
+export interface CIMLinkChart {
+  /**
+   * Gets or sets the name.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
+   */
+  uri?: null | string;
+  /**
+   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourceURI?: null | string;
+  /**
+   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
+   */
+  sourceModifiedTime?: null | TimeInstant;
+  /**
+   * Gets or sets the metadata URI.
+   */
+  metadataURI?: null | string;
+  /**
+   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
+   */
+  useSourceMetadata?: boolean;
+  /**
+   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourcePortalUrl?: null | string;
   /**
    * Gets or sets the link chart entities.
    */
@@ -46,51 +107,24 @@ export type CIMLinkChart = CIMLinkChartBase & {
    * Gets or sets the minimum number of links allowed in the filter.
    */
   minLinks?: number;
-};
-export type CIMLinkChartBase = CIMDefinition & {};
-export type CIMDefinition = CIMObject & {
-  /**
-   * Gets or sets the name.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
-   */
-  uri?: null | string;
-  /**
-   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourceURI?: null | string;
-  /**
-   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
-   */
-  sourceModifiedTime?: null | TimeInstant;
-  /**
-   * Gets or sets the metadata URI.
-   */
-  metadataURI?: null | string;
-  /**
-   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
-   */
-  useSourceMetadata?: boolean;
-  /**
-   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
-  /**
-   * Gets or sets the time.
-   */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -103,8 +137,11 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMLinkChartEntity = CIMObject & {
+}
+/**
+ * Represents a link chart entity.
+ */
+export interface CIMLinkChartEntity {
   /**
    * Gets or sets the Id of for the entity.
    */
@@ -141,8 +178,11 @@ export type CIMLinkChartEntity = CIMObject & {
    * Gets or sets the fields used to uniquely identify nodes. If duplicate values exist you can CollapseDuplicates.
    */
   keyFieldNames?: string[] | null;
-};
-export type CIMLinkChartNodeDrawingInfo = CIMObject & {
+}
+/**
+ * Represents the link chart node drawing information.
+ */
+export interface CIMLinkChartNodeDrawingInfo {
   /**
    * Gets or sets a value indicating whether the entity whether duplicate node values are consolidated. The result is one node for multiple values.
    */
@@ -167,12 +207,12 @@ export type CIMLinkChartNodeDrawingInfo = CIMObject & {
    * Gets or sets a value indicating whether the node frames are shown.
    */
   showNodeFrames?: boolean;
-};
+}
 /**
- * Link chart node and entity symbolization source.
+ * Represents a symbol reference.
+ *
  */
-export type LinkChartSymbolizationSource = 0 | 1;
-export type CIMSymbolReference = CIMObject & {
+export interface CIMSymbolReference {
   /**
    * Gets or sets the primitive overrides. Typically set by renderers at draw time.
    */
@@ -209,8 +249,12 @@ export type CIMSymbolReference = CIMObject & {
    * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
    */
   maxDistance?: number;
-};
-export type CIMPrimitiveOverride = CIMObject & {
+}
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride {
   /**
    * Gets or sets the primitive name this override applies to.
    */
@@ -227,8 +271,11 @@ export type CIMPrimitiveOverride = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
    */
   valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -245,14 +292,17 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
  *
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMSymbol = CIMObject;
-export type CIMScaleDependentSizeVariation = CIMObject & {
+export interface CIMSymbol {}
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation {
   /**
    * Gets or sets the scale the size is associated with.
    */
@@ -261,8 +311,11 @@ export type CIMScaleDependentSizeVariation = CIMObject & {
    * Gets or sets the size for the associated scale.
    */
   size?: number;
-};
-export type CIMColor = CIMObject & {
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -275,10 +328,15 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-export type CIMLinkChartNodeLabelingInfo = CIMLinkChartLabelingInfo & {};
-export type CIMLinkChartLabelingInfo = CIMObject & {
+}
+/**
+ * Supports colors spaces by providing a common base type for all color spaces.
+ */
+export interface CIMColorSpace {}
+/**
+ * Represents the link chart node labeling information.
+ */
+export interface CIMLinkChartNodeLabelingInfo {
   /**
    * Gets or sets a value indicating whether the labels are shown.
    */
@@ -307,12 +365,11 @@ export type CIMLinkChartLabelingInfo = CIMObject & {
    * Gets or sets Link label background color.
    */
   labelBackgroundColor?: null | CIMColor;
-};
+}
 /**
- * Font types.
+ * Represents a link chart relationship.
  */
-export type FontType = 0 | 1 | 2 | 3 | 4;
-export type CIMLinkChartRelationship = CIMObject & {
+export interface CIMLinkChartRelationship {
   /**
    * Gets or sets the Id of for the relationship.
    */
@@ -365,8 +422,11 @@ export type CIMLinkChartRelationship = CIMObject & {
    * Gets or sets the target entity key field for the relationship.
    */
   targetEntityKeyField?: null | string;
-};
-export type CIMLinkChartLinkDrawingInfo = CIMObject & {
+}
+/**
+ * Represents the link chart link drawing information.
+ */
+export interface CIMLinkChartLinkDrawingInfo {
   /**
    * Gets or sets link color.
    */
@@ -383,12 +443,39 @@ export type CIMLinkChartLinkDrawingInfo = CIMObject & {
    * Gets or sets a value indicating whether to show the directional arrowhead of a link.
    */
   showDirection?: boolean;
-};
+}
 /**
- * Link chart link dash style.
+ * Represents the link chart link labeling information.
  */
-export type LinkChartLinkDashStyle = 0 | 1 | 2 | 3 | 4;
-export type CIMLinkChartLinkLabelingInfo = CIMLinkChartLabelingInfo & {
+export interface CIMLinkChartLinkLabelingInfo {
+  /**
+   * Gets or sets a value indicating whether the labels are shown.
+   */
+  showLabels?: boolean;
+  /**
+   * Gets or sets the link label font family name of the font. e.g. Comic Sans.
+   */
+  labelFontFamilyName?: null | string;
+  /**
+   * Gets or sets the style name for the link label font family. e.g. Regular, Bold, or Italic.
+   */
+  labelFontStyleName?: null | string;
+  /**
+   * Gets or sets Link label font type.
+   */
+  labelFontType?: FontType;
+  /**
+   * Gets or sets Link label font size.
+   */
+  labelFontSize?: number;
+  /**
+   * Gets or sets Link Label font color.
+   */
+  labelFontColor?: null | CIMColor;
+  /**
+   * Gets or sets Link label background color.
+   */
+  labelBackgroundColor?: null | CIMColor;
   /**
    * Gets or sets the link label placement.
    */
@@ -397,20 +484,11 @@ export type CIMLinkChartLinkLabelingInfo = CIMLinkChartLabelingInfo & {
    * Gets or sets the default label.
    */
   defaultLabel?: null | string;
-};
+}
 /**
- * Link chart link label placement.
+ * Represents the link chart viewport.
  */
-export type LinkChartLinkLabelPlacement = 0 | 1;
-/**
- * Link chart relationship key type.
- */
-export type LinkChartRelationshipKeyType = 0 | 1 | 2;
-/**
- * Link chart layout algorithm.
- */
-export type LinkChartLayoutAlgorithm = 0 | 1 | 2 | 3 | 4 | 5;
-export type CIMLinkChartViewport = CIMObject & {
+export interface CIMLinkChartViewport {
   /**
    * Gets or sets the center X coordinate in the world coordinate system.
    */
@@ -423,10 +501,4 @@ export type CIMLinkChartViewport = CIMObject & {
    * Gets or sets the zoom level.
    */
   zoomLevel?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

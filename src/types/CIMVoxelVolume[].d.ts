@@ -5,7 +5,28 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMVoxelVolume1 = CIMObject & {
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+/**
+ * Voxel variable data types.
+ */
+export type VoxelVariableDataType = 0 | 1;
+/**
+ * Voxel variable precision. The lower the precision the smaller the data size of the voxel layer.
+ */
+export type VoxelVariablePrecision = 0 | 1 | 2 | 3;
+export type CIMVoxelVolume = CIMVoxelVolume1[];
+
+/**
+ * Represents a voxel layer volume.
+ */
+export interface CIMVoxelVolume1 {
   /**
    * Gets or sets the volume ID, which must be unique among all volumes in the layer.
    */
@@ -22,8 +43,11 @@ export type CIMVoxelVolume1 = CIMObject & {
    * Gets or sets the variable profiles.
    */
   variableProfiles?: CIMVoxelVariableProfile[] | null;
-};
-export type CIMVoxelPlane = CIMObject & {
+}
+/**
+ * Represents a voxel plane.
+ */
+export interface CIMVoxelPlane {
   /**
    * Gets or sets the ID.
    */
@@ -44,8 +68,32 @@ export type CIMVoxelPlane = CIMObject & {
    * Gets or sets the direction vector of the plane, which is a unit vector representing the normal to the plane.
    */
   normal?: null | MapPoint;
-};
-export type MapPoint = Geometry & {
+}
+/**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
   /**
    * Gets the GeometryType of this instance.  Always returns Point.
    */
@@ -90,226 +138,6 @@ export type MapPoint = Geometry & {
    * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-export type Envelope = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Envelope.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of this instance. Always returns 5.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X minimum of this instance.
-   */
-  xMin?: number;
-  /**
-   * Gets the Y minimum of this instance.
-   */
-  yMin?: number;
-  /**
-   * Gets the X maximum of this instance.
-   */
-  xMax?: number;
-  /**
-   * Gets the Y maximum of this instance.
-   */
-  yMax?: number;
-  /**
-   * Gets the Z minimum of this instance.
-   */
-  zMin?: number;
-  /**
-   * Gets the Z maximum of this instance.
-   */
-  zMax?: number;
-  /**
-   * Gets the M minimum of this instance.
-   */
-  mMin?: number;
-  /**
-   * Gets the M maximum of this instance.
-   */
-  mMax?: number;
-  /**
-   * Gets the ID minimum of this instance.
-   */
-  idMin?: number;
-  /**
-   * Gets the ID maximum of this instance.
-   */
-  idMax?: number;
-  /**
-   * Gets the center of this instance as a Coordinate2D.
-   */
-  centerCoordinate?: Coordinate2D;
-  /**
-   * Gets the center of this instance as a MapPoint.
-   */
-  center?: null | MapPoint;
-  /**
-   * Gets the height of this instance.
-   */
-  height?: number;
-  /**
-   * Gets the width of this instance.
-   */
-  width?: number;
-  /**
-   * Gets the depth of this instance.
-   */
-  depth?: number;
-  /**
-   * Gets the perimeter length of this instance.
-   */
-  length?: number;
-  /**
-   * Gets the 3D length of the perimeter of this instance.
-   */
-  length3D?: number;
-  /**
-   * Gets the area of this instance.
-   */
-  area?: number;
-  /**
-   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type CIMVoxelVariableProfile = CIMObject & {
-  /**
-   * Gets or sets the variable that the profile is associated with.
-   */
-  variable?: null | string;
-  /**
-   * Gets or sets the variable description.
-   */
-  description?: null | string;
-  /**
-   * Gets or sets the variable data type.
-   */
-  dataType?: VoxelVariableDataType;
-  /**
-   * Gets or sets the filters.
-   */
-  filters?: CIMVoxelFilter[] | null;
-  /**
-   * Gets or sets the symbol renderer.
-   */
-  renderer?: null | CIMVoxelRenderer;
-  /**
-   * Gets or sets the variable precision.
-   */
-  precision?: VoxelVariablePrecision;
-  /**
-   * Gets or sets the signature for the variable.
-   */
-  signature?: null | string;
-  /**
-   * Gets or sets the signature version for the variable.
-   */
-  signatureVersion?: number;
-  /**
-   * Gets or sets a collection of isosurfaces.
-   */
-  isosurfaces?: CIMIsosurface[] | null;
-};
-/**
- * Voxel variable data types.
- */
-export type VoxelVariableDataType = 0 | 1;
-export type CIMVoxelFilter = CIMObject;
-export type CIMVoxelRenderer = CIMObject;
-/**
- * Voxel variable precision. The lower the precision the smaller the data size of the voxel layer.
- */
-export type VoxelVariablePrecision = 0 | 1 | 2 | 3;
-export type CIMIsosurface = CIMObject & {
-  /**
-   * Gets or sets the ID.
-   */
-  id?: null | string;
-  /**
-   * Gets or sets the isosurface color.
-   */
-  color?: null | CIMColor;
-  /**
-   * Gets or sets a value indicating whether the color was set by user.
-   */
-  isCustomColor?: boolean;
-  /**
-   * Gets or sets the variable value.
-   */
-  value?: number;
-  /**
-   * Gets or sets the isosurface name.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets a value indicating whether the isosurface is visible.
-   */
-  visible?: boolean;
-};
-export type CIMColor = CIMObject & {
-  /**
-   * Gets and sets alpha.
-   */
-  alpha?: number;
-  /**
-   * Gets or sets the color spaced used defined by an ICC color profile.
-   */
-  colorSpace?: null | CIMColorSpace;
-  /**
-   * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
-   */
-  values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-export type CIMVoxelVolume = CIMVoxelVolume1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
- */
-export interface Geometry {
-  /**
-   * Gets a value indicating if the geometry has Z.
-   */
-  hasZ?: boolean;
-  /**
-   * Gets a value indicating if the geometry has M.
-   */
-  hasM?: boolean;
-  /**
-   * Gets a value indicating if the geometry has ID.
-   */
-  hasID?: boolean;
-  /**
-   * Gets the spatial reference of this instance.
-   */
-  spatialReference?: null | SpatialReference;
-  /**
-   * Gets the dimension of the geometry.
-   */
-  dimension?: number;
 }
 /**
  * Class representing a spatial reference.
@@ -480,6 +308,121 @@ export interface Unit {
   unitType?: UnitType;
 }
 /**
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
+ */
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Envelope.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of this instance. Always returns 5.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X minimum of this instance.
+   */
+  xMin?: number;
+  /**
+   * Gets the Y minimum of this instance.
+   */
+  yMin?: number;
+  /**
+   * Gets the X maximum of this instance.
+   */
+  xMax?: number;
+  /**
+   * Gets the Y maximum of this instance.
+   */
+  yMax?: number;
+  /**
+   * Gets the Z minimum of this instance.
+   */
+  zMin?: number;
+  /**
+   * Gets the Z maximum of this instance.
+   */
+  zMax?: number;
+  /**
+   * Gets the M minimum of this instance.
+   */
+  mMin?: number;
+  /**
+   * Gets the M maximum of this instance.
+   */
+  mMax?: number;
+  /**
+   * Gets the ID minimum of this instance.
+   */
+  idMin?: number;
+  /**
+   * Gets the ID maximum of this instance.
+   */
+  idMax?: number;
+  /**
+   * Gets the center of this instance as a Coordinate2D.
+   */
+  centerCoordinate?: Coordinate2D;
+  /**
+   * Gets the center of this instance as a MapPoint.
+   */
+  center?: null | MapPoint;
+  /**
+   * Gets the height of this instance.
+   */
+  height?: number;
+  /**
+   * Gets the width of this instance.
+   */
+  width?: number;
+  /**
+   * Gets the depth of this instance.
+   */
+  depth?: number;
+  /**
+   * Gets the perimeter length of this instance.
+   */
+  length?: number;
+  /**
+   * Gets the 3D length of the perimeter of this instance.
+   */
+  length3D?: number;
+  /**
+   * Gets the area of this instance.
+   */
+  area?: number;
+  /**
+   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
  * A lightweight structure that holds X and Y values.
  */
 export interface Coordinate2D {
@@ -566,3 +509,103 @@ export interface Coordinate3D {
    */
   isEmpty?: boolean;
 }
+/**
+ * Represents a voxel layer variable profile.
+ */
+export interface CIMVoxelVariableProfile {
+  /**
+   * Gets or sets the variable that the profile is associated with.
+   */
+  variable?: null | string;
+  /**
+   * Gets or sets the variable description.
+   */
+  description?: null | string;
+  /**
+   * Gets or sets the variable data type.
+   */
+  dataType?: VoxelVariableDataType;
+  /**
+   * Gets or sets the filters.
+   */
+  filters?: CIMVoxelFilter[] | null;
+  /**
+   * Gets or sets the symbol renderer.
+   */
+  renderer?: null | CIMVoxelRenderer;
+  /**
+   * Gets or sets the variable precision.
+   */
+  precision?: VoxelVariablePrecision;
+  /**
+   * Gets or sets the signature for the variable.
+   */
+  signature?: null | string;
+  /**
+   * Gets or sets the signature version for the variable.
+   */
+  signatureVersion?: number;
+  /**
+   * Gets or sets a collection of isosurfaces.
+   */
+  isosurfaces?: CIMIsosurface[] | null;
+}
+/**
+ * Represents a renderer filter.
+ */
+export interface CIMVoxelFilter {}
+/**
+ * Represents a voxel renderer.
+ *
+ */
+export interface CIMVoxelRenderer {}
+/**
+ * Represents a isosurface.
+ */
+export interface CIMIsosurface {
+  /**
+   * Gets or sets the ID.
+   */
+  id?: null | string;
+  /**
+   * Gets or sets the isosurface color.
+   */
+  color?: null | CIMColor;
+  /**
+   * Gets or sets a value indicating whether the color was set by user.
+   */
+  isCustomColor?: boolean;
+  /**
+   * Gets or sets the variable value.
+   */
+  value?: number;
+  /**
+   * Gets or sets the isosurface name.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets a value indicating whether the isosurface is visible.
+   */
+  visible?: boolean;
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
+  /**
+   * Gets and sets alpha.
+   */
+  alpha?: number;
+  /**
+   * Gets or sets the color spaced used defined by an ICC color profile.
+   */
+  colorSpace?: null | CIMColorSpace;
+  /**
+   * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
+   */
+  values?: number[] | null;
+}
+/**
+ * Supports colors spaces by providing a common base type for all color spaces.
+ */
+export interface CIMColorSpace {}

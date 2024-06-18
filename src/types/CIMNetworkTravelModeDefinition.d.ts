@@ -5,7 +5,23 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNetworkTravelModeDefinition = CIMObject & {
+/**
+ * The data type of a value.
+ */
+export type ValueType = 2 | 3 | 4 | 5 | 7 | 8 | 11;
+/**
+ * Policy on when to return the from-edge in the network forward star adjacencies object.
+ */
+export type EsriNetworkForwardStarBacktrack = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+
+/**
+ * The network travel mode is used to configure a group of cost, traversability, and other analysis configurations.
+ */
+export interface CIMNetworkTravelModeDefinition {
   /**
    * Gets or sets the name.
    */
@@ -58,8 +74,11 @@ export type CIMNetworkTravelModeDefinition = CIMObject & {
    * Gets or sets the output geometry precision units.
    */
   outputGeometryPrecisionUnits?: null | LinearUnit;
-};
-export type CIMNetworkAttributeParameterDefinitionValue = CIMObject & {
+}
+/**
+ * Provides access to read or update the value assigned to a network parameter of a network attribute.
+ */
+export interface CIMNetworkAttributeParameterDefinitionValue {
   /**
    * Gets or sets the network attribute name.
    */
@@ -77,35 +96,11 @@ export type CIMNetworkAttributeParameterDefinitionValue = CIMObject & {
    */
   valueType?: ValueType;
   value?: unknown;
-};
+}
 /**
- * The data type of a value.
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
  */
-export type ValueType = 2 | 3 | 4 | 5 | 7 | 8 | 11;
-/**
- * Policy on when to return the from-edge in the network forward star adjacencies object.
- */
-export type EsriNetworkForwardStarBacktrack = 0 | 1 | 2 | 3;
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * A common base class between all units, linear, area and angular units.
- */
-export interface Unit {
+export interface LinearUnit {
   /**
    * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
    */
@@ -126,4 +121,8 @@ export interface Unit {
    * Gets the type of unit.
    */
   unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
 }

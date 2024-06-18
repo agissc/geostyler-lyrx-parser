@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMMediaInfo1 = CIMObject & {
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export type CIMMediaInfo = CIMMediaInfo1[];
+
+/**
+ * Represents media info.
+ *
+ */
+export interface CIMMediaInfo1 {
   /**
    * Gets or sets the row.
    */
@@ -30,15 +40,4 @@ export type CIMMediaInfo1 = CIMObject & {
    * Gets or sets the column span.
    */
   columnSpan?: number;
-};
-/**
- * Time units.
- */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMMediaInfo = CIMMediaInfo1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

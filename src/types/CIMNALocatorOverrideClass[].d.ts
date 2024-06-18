@@ -5,7 +5,25 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMNALocatorOverrideClass1 = CIMObject & {
+/**
+ * Measurement units.
+ */
+export type EsriUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+export type CIMNALocatorOverrideClass = CIMNALocatorOverrideClass1[];
+
+/**
+ * Represents locator settings for a particular class.
+ *
+ */
+export interface CIMNALocatorOverrideClass1 {
   /**
    * Gets or sets the NAClass name for the locator settings.
    */
@@ -14,8 +32,11 @@ export type CIMNALocatorOverrideClass1 = CIMObject & {
    * Gets or sets the locator.
    */
   locator?: null | NALocatorDefinition;
-};
-export type NALocatorDefinition = CIMObject & {
+}
+/**
+ * Represents a network analyst locator definition. This class is reserved for esri internal use only.
+ */
+export interface NALocatorDefinition {
   /**
    * Gets and sets the snap tolerance units.
    */
@@ -52,165 +73,11 @@ export type NALocatorDefinition = CIMObject & {
    * Gets and sets the output spatial reference.
    */
   outputSpatialReference?: null | SpatialReference;
-};
+}
 /**
- * Measurement units.
+ * Represents a network analyst locator agent. This class is reserved for esri internal use only.
  */
-export type EsriUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
-export type NALocatorAgent = NAAgent & {};
-export type NAAgent = NAAgentDefinition & {};
-export type NAAgentDefinition = CIMObject;
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-export type Envelope = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Envelope.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of this instance. Always returns 5.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X minimum of this instance.
-   */
-  xMin?: number;
-  /**
-   * Gets the Y minimum of this instance.
-   */
-  yMin?: number;
-  /**
-   * Gets the X maximum of this instance.
-   */
-  xMax?: number;
-  /**
-   * Gets the Y maximum of this instance.
-   */
-  yMax?: number;
-  /**
-   * Gets the Z minimum of this instance.
-   */
-  zMin?: number;
-  /**
-   * Gets the Z maximum of this instance.
-   */
-  zMax?: number;
-  /**
-   * Gets the M minimum of this instance.
-   */
-  mMin?: number;
-  /**
-   * Gets the M maximum of this instance.
-   */
-  mMax?: number;
-  /**
-   * Gets the ID minimum of this instance.
-   */
-  idMin?: number;
-  /**
-   * Gets the ID maximum of this instance.
-   */
-  idMax?: number;
-  /**
-   * Gets the center of this instance as a Coordinate2D.
-   */
-  centerCoordinate?: Coordinate2D;
-  /**
-   * Gets the center of this instance as a MapPoint.
-   */
-  center?: null | MapPoint;
-  /**
-   * Gets the height of this instance.
-   */
-  height?: number;
-  /**
-   * Gets the width of this instance.
-   */
-  width?: number;
-  /**
-   * Gets the depth of this instance.
-   */
-  depth?: number;
-  /**
-   * Gets the perimeter length of this instance.
-   */
-  length?: number;
-  /**
-   * Gets the 3D length of the perimeter of this instance.
-   */
-  length3D?: number;
-  /**
-   * Gets the area of this instance.
-   */
-  area?: number;
-  /**
-   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type MapPoint = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Point.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of the geometry. This is always 1.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X-coordinate.
-   */
-  x?: number;
-  /**
-   * Gets the Y-coordinate.
-   */
-  y?: number;
-  /**
-   * Gets the Z-coordinate.
-   */
-  z?: number;
-  /**
-   * Gets the measure value.
-   */
-  m?: number;
-  /**
-   * Gets the ID value.
-   */
-  id?: number;
-  /**
-   * Gets a Coordinate2D structure with the X and Y values.
-   */
-  coordinate2D?: Coordinate2D;
-  /**
-   * Gets a Coordinate3D structure with the X, Y, and Z values.
-   */
-  coordinate3D?: Coordinate3D;
-  /**
-   * Gets the minimum enclosing envelope of the geometry.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-export type CIMNALocatorOverrideClass = CIMNALocatorOverrideClass1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+export interface NALocatorAgent {}
 /**
  * Class representing a spatial reference.
  */
@@ -380,10 +247,11 @@ export interface Unit {
   unitType?: UnitType;
 }
 /**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
  */
-export interface Geometry {
+export interface Envelope {
   /**
    * Gets a value indicating if the geometry has Z.
    */
@@ -404,6 +272,94 @@ export interface Geometry {
    * Gets the dimension of the geometry.
    */
   dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Envelope.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of this instance. Always returns 5.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X minimum of this instance.
+   */
+  xMin?: number;
+  /**
+   * Gets the Y minimum of this instance.
+   */
+  yMin?: number;
+  /**
+   * Gets the X maximum of this instance.
+   */
+  xMax?: number;
+  /**
+   * Gets the Y maximum of this instance.
+   */
+  yMax?: number;
+  /**
+   * Gets the Z minimum of this instance.
+   */
+  zMin?: number;
+  /**
+   * Gets the Z maximum of this instance.
+   */
+  zMax?: number;
+  /**
+   * Gets the M minimum of this instance.
+   */
+  mMin?: number;
+  /**
+   * Gets the M maximum of this instance.
+   */
+  mMax?: number;
+  /**
+   * Gets the ID minimum of this instance.
+   */
+  idMin?: number;
+  /**
+   * Gets the ID maximum of this instance.
+   */
+  idMax?: number;
+  /**
+   * Gets the center of this instance as a Coordinate2D.
+   */
+  centerCoordinate?: Coordinate2D;
+  /**
+   * Gets the center of this instance as a MapPoint.
+   */
+  center?: null | MapPoint;
+  /**
+   * Gets the height of this instance.
+   */
+  height?: number;
+  /**
+   * Gets the width of this instance.
+   */
+  width?: number;
+  /**
+   * Gets the depth of this instance.
+   */
+  depth?: number;
+  /**
+   * Gets the perimeter length of this instance.
+   */
+  length?: number;
+  /**
+   * Gets the 3D length of the perimeter of this instance.
+   */
+  length3D?: number;
+  /**
+   * Gets the area of this instance.
+   */
+  area?: number;
+  /**
+   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
+   */
+  isEmpty?: boolean;
 }
 /**
  * A lightweight structure that holds X and Y values.
@@ -423,6 +379,76 @@ export interface Coordinate2D {
   magnitude?: number;
   /**
    * Indicates if the Coordinate2D is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Point.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of the geometry. This is always 1.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X-coordinate.
+   */
+  x?: number;
+  /**
+   * Gets the Y-coordinate.
+   */
+  y?: number;
+  /**
+   * Gets the Z-coordinate.
+   */
+  z?: number;
+  /**
+   * Gets the measure value.
+   */
+  m?: number;
+  /**
+   * Gets the ID value.
+   */
+  id?: number;
+  /**
+   * Gets a Coordinate2D structure with the X and Y values.
+   */
+  coordinate2D?: Coordinate2D;
+  /**
+   * Gets a Coordinate3D structure with the X, Y, and Z values.
+   */
+  coordinate3D?: Coordinate3D;
+  /**
+   * Gets the minimum enclosing envelope of the geometry.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
 }

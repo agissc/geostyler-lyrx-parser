@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMLevelLayerProperties = CIMObject & {
+/**
+ * Defines the URI and required field properties for the Indoors Level layer required for floor filtering operations.
+ */
+export interface CIMLevelLayerProperties {
   /**
    * Gets or sets the URI for the Indoors Level layer in the map CIM.
    */
@@ -38,10 +41,4 @@ export type CIMLevelLayerProperties = CIMObject & {
    * Gets or sets the name of the field containing the vertical order for the level.
    */
   verticalOrderField?: null | string;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

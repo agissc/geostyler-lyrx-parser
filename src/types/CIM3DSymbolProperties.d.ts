@@ -5,7 +5,19 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIM3DSymbolProperties = CIMObject & {
+/**
+ * Specifies the dominant size axis types.
+ */
+export type DominantSizeAxis = 0 | 1 | 2;
+/**
+ * Rotation order modes.
+ */
+export type RotationOrder = 0 | 1 | 2;
+
+/**
+ * Represents 3D symbol properties, a collection of symbol properties that apply when the symbol is used in a 3D context.
+ */
+export interface CIM3DSymbolProperties {
   /**
    * Gets or sets the dominant size axis.
    */
@@ -22,18 +34,4 @@ export type CIM3DSymbolProperties = CIMObject & {
    * Gets or sets the scale Y.
    */
   scaleY?: number;
-};
-/**
- * Specifies the dominant size axis types.
- */
-export type DominantSizeAxis = 0 | 1 | 2;
-/**
- * Rotation order modes.
- */
-export type RotationOrder = 0 | 1 | 2;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

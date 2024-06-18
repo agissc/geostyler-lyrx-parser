@@ -5,7 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFloorAwareMapProperties = CIMObject & {
+/**
+ * Defines the properties needed to identify the Indoors layers and some required fields for each layer which are used for floor filtering operations, as well as properties for the map's floor filter.
+ */
+export interface CIMFloorAwareMapProperties {
   /**
    * Gets or sets the properties for the Indoors Sites layer in the map.
    */
@@ -22,8 +25,11 @@ export type CIMFloorAwareMapProperties = CIMObject & {
    * Gets or sets the default properties for the map's floor filter control.  Used as default when creating new map views.
    */
   defaultFloorFilterSettings?: null | CIMFloorFilterSettings;
-};
-export type CIMSiteLayerProperties = CIMObject & {
+}
+/**
+ * Defines the URI and required field properties for the Indoors Site layer required for floor filtering operations.
+ */
+export interface CIMSiteLayerProperties {
   /**
    * Gets or sets the URI for the Indoors Site layer in the map CIM.
    */
@@ -40,8 +46,11 @@ export type CIMSiteLayerProperties = CIMObject & {
    * Gets or sets the name of the field containing the site name.
    */
   nameField?: null | string;
-};
-export type CIMFacilityLayerProperties = CIMObject & {
+}
+/**
+ * Defines the URI and required field properties for the Indoors Facility layer required for floor filtering operations.
+ */
+export interface CIMFacilityLayerProperties {
   /**
    * Gets or sets the URI for the Indoors Facility layer in the map CIM.
    */
@@ -62,8 +71,11 @@ export type CIMFacilityLayerProperties = CIMObject & {
    * Gets or sets the name of the field containing the facility name.
    */
   nameField?: null | string;
-};
-export type CIMLevelLayerProperties = CIMObject & {
+}
+/**
+ * Defines the URI and required field properties for the Indoors Level layer required for floor filtering operations.
+ */
+export interface CIMLevelLayerProperties {
   /**
    * Gets or sets the URI for the Indoors Level layer in the map CIM.
    */
@@ -96,8 +108,12 @@ export type CIMLevelLayerProperties = CIMObject & {
    * Gets or sets the name of the field containing the vertical order for the level.
    */
   verticalOrderField?: null | string;
-};
-export type CIMFloorFilterSettings = CIMObject & {
+}
+/**
+ * Represents floor filter settings.
+ *
+ */
+export interface CIMFloorFilterSettings {
   /**
    * Gets or sets the site ID for the selected site, which is used when filtering layers by SITE_ID (optional).
    */
@@ -134,10 +150,4 @@ export type CIMFloorFilterSettings = CIMObject & {
    * Gets or sets the array of level ids belonging to the selected site (only if just site has been selected).
    */
   siteLevelIDs?: string[] | null;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

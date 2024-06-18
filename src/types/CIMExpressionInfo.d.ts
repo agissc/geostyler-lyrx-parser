@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMExpressionInfo = CIMObject & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -22,15 +31,4 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

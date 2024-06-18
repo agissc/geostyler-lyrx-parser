@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRasterColorizer1 = CIMObject & {
+/**
+ * Raster resampling types.
+ */
+export type RasterResamplingType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export type CIMRasterColorizer = CIMRasterColorizer1[];
+
+/**
+ * Represents a raster colorizer.
+ *
+ */
+export interface CIMRasterColorizer1 {
   /**
    * Gets or sets the raster resampling type.
    */
@@ -22,12 +32,11 @@ export type CIMRasterColorizer1 = CIMObject & {
    * Gets or sets the no data color.
    */
   noDataColor?: null | CIMColor;
-};
+}
 /**
- * Raster resampling types.
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
  */
-export type RasterResamplingType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMColor = CIMObject & {
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -40,12 +49,8 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-export type CIMRasterColorizer = CIMRasterColorizer1[];
-
+}
 /**
- * Represents the base CIM object class.
- *
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export interface CIMObject {}
+export interface CIMColorSpace {}

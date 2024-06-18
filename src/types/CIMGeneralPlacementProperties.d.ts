@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMGeneralPlacementProperties = CIMObject & {
+/**
+ * Represents general placement properties. This is base class for general placement properties for each label engine.
+ *
+ */
+export interface CIMGeneralPlacementProperties {
   /**
    * Gets or sets a value indicating whether or not to draw unplaced labels.
    */
@@ -22,8 +26,11 @@ export type CIMGeneralPlacementProperties = CIMObject & {
    * Gets or sets the unplaced label color.
    */
   unplacedLabelColor?: null | CIMColor;
-};
-export type CIMColor = CIMObject & {
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -36,11 +43,8 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-
+}
 /**
- * Represents the base CIM object class.
- *
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export interface CIMObject {}
+export interface CIMColorSpace {}

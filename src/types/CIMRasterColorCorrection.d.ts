@@ -5,7 +5,29 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRasterColorCorrection = CIMObject & {
+/**
+ * A list of color correction stretch types.
+ */
+export type ColorCorrectionStretchType = 0 | 1 | 2 | 3;
+/**
+ * A list of color balance methods.
+ */
+export type ColorBalanceMethod = 0 | 1 | 2 | 3;
+/**
+ * A list of color matching methods.
+ */
+export type ColorMatchingMethod = 0 | 1 | 2 | 3;
+/**
+ * Target color surface type.
+ *
+ */
+export type TargetColorSurfaceType = 0 | 1 | 2 | 3 | 4;
+
+/**
+ * Represents a raster color correction configuration.
+ *
+ */
+export interface CIMRasterColorCorrection {
   /**
    * Gets or sets the pre-stretch type of color correction.
    */
@@ -38,28 +60,8 @@ export type CIMRasterColorCorrection = CIMObject & {
    * Gets or sets the reference OID.
    */
   referenceOID?: number;
-};
+}
 /**
- * A list of color correction stretch types.
+ * Represents a data connection.
  */
-export type ColorCorrectionStretchType = 0 | 1 | 2 | 3;
-/**
- * A list of color balance methods.
- */
-export type ColorBalanceMethod = 0 | 1 | 2 | 3;
-/**
- * A list of color matching methods.
- */
-export type ColorMatchingMethod = 0 | 1 | 2 | 3;
-/**
- * Target color surface type.
- *
- */
-export type TargetColorSurfaceType = 0 | 1 | 2 | 3 | 4;
-export type CIMDataConnection = CIMObject;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+export interface CIMDataConnection {}

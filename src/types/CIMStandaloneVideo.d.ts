@@ -5,7 +5,84 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMStandaloneVideo = CIMDefinition & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Blending modes.
+ */
+export type BlendingMode =
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20
+  | 21
+  | 22
+  | 23;
+/**
+ * A list of anchor positions for an element on a page layout.
+ */
+export type Anchor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Describes the different types of geometry.
+ */
+export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
+
+/**
+ * Represents a standalone video.
+ */
+export interface CIMStandaloneVideo {
+  /**
+   * Gets or sets the name.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
+   */
+  uri?: null | string;
+  /**
+   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourceURI?: null | string;
+  /**
+   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
+   */
+  sourceModifiedTime?: null | TimeInstant;
+  /**
+   * Gets or sets the metadata URI.
+   */
+  metadataURI?: null | string;
+  /**
+   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
+   */
+  useSourceMetadata?: boolean;
+  /**
+   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourcePortalUrl?: null | string;
   /**
    * Gets or sets the data connection for the video.
    */
@@ -74,50 +151,24 @@ export type CIMStandaloneVideo = CIMDefinition & {
    * Gets or sets the collection of range indicators for RecordSegments.
    */
   recordSegmentsIndicators?: CIMVideoTimelineRangeIndicator[] | null;
-};
-export type CIMDefinition = CIMObject & {
-  /**
-   * Gets or sets the name.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
-   */
-  uri?: null | string;
-  /**
-   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourceURI?: null | string;
-  /**
-   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
-   */
-  sourceModifiedTime?: null | TimeInstant;
-  /**
-   * Gets or sets the metadata URI.
-   */
-  metadataURI?: null | string;
-  /**
-   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
-   */
-  useSourceMetadata?: boolean;
-  /**
-   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
-  /**
-   * Gets or sets the time.
-   */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -130,15 +181,20 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type CIMVideoDataConnection = CIMDataConnection & {
+}
+/**
+ * Represents a video data connection.
+ */
+export interface CIMVideoDataConnection {
   /**
    * Gets or sets the URI of the video files.
    */
   uri?: null | string;
-};
-export type CIMDataConnection = CIMObject;
-export type CIMColor = CIMObject & {
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -151,21 +207,19 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-export type CIMVideoGraphicElement = CIMGraphicElement & {
-  /**
-   * Gets or sets a value indicating whether the graphic is expanded in the contents pane.
-   */
-  expanded?: boolean;
-};
-export type CIMGraphicElement = CIMElement & {
+}
+/**
+ * Supports colors spaces by providing a common base type for all color spaces.
+ */
+export interface CIMColorSpace {}
+/**
+ * Represents video-related graphic being displayed on the map.
+ */
+export interface CIMVideoGraphicElement {
   /**
    * Gets or sets the CIMGraphic for an element on a page layout.
    */
   graphic?: null | CIMGraphic;
-};
-export type CIMElement = CIMObject & {
   /**
    * Gets or sets the anchor position of the element.
    */
@@ -198,12 +252,175 @@ export type CIMElement = CIMObject & {
    * Gets or sets the custom properties of the element.
    */
   customProperties?: CIMStringMap[] | null;
-};
+  /**
+   * Gets or sets a value indicating whether the graphic is expanded in the contents pane.
+   */
+  expanded?: boolean;
+}
 /**
- * A list of anchor positions for an element on a page layout.
+ * Represents a graphic.
  */
-export type Anchor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-export type MapPoint = Geometry & {
+export interface CIMGraphic {
+  /**
+   * Gets or sets the symbol for the graphic.
+   */
+  symbol?: null | CIMSymbolReference;
+  /**
+   * Gets or sets the transparency of the graphic. Typically set by the layer or element during draw. Change the transparency of layers in the symbol for persistent changes.
+   */
+  transparency?: number;
+  /**
+   * Gets or sets the blending mode of the graphic. Typically set by the layer or element during draw.
+   */
+  blendingMode?: BlendingMode;
+  /**
+   * Gets or sets an array of masks for the graphic. Typically set by the layer or element during draw.
+   */
+  masks?: unknown[] | null;
+  /**
+   * Gets or sets the reference scale of the graphic. Typically set by the layer or element during draw.
+   */
+  referenceScale?: number;
+  /**
+   * Gets or sets a property set of attributes. Typically set by the layer or element during draw.
+   */
+  attributes?: null | {
+    [k: string]: unknown;
+  };
+  /**
+   * Gets or sets the placement anchor of the graphic.
+   */
+  placement?: Anchor;
+}
+/**
+ * Represents a symbol reference.
+ *
+ */
+export interface CIMSymbolReference {
+  /**
+   * Gets or sets the primitive overrides. Typically set by renderers at draw time.
+   */
+  primitiveOverrides?: CIMPrimitiveOverride[] | null;
+  /**
+   * Gets or sets the style path. Reserved for future use.
+   */
+  stylePath?: null | string;
+  /**
+   * Gets or sets the symbol.
+   */
+  symbol?: null | CIMSymbol;
+  /**
+   * Gets or sets the symbol name.
+   */
+  symbolName?: null | string;
+  /**
+   * Gets or sets the minimum scale range the symbol reference should be displayed at.
+   */
+  minScale?: number;
+  /**
+   * Gets or sets the maximum scale range the symbol reference should be displayed at.
+   */
+  maxScale?: number;
+  /**
+   * Gets or sets an array of scale dependent sizes.
+   */
+  scaleDependentSizeVariation?: CIMScaleDependentSizeVariation[] | null;
+  /**
+   * Gets or sets the minimum distance at which symbols are visible. Objects closer than this don't get rendered.
+   */
+  minDistance?: number;
+  /**
+   * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
+   */
+  maxDistance?: number;
+}
+/**
+ * Represents a primitive override.
+ *
+ */
+export interface CIMPrimitiveOverride {
+  /**
+   * Gets or sets the primitive name this override applies to.
+   */
+  primitiveName?: null | string;
+  /**
+   * Gets or sets the property name in the primitive this override applies to.
+   */
+  propertyName?: null | string;
+  /**
+   * Gets or sets the expression.
+   */
+  expression?: null | string;
+  /**
+   * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
+   */
+  valueExpressionInfo?: null | CIMExpressionInfo;
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
+  /**
+   * Gets or sets the human readable text that describes the expression.
+   */
+  title?: null | string;
+  /**
+   * Gets or sets the Arcade expression used to evaluate and return the value that a property expects.
+   */
+  expression?: null | string;
+  /**
+   * Gets or sets the Name of the expression.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the ReturnType of the expression.
+   */
+  returnType?: ExpressionReturnType;
+}
+/**
+ * Represents a symbol. A symbol is used to describe how a geometric shape, such as that from a graphic or feature, is displayed.
+ *
+ */
+export interface CIMSymbol {}
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation {
+  /**
+   * Gets or sets the scale the size is associated with.
+   */
+  scale?: number;
+  /**
+   * Gets or sets the size for the associated scale.
+   */
+  size?: number;
+}
+/**
+ * A MapPoint represents a single location in space. The location consists of X and Y values and optionally a Z and/or M value.
+ * To create a MapPoint use the MapPointBuilderEx object.
+ */
+export interface MapPoint {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
   /**
    * Gets the GeometryType of this instance.  Always returns Point.
    */
@@ -248,318 +465,6 @@ export type MapPoint = Geometry & {
    * Gets a value indicating whether or not the geometry is empty.
    */
   isEmpty?: boolean;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-export type Envelope = Geometry & {
-  /**
-   * Gets the GeometryType of this instance.  Always returns Envelope.
-   */
-  geometryType?: GeometryType;
-  /**
-   * Gets the point count of this instance. Always returns 5.
-   */
-  pointCount?: number;
-  /**
-   * Gets the X minimum of this instance.
-   */
-  xMin?: number;
-  /**
-   * Gets the Y minimum of this instance.
-   */
-  yMin?: number;
-  /**
-   * Gets the X maximum of this instance.
-   */
-  xMax?: number;
-  /**
-   * Gets the Y maximum of this instance.
-   */
-  yMax?: number;
-  /**
-   * Gets the Z minimum of this instance.
-   */
-  zMin?: number;
-  /**
-   * Gets the Z maximum of this instance.
-   */
-  zMax?: number;
-  /**
-   * Gets the M minimum of this instance.
-   */
-  mMin?: number;
-  /**
-   * Gets the M maximum of this instance.
-   */
-  mMax?: number;
-  /**
-   * Gets the ID minimum of this instance.
-   */
-  idMin?: number;
-  /**
-   * Gets the ID maximum of this instance.
-   */
-  idMax?: number;
-  /**
-   * Gets the center of this instance as a Coordinate2D.
-   */
-  centerCoordinate?: Coordinate2D;
-  /**
-   * Gets the center of this instance as a MapPoint.
-   */
-  center?: null | MapPoint;
-  /**
-   * Gets the height of this instance.
-   */
-  height?: number;
-  /**
-   * Gets the width of this instance.
-   */
-  width?: number;
-  /**
-   * Gets the depth of this instance.
-   */
-  depth?: number;
-  /**
-   * Gets the perimeter length of this instance.
-   */
-  length?: number;
-  /**
-   * Gets the 3D length of the perimeter of this instance.
-   */
-  length3D?: number;
-  /**
-   * Gets the area of this instance.
-   */
-  area?: number;
-  /**
-   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
-   */
-  extent?: null | Envelope;
-  /**
-   * Gets a value indicating whether or not the geometry is empty.
-   */
-  isEmpty?: boolean;
-};
-/**
- * Describes the different types of geometry.
- */
-export type GeometryType = 0 | 513 | 3077 | 3594 | 8710 | 25607 | 27656 | 32777;
-export type CIMStringMap = CIMObject & {
-  /**
-   * Gets or sets the key.
-   */
-  key?: null | string;
-  /**
-   * Gets or sets the value.
-   */
-  value?: null | string;
-};
-export type CIMGraphic = CIMObject & {
-  /**
-   * Gets or sets the symbol for the graphic.
-   */
-  symbol?: null | CIMSymbolReference;
-  /**
-   * Gets or sets the transparency of the graphic. Typically set by the layer or element during draw. Change the transparency of layers in the symbol for persistent changes.
-   */
-  transparency?: number;
-  /**
-   * Gets or sets the blending mode of the graphic. Typically set by the layer or element during draw.
-   */
-  blendingMode?: BlendingMode;
-  /**
-   * Gets or sets an array of masks for the graphic. Typically set by the layer or element during draw.
-   */
-  masks?: unknown[] | null;
-  /**
-   * Gets or sets the reference scale of the graphic. Typically set by the layer or element during draw.
-   */
-  referenceScale?: number;
-  /**
-   * Gets or sets a property set of attributes. Typically set by the layer or element during draw.
-   */
-  attributes?: null | {
-    [k: string]: unknown;
-  };
-  /**
-   * Gets or sets the placement anchor of the graphic.
-   */
-  placement?: Anchor;
-};
-export type CIMSymbolReference = CIMObject & {
-  /**
-   * Gets or sets the primitive overrides. Typically set by renderers at draw time.
-   */
-  primitiveOverrides?: CIMPrimitiveOverride[] | null;
-  /**
-   * Gets or sets the style path. Reserved for future use.
-   */
-  stylePath?: null | string;
-  /**
-   * Gets or sets the symbol.
-   */
-  symbol?: null | CIMSymbol;
-  /**
-   * Gets or sets the symbol name.
-   */
-  symbolName?: null | string;
-  /**
-   * Gets or sets the minimum scale range the symbol reference should be displayed at.
-   */
-  minScale?: number;
-  /**
-   * Gets or sets the maximum scale range the symbol reference should be displayed at.
-   */
-  maxScale?: number;
-  /**
-   * Gets or sets an array of scale dependent sizes.
-   */
-  scaleDependentSizeVariation?: CIMScaleDependentSizeVariation[] | null;
-  /**
-   * Gets or sets the minimum distance at which symbols are visible. Objects closer than this don't get rendered.
-   */
-  minDistance?: number;
-  /**
-   * Gets or sets the maximum distance at which symbols are visible. Objects beyond this point don't get rendered.
-   */
-  maxDistance?: number;
-};
-export type CIMPrimitiveOverride = CIMObject & {
-  /**
-   * Gets or sets the primitive name this override applies to.
-   */
-  primitiveName?: null | string;
-  /**
-   * Gets or sets the property name in the primitive this override applies to.
-   */
-  propertyName?: null | string;
-  /**
-   * Gets or sets the expression.
-   */
-  expression?: null | string;
-  /**
-   * Gets or sets ExpressionInfo that contains the Arcade expression that returns value as a number or a string depending on the PropertyName.
-   */
-  valueExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMExpressionInfo = CIMObject & {
-  /**
-   * Gets or sets the human readable text that describes the expression.
-   */
-  title?: null | string;
-  /**
-   * Gets or sets the Arcade expression used to evaluate and return the value that a property expects.
-   */
-  expression?: null | string;
-  /**
-   * Gets or sets the Name of the expression.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the ReturnType of the expression.
-   */
-  returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMSymbol = CIMObject;
-export type CIMScaleDependentSizeVariation = CIMObject & {
-  /**
-   * Gets or sets the scale the size is associated with.
-   */
-  scale?: number;
-  /**
-   * Gets or sets the size for the associated scale.
-   */
-  size?: number;
-};
-/**
- * Blending modes.
- */
-export type BlendingMode =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23;
-export type CIMVideoTimelineEventIndicator = CIMVideoTimelineIndicator & {
-  /**
-   * Gets or sets the elapsed time from the beginning of the video in ticks for the event.
-   */
-  time?: number;
-};
-export type CIMVideoTimelineIndicator = CIMObject & {
-  /**
-   * Gets or sets the indicator label.
-   */
-  label?: null | string;
-};
-export type CIMVideoTimelineRangeIndicator = CIMVideoTimelineIndicator & {
-  /**
-   * Gets or sets the elapsed time from the beginning of the video in ticks for the minimum time in the range.
-   */
-  minimum?: number;
-  /**
-   * Gets or sets the elapsed time from the beginning of the video in ticks for the maximum time in the range.
-   */
-  maximum?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * An abstract base class for objects that define geometric shapes. Geometry objects can be used
- * as geometry definitions for rendering data.
- */
-export interface Geometry {
-  /**
-   * Gets a value indicating if the geometry has Z.
-   */
-  hasZ?: boolean;
-  /**
-   * Gets a value indicating if the geometry has M.
-   */
-  hasM?: boolean;
-  /**
-   * Gets a value indicating if the geometry has ID.
-   */
-  hasID?: boolean;
-  /**
-   * Gets the spatial reference of this instance.
-   */
-  spatialReference?: null | SpatialReference;
-  /**
-   * Gets the dimension of the geometry.
-   */
-  dimension?: number;
 }
 /**
  * Class representing a spatial reference.
@@ -730,6 +635,121 @@ export interface Unit {
   unitType?: UnitType;
 }
 /**
+ * An envelope is an axis-aligned box described by the coordinates
+ * of the lower left corner and the coordinates of the upper right corner.   To create an envelope use the
+ * EnvelopeBuilderEx object.
+ */
+export interface Envelope {
+  /**
+   * Gets a value indicating if the geometry has Z.
+   */
+  hasZ?: boolean;
+  /**
+   * Gets a value indicating if the geometry has M.
+   */
+  hasM?: boolean;
+  /**
+   * Gets a value indicating if the geometry has ID.
+   */
+  hasID?: boolean;
+  /**
+   * Gets the spatial reference of this instance.
+   */
+  spatialReference?: null | SpatialReference;
+  /**
+   * Gets the dimension of the geometry.
+   */
+  dimension?: number;
+  /**
+   * Gets the GeometryType of this instance.  Always returns Envelope.
+   */
+  geometryType?: GeometryType;
+  /**
+   * Gets the point count of this instance. Always returns 5.
+   */
+  pointCount?: number;
+  /**
+   * Gets the X minimum of this instance.
+   */
+  xMin?: number;
+  /**
+   * Gets the Y minimum of this instance.
+   */
+  yMin?: number;
+  /**
+   * Gets the X maximum of this instance.
+   */
+  xMax?: number;
+  /**
+   * Gets the Y maximum of this instance.
+   */
+  yMax?: number;
+  /**
+   * Gets the Z minimum of this instance.
+   */
+  zMin?: number;
+  /**
+   * Gets the Z maximum of this instance.
+   */
+  zMax?: number;
+  /**
+   * Gets the M minimum of this instance.
+   */
+  mMin?: number;
+  /**
+   * Gets the M maximum of this instance.
+   */
+  mMax?: number;
+  /**
+   * Gets the ID minimum of this instance.
+   */
+  idMin?: number;
+  /**
+   * Gets the ID maximum of this instance.
+   */
+  idMax?: number;
+  /**
+   * Gets the center of this instance as a Coordinate2D.
+   */
+  centerCoordinate?: Coordinate2D;
+  /**
+   * Gets the center of this instance as a MapPoint.
+   */
+  center?: null | MapPoint;
+  /**
+   * Gets the height of this instance.
+   */
+  height?: number;
+  /**
+   * Gets the width of this instance.
+   */
+  width?: number;
+  /**
+   * Gets the depth of this instance.
+   */
+  depth?: number;
+  /**
+   * Gets the perimeter length of this instance.
+   */
+  length?: number;
+  /**
+   * Gets the 3D length of the perimeter of this instance.
+   */
+  length3D?: number;
+  /**
+   * Gets the area of this instance.
+   */
+  area?: number;
+  /**
+   * Gets the minimum enclosing envelope of this instance. Returns null if this geometry has IsEmpty = true.
+   */
+  extent?: null | Envelope;
+  /**
+   * Gets a value indicating whether or not the geometry is empty.
+   */
+  isEmpty?: boolean;
+}
+/**
  * A lightweight structure that holds X and Y values.
  */
 export interface Coordinate2D {
@@ -815,4 +835,48 @@ export interface Coordinate3D {
    * Indicates if the Coordinate3D is empty.
    */
   isEmpty?: boolean;
+}
+/**
+ * Represents a string map of key value pairs.
+ *
+ */
+export interface CIMStringMap {
+  /**
+   * Gets or sets the key.
+   */
+  key?: null | string;
+  /**
+   * Gets or sets the value.
+   */
+  value?: null | string;
+}
+/**
+ * Represents an event indicator on a video timeline.
+ */
+export interface CIMVideoTimelineEventIndicator {
+  /**
+   * Gets or sets the indicator label.
+   */
+  label?: null | string;
+  /**
+   * Gets or sets the elapsed time from the beginning of the video in ticks for the event.
+   */
+  time?: number;
+}
+/**
+ * Represents a range indicator on a video timeline.
+ */
+export interface CIMVideoTimelineRangeIndicator {
+  /**
+   * Gets or sets the indicator label.
+   */
+  label?: null | string;
+  /**
+   * Gets or sets the elapsed time from the beginning of the video in ticks for the minimum time in the range.
+   */
+  minimum?: number;
+  /**
+   * Gets or sets the elapsed time from the beginning of the video in ticks for the maximum time in the range.
+   */
+  maximum?: number;
 }

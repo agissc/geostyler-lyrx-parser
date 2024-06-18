@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSubLayerBase1 = CIMObject & {
+export type CIMSubLayerBase = CIMSubLayerBase1[];
+
+/**
+ * Represents sublayer base class.
+ *
+ */
+export interface CIMSubLayerBase1 {
   /**
    * Gets or sets the description.
    */
@@ -42,11 +48,4 @@ export type CIMSubLayerBase1 = CIMObject & {
    * Gets or sets identifier that will be used to identify the layer in server.
    */
   serviceLayerID?: number;
-};
-export type CIMSubLayerBase = CIMSubLayerBase1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

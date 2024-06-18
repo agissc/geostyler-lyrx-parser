@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMVideoTimelineRangeIndicator1 = CIMVideoTimelineIndicator & {
+export type CIMVideoTimelineRangeIndicator = CIMVideoTimelineRangeIndicator1[];
+
+/**
+ * Represents a range indicator on a video timeline.
+ */
+export interface CIMVideoTimelineRangeIndicator1 {
+  /**
+   * Gets or sets the indicator label.
+   */
+  label?: null | string;
   /**
    * Gets or sets the elapsed time from the beginning of the video in ticks for the minimum time in the range.
    */
@@ -14,17 +23,4 @@ export type CIMVideoTimelineRangeIndicator1 = CIMVideoTimelineIndicator & {
    * Gets or sets the elapsed time from the beginning of the video in ticks for the maximum time in the range.
    */
   maximum?: number;
-};
-export type CIMVideoTimelineIndicator = CIMObject & {
-  /**
-   * Gets or sets the indicator label.
-   */
-  label?: null | string;
-};
-export type CIMVideoTimelineRangeIndicator = CIMVideoTimelineRangeIndicator1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

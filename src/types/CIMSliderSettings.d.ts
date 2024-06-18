@@ -5,7 +5,40 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSliderSettings = CIMObject & {
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Slider step types.
+ *
+ */
+export type SliderStepType = 0 | 1 | 2;
+/**
+ * Slider extent types.
+ *
+ */
+export type SliderExtentType = 0 | 1 | 2 | 3;
+/**
+ * Slider interaction modes.
+ *
+ */
+export type SliderInteractionMode = 0 | 1;
+/**
+ * Mode used for snapping the map's current time settings.
+ */
+export type TimeSnapMode = 0 | 1 | 2;
+/**
+ * Time offset direction.
+ *
+ */
+export type TimeOffsetDirection = 0 | 1 | 2;
+
+/**
+ * Represents slider settings.
+ *
+ */
+export interface CIMSliderSettings {
   /**
    * Gets or sets the extent shown on the slider.
    */
@@ -126,8 +159,12 @@ export type CIMSliderSettings = CIMObject & {
    * Gets or sets the direction to offset the time span relative to the current time.
    */
   liveModeOffsetDirection?: TimeOffsetDirection;
-};
-export type CIMRange = CIMObject & {
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -136,38 +173,4 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
-/**
- * Time units.
- */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-/**
- * Slider step types.
- *
- */
-export type SliderStepType = 0 | 1 | 2;
-/**
- * Slider extent types.
- *
- */
-export type SliderExtentType = 0 | 1 | 2 | 3;
-/**
- * Slider interaction modes.
- *
- */
-export type SliderInteractionMode = 0 | 1;
-/**
- * Mode used for snapping the map's current time settings.
- */
-export type TimeSnapMode = 0 | 1 | 2;
-/**
- * Time offset direction.
- *
- */
-export type TimeOffsetDirection = 0 | 1 | 2;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

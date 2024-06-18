@@ -5,7 +5,47 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTimeline = CIMDefinition & {
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Timeline view type.
+ */
+export type TimelineViewType = 0 | 1;
+
+/**
+ * Represents a timeline.
+ */
+export interface CIMTimeline {
+  /**
+   * Gets or sets the name.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
+   */
+  uri?: null | string;
+  /**
+   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourceURI?: null | string;
+  /**
+   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
+   */
+  sourceModifiedTime?: null | TimeInstant;
+  /**
+   * Gets or sets the metadata URI.
+   */
+  metadataURI?: null | string;
+  /**
+   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
+   */
+  useSourceMetadata?: boolean;
+  /**
+   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
+   */
+  sourcePortalUrl?: null | string;
   /**
    * Gets or sets time units used in the timeline scale.
    */
@@ -62,50 +102,24 @@ export type CIMTimeline = CIMDefinition & {
    * Gets or sets the URI of the binary reference containing the selection set.
    */
   selectionSetURI?: null | string;
-};
-export type CIMDefinition = CIMObject & {
-  /**
-   * Gets or sets the name.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the URI of the definition. Typically set by the system and used as an identifier.
-   */
-  uri?: null | string;
-  /**
-   * Gets or sets the source URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourceURI?: null | string;
-  /**
-   * Gets or sets the time the source was last modified, as of the last sync. Used to detect when another sync is needed.
-   */
-  sourceModifiedTime?: null | TimeInstant;
-  /**
-   * Gets or sets the metadata URI.
-   */
-  metadataURI?: null | string;
-  /**
-   * Gets or sets a value indicating whether the CIM definition accesses metadata from its data source (the default behavior), or if it has its own metadata stored in the project.
-   */
-  useSourceMetadata?: boolean;
-  /**
-   * Gets or sets the source portal URI of the item. Set if sourced from an external item such as an item on a portal.
-   */
-  sourcePortalUrl?: null | string;
-};
-export type TimeInstant = TimeValue & {
-  /**
-   * Gets or sets the time.
-   */
-  time?: string;
-};
-export type TimeValue = CIMObject & {
+}
+/**
+ * Represents an instant in time. The time has no duration.
+ */
+export interface TimeInstant {
   /**
    * Gets or sets the time zone definition of the time.
    */
   timeReference?: null | TimeReference;
-};
-export type TimeReference = CIMObject & {
+  /**
+   * Gets or sets the time.
+   */
+  time?: string;
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -118,12 +132,11 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
+}
 /**
- * Time units.
+ * Represents a swimlane in a timeline.
  */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMTimelineSwimlane = CIMObject & {
+export interface CIMTimelineSwimlane {
   /**
    * Gets or sets the Id of for the timeline swimlane.
    */
@@ -148,8 +161,11 @@ export type CIMTimelineSwimlane = CIMObject & {
    * Gets or sets the timeline layers.
    */
   layers?: CIMTimelineLayer[] | null;
-};
-export type CIMTimelineLayer = CIMObject & {
+}
+/**
+ * Represents a layer in a timeline.
+ */
+export interface CIMTimelineLayer {
   /**
    * Gets or sets the Id of for the timeline layer.
    */
@@ -174,14 +190,4 @@ export type CIMTimelineLayer = CIMObject & {
    * Gets or sets a value indicating whether the timeline layer is visible.
    */
   visibility?: boolean;
-};
-/**
- * Timeline view type.
- */
-export type TimelineViewType = 0 | 1;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

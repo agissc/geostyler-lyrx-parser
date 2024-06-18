@@ -5,7 +5,22 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSnappingProperties = CIMObject & {
+/**
+ * Snap XY tolerance units.
+ *
+ */
+export type SnapXYToleranceUnit = 0 | 1;
+/**
+ * Snap request types.
+ *
+ */
+export type SnapRequestType = 0 | 1 | 2 | 3;
+
+/**
+ * Represents snapping properties.
+ *
+ */
+export interface CIMSnappingProperties {
   /**
    * Gets or sets the XY tolerance.
    */
@@ -46,18 +61,11 @@ export type CIMSnappingProperties = CIMObject & {
    * Gets or sets a value indicating whether the snap tip is fully or partially visible.
    */
   snapTipDisplayParts?: number;
-};
+}
 /**
- * Snap XY tolerance units.
- *
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
  */
-export type SnapXYToleranceUnit = 0 | 1;
-/**
- * Snap request types.
- *
- */
-export type SnapRequestType = 0 | 1 | 2 | 3;
-export type CIMColor = CIMObject & {
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -70,11 +78,8 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-
+}
 /**
- * Represents the base CIM object class.
- *
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export interface CIMObject {}
+export interface CIMColorSpace {}

@@ -5,16 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMTinRenderer1 = CIMObject & {
+export type CIMTinRenderer = CIMTinRenderer1[];
+
+/**
+ * Represents a TIN renderer.
+ *
+ */
+export interface CIMTinRenderer1 {
   /**
    * Gets or sets a value indicating whether or not to illuminate.
    */
   illuminate?: boolean;
-};
-export type CIMTinRenderer = CIMTinRenderer1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

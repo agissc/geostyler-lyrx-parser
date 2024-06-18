@@ -5,7 +5,28 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMMapStereoProperties = CIMObject & {
+/**
+ * Stereo source types.
+ */
+export type StereoSourceType = 0 | 1;
+/**
+ * Raster resampling types.
+ */
+export type RasterResamplingType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Stereo model display modes.
+ */
+export type StereoModelDisplayMode = 0 | 1 | 2 | 3;
+/**
+ * Stereo model orientation.
+ */
+export type StereoOrientation = 0 | 1 | 2 | 3;
+
+/**
+ * Represents map stereo properties.
+ *
+ */
+export interface CIMMapStereoProperties {
   /**
    * Gets or sets the left image of the stereo pair.
    */
@@ -54,13 +75,16 @@ export type CIMMapStereoProperties = CIMObject & {
    * Gets or sets the stereo model display orientation.
    */
   orientation?: StereoOrientation;
-};
-export type CIMDataConnection = CIMObject;
+}
 /**
- * Stereo source types.
+ * Represents a data connection.
  */
-export type StereoSourceType = 0 | 1;
-export type CIMRasterColorizer = CIMObject & {
+export interface CIMDataConnection {}
+/**
+ * Represents a raster colorizer.
+ *
+ */
+export interface CIMRasterColorizer {
   /**
    * Gets or sets the raster resampling type.
    */
@@ -77,12 +101,11 @@ export type CIMRasterColorizer = CIMObject & {
    * Gets or sets the no data color.
    */
   noDataColor?: null | CIMColor;
-};
+}
 /**
- * Raster resampling types.
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
  */
-export type RasterResamplingType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMColor = CIMObject & {
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -95,19 +118,8 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
+}
 /**
- * Stereo model display modes.
+ * Supports colors spaces by providing a common base type for all color spaces.
  */
-export type StereoModelDisplayMode = 0 | 1 | 2 | 3;
-/**
- * Stereo model orientation.
- */
-export type StereoOrientation = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+export interface CIMColorSpace {}

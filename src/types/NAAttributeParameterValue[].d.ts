@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type NAAttributeParameterValue1 = CIMObject & {
+export type NAAttributeParameterValue = NAAttributeParameterValue1[];
+
+/**
+ * Represents a network attribute parameter value. This class is reserved for esri internal use only.
+ */
+export interface NAAttributeParameterValue1 {
   /**
    * Gets and sets the attribute name.
    */
@@ -19,11 +24,4 @@ export type NAAttributeParameterValue1 = CIMObject & {
    */
   varType?: number;
   value?: unknown;
-};
-export type NAAttributeParameterValue = NAAttributeParameterValue1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

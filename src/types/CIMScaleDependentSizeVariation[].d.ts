@@ -5,7 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMScaleDependentSizeVariation1 = CIMObject & {
+export type CIMScaleDependentSizeVariation = CIMScaleDependentSizeVariation1[];
+
+/**
+ * Represents the scale dependent size variations for a symbol reference.
+ *
+ */
+export interface CIMScaleDependentSizeVariation1 {
   /**
    * Gets or sets the scale the size is associated with.
    */
@@ -14,11 +20,4 @@ export type CIMScaleDependentSizeVariation1 = CIMObject & {
    * Gets or sets the size for the associated scale.
    */
   size?: number;
-};
-export type CIMScaleDependentSizeVariation = CIMScaleDependentSizeVariation1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

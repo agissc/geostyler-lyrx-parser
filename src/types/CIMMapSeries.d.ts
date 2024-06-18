@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMMapSeries = CIMObject & {
+/**
+ * The Map series object represents a means to create multi-page PDF or
+ * based off of fields in the index layer.
+ */
+export interface CIMMapSeries {
   /**
    * Gets or sets a value indicating whether the map series is enabled on the layout.
    */
@@ -22,10 +26,4 @@ export type CIMMapSeries = CIMObject & {
    * Gets or sets the current page Id.
    */
   currentPageID?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

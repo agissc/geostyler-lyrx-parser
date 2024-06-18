@@ -5,13 +5,38 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRasterTable = CIMDisplayTable & {
-  /**
-   * Gets or sets the joins as a data connection.
-   */
-  joins?: null | CIMDataConnection;
-};
-export type CIMDisplayTable = CIMObject & {
+/**
+ * Relationship Cardinality.
+ */
+export type EsriRelCardinality = 0 | 1 | 2;
+/**
+ * Field search modes.
+ *
+ */
+export type DataSearchMode = 0 | 1;
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Bind variable types.
+ */
+export type BindVariableType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Represents the rank or "level" at which the layer participates in filtering for Indoors or floor-aware layers.
+ */
+export type FloorFilterRank = 0 | 1 | 2 | 3;
+
+/**
+ * Represents a raster table.
+ *
+ */
+export interface CIMRasterTable {
   /**
    * Gets or sets the definition expression that can subset the rows in the virtual table.
    */
@@ -98,8 +123,16 @@ export type CIMDisplayTable = CIMObject & {
    * This property will only be set for route feature classes, namely line and polyline feature classes that are m-aware.
    */
   routeIDFieldName?: null | string;
-};
-export type CIMDefinitionFilter = CIMObject & {
+  /**
+   * Gets or sets the joins as a data connection.
+   */
+  joins?: null | CIMDataConnection;
+}
+/**
+ * Contains filters so that only features satisfying these definitions will be displayed.
+ *
+ */
+export interface CIMDefinitionFilter {
   /**
    * Gets or sets the name of the Definition Filter item.
    */
@@ -108,8 +141,12 @@ export type CIMDefinitionFilter = CIMObject & {
    * Gets or sets the definition expression to filter features in the dataset.
    */
   definitionExpression?: null | string;
-};
-export type CIMRelateInfoBase = CIMObject & {
+}
+/**
+ * Represents relate base.
+ *
+ */
+export interface CIMRelateInfoBase {
   /**
    * Gets or sets the relate data connection.
    */
@@ -130,13 +167,16 @@ export type CIMRelateInfoBase = CIMObject & {
    * Gets or sets the name.
    */
   name?: null | string;
-};
-export type CIMDataConnection = CIMObject;
+}
 /**
- * Relationship Cardinality.
+ * Represents a data connection.
  */
-export type EsriRelCardinality = 0 | 1 | 2;
-export type CIMFieldDescription = CIMObject & {
+export interface CIMDataConnection {}
+/**
+ * Represents a field description.
+ *
+ */
+export interface CIMFieldDescription {
   /**
    * Gets or sets the field alias.
    */
@@ -173,14 +213,17 @@ export type CIMFieldDescription = CIMObject & {
    * Gets or sets search mode to use when searching for values in this field.
    */
   searchMode?: DataSearchMode;
-};
-export type CIMNumberFormat = CIMObject;
+}
 /**
- * Field search modes.
+ * Represents a number format.
  *
  */
-export type DataSearchMode = 0 | 1;
-export type CIMTimeTableDefinition = CIMObject & {
+export interface CIMNumberFormat {}
+/**
+ * Represents a time table definition.
+ *
+ */
+export interface CIMTimeTableDefinition {
   /**
    * Gets or sets the start time field.
    */
@@ -197,8 +240,12 @@ export type CIMTimeTableDefinition = CIMObject & {
    * Gets or sets the track ID field.
    */
   trackIDField?: null | string;
-};
-export type CIMTimeDataDefinition = CIMObject & {
+}
+/**
+ * Represents a time data definition.
+ *
+ */
+export interface CIMTimeDataDefinition {
   /**
    * Gets or sets a value indicating whether or not to use time for animation purposes.
    */
@@ -220,8 +267,11 @@ export type CIMTimeDataDefinition = CIMObject & {
    *
    */
   timeExtentCanChange?: boolean;
-};
-export type TimeReference = CIMObject & {
+}
+/**
+ * Represents the time zone definition for a given date and time.
+ */
+export interface TimeReference {
   /**
    * Gets or sets the windows id for the time zone.
    */
@@ -234,8 +284,15 @@ export type TimeReference = CIMObject & {
    * Gets or sets a value indicating if the time reference should respect dynamic rules for adjusting with daylight savings time for specific years.
    */
   respectsDynamicAdjustmentRules?: boolean;
-};
-export type TimeExtent = TimeValue & {
+}
+/**
+ * Represents an extent of time defined by a start and end date.
+ */
+export interface TimeExtent {
+  /**
+   * Gets or sets the time zone definition of the time.
+   */
+  timeReference?: null | TimeReference;
   /**
    * Gets or sets the start time of the extent.
    */
@@ -256,14 +313,12 @@ export type TimeExtent = TimeValue & {
    * Gets or sets a value indicating if the extent contains an end time. If false the time extent has no upper bound.
    */
   endTimeSpecified?: boolean;
-};
-export type TimeValue = CIMObject & {
-  /**
-   * Gets or sets the time zone definition of the time.
-   */
-  timeReference?: null | TimeReference;
-};
-export type CIMTimeDisplayDefinition = CIMObject & {
+}
+/**
+ * Represents a time display definition.
+ *
+ */
+export interface CIMTimeDisplayDefinition {
   /**
    * Gets or sets a value indicating whether time is cumulative.
    */
@@ -288,12 +343,12 @@ export type CIMTimeDisplayDefinition = CIMObject & {
    * Gets or sets a cached set of unique OLE date values.
    */
   uniqueTimes?: number[] | null;
-};
+}
 /**
- * Time units.
+ * Represents a time dimension definition.
+ *
  */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMTimeDimensionDefinition = CIMObject & {
+export interface CIMTimeDimensionDefinition {
   /**
    * Gets or sets the time dimension name.
    */
@@ -302,8 +357,12 @@ export type CIMTimeDimensionDefinition = CIMObject & {
    * Gets or sets the time dimension format.
    */
   timeDimensionFormat?: null | string;
-};
-export type CIMRangeDefinition = CIMObject & {
+}
+/**
+ * Represents a range definition.
+ *
+ */
+export interface CIMRangeDefinition {
   /**
    * Gets or sets the name.
    */
@@ -328,8 +387,12 @@ export type CIMRangeDefinition = CIMObject & {
    * Gets or sets ExpressionInfo that contains the Arcade expression that returns a string representing range alias value.
    */
   aliasExpressionInfo?: null | CIMExpressionInfo;
-};
-export type CIMRange = CIMObject & {
+}
+/**
+ * Represents a range.
+ *
+ */
+export interface CIMRange {
   /**
    * Gets or sets the minimum.
    */
@@ -338,8 +401,11 @@ export type CIMRange = CIMObject & {
    * Gets or sets the maximum.
    */
   max?: number;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -356,13 +422,11 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
- *
+ * Represents a bind variable.
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMBindVariable = CIMObject & {
+export interface CIMBindVariable {
   /**
    * Gets or sets the name of the variable. The name must be unique among all variables.
    */
@@ -375,12 +439,12 @@ export type CIMBindVariable = CIMObject & {
    * Gets or sets the type of the variable.
    */
   dataType?: BindVariableType;
-};
+}
 /**
- * Bind variable types.
+ * Represents floor-aware properties for the layer/table used in floor filtering.
+ *
  */
-export type BindVariableType = 0 | 1 | 2 | 3 | 4;
-export type CIMFloorAwareTableProperties = CIMObject & {
+export interface CIMFloorAwareTableProperties {
   /**
    * Gets or sets rank or "level" at which the layer/table participates in filtering for Indoors or floor-aware layers/tables.
    */
@@ -389,14 +453,4 @@ export type CIMFloorAwareTableProperties = CIMObject & {
    * Gets or sets the name of the field that carries the floor value used for floor filtering.
    */
   floorField?: null | string;
-};
-/**
- * Represents the rank or "level" at which the layer participates in filtering for Indoors or floor-aware layers.
- */
-export type FloorFilterRank = 0 | 1 | 2 | 3;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,7 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMRelateInfoBase1 = CIMObject & {
+/**
+ * Relationship Cardinality.
+ */
+export type EsriRelCardinality = 0 | 1 | 2;
+export type CIMRelateInfoBase = CIMRelateInfoBase1[];
+
+/**
+ * Represents relate base.
+ *
+ */
+export interface CIMRelateInfoBase1 {
   /**
    * Gets or sets the relate data connection.
    */
@@ -26,16 +36,8 @@ export type CIMRelateInfoBase1 = CIMObject & {
    * Gets or sets the name.
    */
   name?: null | string;
-};
-export type CIMDataConnection = CIMObject;
+}
 /**
- * Relationship Cardinality.
+ * Represents a data connection.
  */
-export type EsriRelCardinality = 0 | 1 | 2;
-export type CIMRelateInfoBase = CIMRelateInfoBase1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+export interface CIMDataConnection {}

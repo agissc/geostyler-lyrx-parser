@@ -5,7 +5,21 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPopupInfo = CIMObject & {
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+/**
+ * Time units.
+ */
+export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+
+/**
+ * Represents pop-up info.
+ *
+ */
+export interface CIMPopupInfo {
   /**
    * Gets or sets the title.
    */
@@ -31,8 +45,11 @@ export type CIMPopupInfo = CIMObject & {
    * Gets or sets the pop-up field descriptions.
    */
   fieldDescriptions?: CIMPopupFieldDescription[] | null;
-};
-export type CIMExpressionInfo = CIMObject & {
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
   /**
    * Gets or sets the human readable text that describes the expression.
    */
@@ -49,13 +66,12 @@ export type CIMExpressionInfo = CIMObject & {
    * Gets or sets the ReturnType of the expression.
    */
   returnType?: ExpressionReturnType;
-};
+}
 /**
- * Visual variable info types.
+ * Represents media info.
  *
  */
-export type ExpressionReturnType = 0 | 1 | 2;
-export type CIMMediaInfo = CIMObject & {
+export interface CIMMediaInfo {
   /**
    * Gets or sets the row.
    */
@@ -80,12 +96,12 @@ export type CIMMediaInfo = CIMObject & {
    * Gets or sets the column span.
    */
   columnSpan?: number;
-};
+}
 /**
- * Time units.
+ * Represents a string map of key value pairs.
+ *
  */
-export type EsriTimeUnits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type CIMStringMap = CIMObject & {
+export interface CIMStringMap {
   /**
    * Gets or sets the key.
    */
@@ -94,8 +110,12 @@ export type CIMStringMap = CIMObject & {
    * Gets or sets the value.
    */
   value?: null | string;
-};
-export type CIMPopupLayout = CIMObject & {
+}
+/**
+ * Represents a grid layout for pop-up media infos.
+ *
+ */
+export interface CIMPopupLayout {
   /**
    * Gets or sets the array of column width values in percentage of the table width (0-100).
    */
@@ -108,8 +128,11 @@ export type CIMPopupLayout = CIMObject & {
    * Gets or sets the border color.
    */
   borderColor?: null | CIMColor;
-};
-export type CIMColor = CIMObject & {
+}
+/**
+ * Supports colors in the CIM model by providing low level access to properties common amongst all color types.
+ */
+export interface CIMColor {
   /**
    * Gets and sets alpha.
    */
@@ -122,9 +145,16 @@ export type CIMColor = CIMObject & {
    * Gets or sets the values for the color and alpha channels as defined by the color model. Alpha is the last value in the array for all colors.
    */
   values?: number[] | null;
-};
-export type CIMColorSpace = CIMObject;
-export type CIMPopupFieldDescription = CIMObject & {
+}
+/**
+ * Supports colors spaces by providing a common base type for all color spaces.
+ */
+export interface CIMColorSpace {}
+/**
+ * Represents a pop-up field description.
+ *
+ */
+export interface CIMPopupFieldDescription {
   /**
    * Gets or sets the field alias.
    */
@@ -137,11 +167,9 @@ export type CIMPopupFieldDescription = CIMObject & {
    * Gets or sets the number format.
    */
   numberFormat?: null | CIMNumberFormat;
-};
-export type CIMNumberFormat = CIMObject;
-
+}
 /**
- * Represents the base CIM object class.
+ * Represents a number format.
  *
  */
-export interface CIMObject {}
+export interface CIMNumberFormat {}

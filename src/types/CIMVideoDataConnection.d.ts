@@ -5,16 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMVideoDataConnection = CIMDataConnection & {
+/**
+ * Represents a video data connection.
+ */
+export interface CIMVideoDataConnection {
   /**
    * Gets or sets the URI of the video files.
    */
   uri?: null | string;
-};
-export type CIMDataConnection = CIMObject;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

@@ -5,22 +5,25 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMSymbolLayerMasking1 = CIMObject & {
+export type CIMSymbolLayerMasking = CIMSymbolLayerMasking1[];
+
+/**
+ * Represents symbol layer masking.
+ *
+ */
+export interface CIMSymbolLayerMasking1 {
   /**
    * Gets or sets the symbol layer identifiers.
    */
   symbolLayers?: CIMSymbolLayerIdentifier[] | null;
-};
-export type CIMSymbolLayerIdentifier = CIMObject & {
+}
+/**
+ * Represents symbol layer identifier.
+ *
+ */
+export interface CIMSymbolLayerIdentifier {
   /**
    * Gets or sets the symbol layer name.
    */
   symbolLayerName?: null | string;
-};
-export type CIMSymbolLayerMasking = CIMSymbolLayerMasking1[];
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

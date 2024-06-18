@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMMargin = CIMObject & {
+/**
+ * Represents a margin to apply around the page.
+ *
+ */
+export interface CIMMargin {
   /**
    * Gets or sets the left margin.
    */
@@ -22,10 +26,4 @@ export type CIMMargin = CIMObject & {
    * Gets or sets the bottom margin.
    */
   bottom?: number;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

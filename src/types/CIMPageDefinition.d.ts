@@ -5,7 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMPageDefinition = CIMObject & {
+/**
+ * Represents page definition.
+ *
+ */
+export interface CIMPageDefinition {
   /**
    * Gets or sets the page field name. Show features where the value of this field either matches or doesn't match the current map series page name.
    * Match versus don't match is controlled by ExcludePages.
@@ -15,10 +19,4 @@ export type CIMPageDefinition = CIMObject & {
    * Gets or sets a value indicating whether to exclude pages. Specify false to show features that match or true to show features that don't match.
    */
   excludePages?: boolean;
-};
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

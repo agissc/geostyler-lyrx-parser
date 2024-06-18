@@ -5,16 +5,13 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMServiceConnection = CIMDataConnection & {
+/**
+ * Represents a service connection.
+ *
+ */
+export interface CIMServiceConnection {
   /**
    * Gets or sets the description.
    */
   description?: null | string;
-};
-export type CIMDataConnection = CIMObject;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
+}

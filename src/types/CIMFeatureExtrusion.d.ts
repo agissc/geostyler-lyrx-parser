@@ -5,7 +5,25 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CIMFeatureExtrusion = CIMObject & {
+/**
+ * The types of extrusion.
+ */
+export type ExtrusionType = 0 | 1 | 2 | 3 | 4;
+/**
+ * Describes the different types of units.
+ */
+export type UnitType = 0 | 1 | 2 | 3;
+/**
+ * Visual variable info types.
+ *
+ */
+export type ExpressionReturnType = 0 | 1 | 2;
+
+/**
+ * Represents feature extrusion.
+ *
+ */
+export interface CIMFeatureExtrusion {
   /**
    * Gets or sets the extrusion type.
    */
@@ -22,54 +40,11 @@ export type CIMFeatureExtrusion = CIMObject & {
    * Gets or sets the ExpressionInfo that contains Arcade expression that returns a numeric value.
    */
   extrusionExpressionInfo?: null | CIMExpressionInfo;
-};
+}
 /**
- * The types of extrusion.
+ * Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.
  */
-export type ExtrusionType = 0 | 1 | 2 | 3 | 4;
-export type LinearUnit = Unit & {
-  /**
-   * Gets the meters per unit.
-   */
-  metersPerUnit?: number;
-};
-/**
- * Describes the different types of units.
- */
-export type UnitType = 0 | 1 | 2 | 3;
-export type CIMExpressionInfo = CIMObject & {
-  /**
-   * Gets or sets the human readable text that describes the expression.
-   */
-  title?: null | string;
-  /**
-   * Gets or sets the Arcade expression used to evaluate and return the value that a property expects.
-   */
-  expression?: null | string;
-  /**
-   * Gets or sets the Name of the expression.
-   */
-  name?: null | string;
-  /**
-   * Gets or sets the ReturnType of the expression.
-   */
-  returnType?: ExpressionReturnType;
-};
-/**
- * Visual variable info types.
- *
- */
-export type ExpressionReturnType = 0 | 1 | 2;
-
-/**
- * Represents the base CIM object class.
- *
- */
-export interface CIMObject {}
-/**
- * A common base class between all units, linear, area and angular units.
- */
-export interface Unit {
+export interface LinearUnit {
   /**
    * Gets the well-known ID of the unit. If the unit is a custom unit, then the factory code will be 0.
    */
@@ -90,4 +65,29 @@ export interface Unit {
    * Gets the type of unit.
    */
   unitType?: UnitType;
+  /**
+   * Gets the meters per unit.
+   */
+  metersPerUnit?: number;
+}
+/**
+ * Represents the properties required for authoring an Arcade expression.
+ */
+export interface CIMExpressionInfo {
+  /**
+   * Gets or sets the human readable text that describes the expression.
+   */
+  title?: null | string;
+  /**
+   * Gets or sets the Arcade expression used to evaluate and return the value that a property expects.
+   */
+  expression?: null | string;
+  /**
+   * Gets or sets the Name of the expression.
+   */
+  name?: null | string;
+  /**
+   * Gets or sets the ReturnType of the expression.
+   */
+  returnType?: ExpressionReturnType;
 }
