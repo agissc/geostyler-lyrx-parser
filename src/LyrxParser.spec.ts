@@ -10,11 +10,9 @@ test('adds 1 + 1 to equal 2', () => {
 test('Should', async () => {
   var lyrxParser = new LyrxParser();
   const lyxText = fs.readFileSync('./data/lyrx/test.lyrx', 'utf8');
-  const lyrx = JSON.parse(lyxText, );
-  console.log(lyrx);
+  const lyrx = JSON.parse(lyxText, ); 
   const { output: geoStylerStyle, warnings } = await lyrxParser.readStyle(lyrx);
-  expect(geoStylerStyle).toBeDefined();
-  console.log(warnings);
+  expect(geoStylerStyle).toBeDefined(); 
   if (warnings)
     expect(warnings[0]).toEqual("3.2.0");
   else 
